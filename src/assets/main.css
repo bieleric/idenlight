@@ -23,6 +23,15 @@
   
 }
 
+/* COLORS */
+.bg-color-secondary {
+  background-color: #484848;
+}
+
+.bg-color-third {
+  background-color: #efefef;
+}
+
 /* BUTTONS */
 .btn-primary {
   background-color: #7EB4A5 !important;
