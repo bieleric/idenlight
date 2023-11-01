@@ -1,6 +1,6 @@
 import './assets/main.css'
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap"
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -8,8 +8,14 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 import i18n from './i18n'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
-const app = createApp(App)
+/* add icons to the library */
+library.add(faCheck)
+
+const app = createApp(App).component('font-awesome-icon', FontAwesomeIcon)
 
 app.use(createPinia())
 app.use(router)

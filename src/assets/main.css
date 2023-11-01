@@ -1,44 +1,130 @@
 @import './base.css';
 
+:root {
+  --green: #7eb4a5;
+  --black: #1e1e1e;
+  --grey: #484848;
+  --white: #efefef;
+}
+
 
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-weight: 400;
   font-style: normal;
   font-display: auto;
   unicode-range: U+000-5FF;
-  src: url("/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  src: url('/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Roboto Italic';
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+  unicode-range: U+000-5FF;
+  src: url('/fonts/Roboto/Roboto-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto Light';
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+  unicode-range: U+000-5FF;
+  src: url('/fonts/Roboto/Roboto-Light.ttf') format('truetype');
+}
 
 #app {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
-  background-color: #1e1e1e;
-  font-family: "Roboto";
+  overflow: scroll;
+  background-color: var(--black);
+  font-family: 'Roboto';
 }
 
-#main {
-  
+#navigation-buttons {
+  position: relative;
+
 }
+
+.content {
+  height: 80vh;
+}
+
+/* FONTS */
+.font-italic {
+  font-family: "Roboto Italic";
+}
+
+.font-light {
+  font-family: "Roboto Light";
+}
+
+
+
+/* LESSONS */
+#lesson-template {
+  height: 65vh;
+}
+
+#text-box {
+  border-radius: 15px 0px 0px 15px;
+}
+
+#image-box {
+  border-radius: 0px 15px 15px 0px;
+}
+
+.lesson-fact {
+  font-family: "Roboto Italic";
+}
+
+.focus {
+  height: 10rem;
+  border: solid 2px var(--green);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.active-focus {
+  background-color: var(--green);
+}
+
+/* HEIGHT */
+.h-10 {
+  height: 10%;
+}
+
+.h-20 {
+  height: 20%;
+}
+
+.h-80 {
+  height: 80%;
+}
+
+.h-90 {
+  height: 90%;
+}
+
 
 /* COLORS */
 .bg-color-secondary {
-  background-color: #484848;
+  background-color: var(--grey);
 }
 
 .bg-color-third {
-  background-color: #efefef;
+  background-color: var(--white);
 }
 
 /* BUTTONS */
 .btn-primary {
-  background-color: #7EB4A5 !important;
-  border-color: #7EB4A5 !important ;
+  background-color: var(--green) !important;
+  border-color: var(--green) !important ;
 }
 
 /* TEXTS */
 .text-light {
-  color: #ededed !important;
+  color: var(--white) !important;
 }
