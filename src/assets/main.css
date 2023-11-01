@@ -119,9 +119,19 @@
 }
 
 /* BUTTONS */
-.btn-primary {
+.button-primary {
   background-color: var(--green) !important;
-  border-color: var(--green) !important ;
+  border-color: var(--green) !important;
+  color: var(--white) !important;
+}
+
+.button-outline-primary {
+  border-color: var(--green) !important;
+  color: var(--green) !important;
+}
+
+.navigation-button {
+  width: 60px !important;
 }
 
 /* TEXTS */

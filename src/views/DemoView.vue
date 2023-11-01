@@ -1,26 +1,11 @@
 <script setup>
-import LessonTemplate from '../components/LessonTemplate.vue'
-import { useI18n } from 'vue-i18n'
-import { reactive } from 'vue'
+  import LessonTemplate from '../components/LessonTemplate.vue'
+  import NavigationButtons from '../components/NavigationButtons.vue';
+  import { useNavigationStore } from '../stores/navigationStore';
+  import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n()
-
-const steps = ["Introduction", "Focus"]
-
-let state = reactive({
-    currentStep: 0,
-})
-
-const incrementStep = (lastStep) => {
-    if(lastStep) {
-        state.summary = true
-    }
-    state.currentStep >= steps.length ? state.currentStep = steps.length : state.currentStep++;
-}
-
-const decrementStep = () => {
-    state.currentStep === 0 ? state.currentStep = state.currentStep : state.currentStep--;
-}
+  const { t } = useI18n();
+  const navigationStore = useNavigationStore();
 
 </script>
 
@@ -31,18 +16,11 @@ const decrementStep = () => {
     </div>
   </RouterLink>
 
-  <LessonTemplate v-if="state.currentStep===0" :title="t('introduction.title')" :fact="t('introduction.fact')" :paragraph_one="t('introduction.paragraph_one')" :paragraph_two="t('introduction.paragraph_two')"></LessonTemplate>
+  <LessonTemplate v-if="navigationStore.getCurrentStep===0" :title="t('introduction.title')" :fact="t('introduction.fact')" :paragraph_one="t('introduction.paragraph_one')" :paragraph_two="t('introduction.paragraph_two')"></LessonTemplate>
 
-  <LessonTemplate v-if="state.currentStep===1" :focus="true" :title="t('focus.title')"></LessonTemplate>
+  <LessonTemplate v-if="navigationStore.getCurrentStep===1" :focus="true" :title="t('focus.title')"></LessonTemplate>
 
-  <div id="navigation-buttons" class="d-flex justify-content-end col-10 mx-auto">
-      <div class="px-2">
-          <div v-if="state.currentStep > 0" @click="decrementStep()" class="btn btn-primary">Zurück</div>
-      </div>
-      <div class="">
-          <div @click="incrementStep()" class="btn btn-primary">Weiter</div>
-      </div>
-  </div>
+  <NavigationButtons></NavigationButtons>
 
 
 </template>
