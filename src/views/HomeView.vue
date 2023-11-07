@@ -9,8 +9,7 @@ const { t } = useI18n()
     <div class="col-lg-6 col-10 mx-auto">
       <p class="display-6 text-light">{{ t('home.welcome_to') }}</p>
       <img src="/idenlight_dark.png" class="col-11 mb-5" />
-      <RouterLink to="/demo"
-        ><div class="btn btn-primary">{{ t('home.lets_go') }}</div></RouterLink>
+      <RouterLink to="/iam"><div class="btn button-primary">{{ t('home.lets_go') }}</div></RouterLink>
     </div>
   </div>
 </template>

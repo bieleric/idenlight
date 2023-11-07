@@ -2,14 +2,14 @@ import { defineStore } from 'pinia'
 
 export const useFocusStore = defineStore('focusStore', {
   state: () => ({
-    conceptActive: true
+    userActive: true
   }),
   getters: {
-    getConceptActive: (state) => state.conceptActive
+    getUserActive: (state) => state.userActive
   },
   actions: {
-    toggleConceptActive(value) {
-      this.conceptActive = value;
+    toggleUserActive(value) {
+      this.userActive = value;
     },
   }
 })

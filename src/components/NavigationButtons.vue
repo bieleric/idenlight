@@ -1,26 +1,26 @@
 <script setup>
-import { useNavigationStore } from '../stores/navigationStore';
+import { useUserNavigationStore } from '../stores/userNavigationStore';
 
-const navigationStore = useNavigationStore();
+const userNavigationStore = useUserNavigationStore();
 
 const incrementStep = () => {
-    if(navigationStore.getCurrentStep < navigationStore.getStepsLength) {
-        navigationStore.increase();
+    if(userNavigationStore.getCurrentStep < userNavigationStore.getStepsLength) {
+        userNavigationStore.increase();
     }
 }
 
 const decrementStep = () => {
-    if(navigationStore.getCurrentStep > 0) {
-        navigationStore.reduce();
+    if(userNavigationStore.getCurrentStep > 0) {
+        userNavigationStore.reduce();
     }
 }
 
 </script>
 
 <template>
-    <div id="navigation-buttons" class="d-flex justify-content-end col-10 mx-auto">
+    <div id="navigation-buttons" class="d-flex justify-content-end col-12 mx-auto">
         <div class="px-2">
-            <div v-if="navigationStore.getCurrentStep > 0" @click="decrementStep()" class="navigation-button btn button-outline-primary">
+            <div v-if="userNavigationStore.getCurrentStep > 0" @click="decrementStep()" class="navigation-button btn button-outline-primary">
                 <font-awesome-icon icon="chevron-left" />
             </div>
         </div>

@@ -38,7 +38,7 @@
 #app {
   width: 100vw;
   height: 100vh;
-  overflow: scroll;
+  overflow: hidden;
   background-color: var(--black);
   font-family: 'Roboto';
 }
@@ -61,30 +61,75 @@
   font-family: "Roboto Light";
 }
 
+/* REGIONS */
+#header {
+  height: 20vh;
+}
+
+@media(max-width:767px) {
+  #header {
+    height: 15vh;
+  }
+}
+
+#content {
+  height: 70vh;
+}
+
+@media(max-width:767px) {
+  #content {
+    height: 75vh;
+  }
+}
+
+#footer {
+  height: 10vh;
+}
+
+
 
 
 /* LESSONS */
-#lesson-template {
+.lesson {
   height: 65vh;
 }
 
-#text-box {
+.text-box {
   border-radius: 15px 0px 0px 15px;
 }
 
-#image-box {
+.image-box {
   border-radius: 0px 15px 15px 0px;
+}
+
+@media(max-width:992px) {
+  .lesson {
+    height: 60vh;
+  }
+  .text-box {
+    border-radius: 15px 15px 0px 0px;
+  }
+  .image-box {
+    border-radius: 0px 0px 15px 15px;
+  }
 }
 
 .lesson-fact {
   font-family: "Roboto Italic";
 }
 
+
+/* FOCUS */
 .focus {
-  height: 10rem;
+  height: 8rem;
   border: solid 2px var(--green);
   border-radius: 15px;
   cursor: pointer;
+}
+
+.focus-image {
+  border-radius: 10px;
+  height: 100%;
 }
 
 .active-focus {
