@@ -5,13 +5,15 @@ export const useUserNavigationStore = defineStore('userNavigationStore', {
   state: () => ({
         currentStep: 0,
         steps: [i18n.global.t('steps.user.introduction.title'), i18n.global.t('navigation.user.step2'), i18n.global.t('navigation.user.step3'), i18n.global.t('navigation.user.step4'), i18n.global.t('navigation.user.step5'), i18n.global.t('navigation.user.step6'), i18n.global.t('navigation.user.step7'), i18n.global.t('navigation.user.step8')],
-        descriptionActive: true
+        descriptionActive: true,
+        tabMode: false
   }),
   getters: {
         getCurrentStep: (state) => state.currentStep,
         getSteps: (state) => state.steps,
         getStepsLength: (state) => state.steps.length,
-        getDescriptionActive: (state) => state.descriptionActive
+        getDescriptionActive: (state) => state.descriptionActive,
+        getTabMode: (state) => state.tabMode,
   },
   actions: {
     increase() {
@@ -22,6 +24,9 @@ export const useUserNavigationStore = defineStore('userNavigationStore', {
     },
     toggleDescription(value) {
         this.descriptionActive = value;
+    },
+    setTabMode(value) {
+        this.tabMode = value;
     }
   }
 })

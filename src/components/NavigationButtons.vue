@@ -4,13 +4,15 @@ import { useUserNavigationStore } from '../stores/userNavigationStore';
 const userNavigationStore = useUserNavigationStore();
 
 const resetTabs = () => {
-    userNavigationStore.toggleDescription(true);
-    const desciptionTab = document.getElementById("description-tab");
-    const schemeTab = document.getElementById("scheme-tab");
+    if(userNavigationStore.getTabMode) {
+        userNavigationStore.toggleDescription(true);
+        const desciptionTab = document.getElementById("description-tab");
+        const schemeTab = document.getElementById("scheme-tab");
 
-    if(!desciptionTab.classList.contains("active-tab") || schemeTab.classList.contains("active-tab")) {
-        desciptionTab.classList.add("active-tab");
-        schemeTab.classList.remove("active-tab");
+        if(!desciptionTab.classList.contains("active-tab") || schemeTab.classList.contains("active-tab")) {
+            desciptionTab.classList.add("active-tab");
+            schemeTab.classList.remove("active-tab");
+        }
     }
 }
 
