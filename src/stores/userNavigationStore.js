@@ -27,6 +27,10 @@ export const useUserNavigationStore = defineStore('userNavigationStore', {
     },
     setTabMode(value) {
         this.tabMode = value;
+    },
+    resetCurrentStep() {
+        this.currentStep = 0; 
+        this.descriptionActive = true;
     }
   }
 })

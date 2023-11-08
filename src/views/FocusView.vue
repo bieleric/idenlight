@@ -2,10 +2,15 @@
     import FocusButtons from '../components/FocusButtons.vue';
     import { useI18n } from 'vue-i18n';
     import { useFocusStore } from '../stores/focusStore';
+    import { useUserNavigationStore } from '../stores/userNavigationStore';
     
     const { t } = useI18n();
     const focusStore = useFocusStore();
+    const userNavigationStore = useUserNavigationStore();
 
+    const resetSteps = () => {
+        userNavigationStore.resetCurrentStep();
+    }
 </script>
  
 <template> 
@@ -14,7 +19,7 @@
         <FocusButtons :user_title="t('focus.user_title')" :developer_title="t('focus.developer_title')"></FocusButtons>
         <div class="w-100 d-flex justify-content-end">
             <RouterLink v-if="focusStore.getUserActive" to="/demoUser">
-                <div class="navigation-button btn button-primary"><font-awesome-icon icon="chevron-right" /></div>
+                <div @click="resetSteps" class="navigation-button btn button-primary"><font-awesome-icon icon="chevron-right" /></div>
             </RouterLink>
             <RouterLink v-else to="/demoDeveloper">
                 <div class="navigation-button btn button-primary"><font-awesome-icon icon="chevron-right" /></div>
