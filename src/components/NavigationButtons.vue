@@ -3,15 +3,28 @@ import { useUserNavigationStore } from '../stores/userNavigationStore';
 
 const userNavigationStore = useUserNavigationStore();
 
+const resetTabs = () => {
+    userNavigationStore.toggleDescription(true);
+    const desciptionTab = document.getElementById("description-tab");
+    const schemeTab = document.getElementById("scheme-tab");
+
+    if(!desciptionTab.classList.contains("active-tab") || schemeTab.classList.contains("active-tab")) {
+        desciptionTab.classList.add("active-tab");
+        schemeTab.classList.remove("active-tab");
+    }
+}
+
 const incrementStep = () => {
     if(userNavigationStore.getCurrentStep < userNavigationStore.getStepsLength) {
         userNavigationStore.increase();
+        resetTabs();
     }
 }
 
 const decrementStep = () => {
     if(userNavigationStore.getCurrentStep > 0) {
         userNavigationStore.reduce();
+        resetTabs();
     }
 }
 

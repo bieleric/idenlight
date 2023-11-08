@@ -1,20 +1,37 @@
 <script setup>
+    import { reactive, onMounted } from 'vue';
+    import ScrollHandAnimation from '../animations/ScrollHandAnimation.vue';
     import { useI18n } from 'vue-i18n';
 
     const { t } = useI18n();
+
+    let state = reactive({
+        showScrollHint: false
+    })
+
+    onMounted(() => {
+        const lessonContainer = document.getElementsByClassName("lesson-text")[0];
+        if(lessonContainer.scrollHeight > lessonContainer.clientHeight) {
+            state.showScrollHint = true;
+        }
+        else {
+            state.showScrollHint = false;
+        }
+
+        lessonContainer.addEventListener("scroll", () => {
+            document.getElementById("scrollHint").style.display = "none";
+        });
+    })
 </script>
 
 <template>
-    <div class="lesson col-12 mx-auto d-flex flex-lg-row flex-column">
-        <div class="text-box d-flex align-items-center col-lg-7 col-12 mx-auto bg-color-secondary text-light p-lg-5 p-3 overflow-scroll">
-            <div class="h-100 w-100">
-                {{ t("steps.user.introduction.title") }}
-
-            </div>
-        </div>
-        <div class="image-box col-lg-5 col-12 mx-auto bg-color-third text-light h-100 d-flex justify-content-center align-items-center">
-            <!--<img v-if="props.focus && focusStore.getConceptActive" src="General_Trust_Triangle_General.png" class="w-75" />
-            <img v-if="props.focus && !focusStore.getConceptActive" src="Focus_JSON.png" class="w-75" />-->
-        </div>
+    <div class="lesson-header font-large font-light text-uppercase">{{ t("steps.user.introduction.title") }}</div>
+    <div class="lesson-text">
+        <ScrollHandAnimation id="scrollHint" v-if="state.showScrollHint"/>
+        <p class="font-medium font-light">{{ t("steps.user.introduction.paragraph1") }}</p>
+        <p class="font-medium font-light mt-4">{{ t("steps.user.introduction.paragraph2") }}</p>
+        <p class="font-medium font-light mt-4">{{ t("steps.user.introduction.paragraph3") }}</p>
+        <p class="font-medium font-light mt-4">{{ t("steps.user.introduction.paragraph4") }}</p>
+        <p class="font-medium font-light mt-4">{{ t("steps.user.introduction.paragraph5") }}</p>
     </div>
 </template>

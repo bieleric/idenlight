@@ -61,6 +61,14 @@
   font-family: "Roboto Light";
 }
 
+.font-large {
+  font-size: 1.5rem;
+}
+
+.font-medium {
+  font-size: 1rem;
+}
+
 /* REGIONS */
 #header {
   height: 20vh;
@@ -94,6 +102,16 @@
   height: 65vh;
 }
 
+.lesson-header {
+  padding: 3rem 3rem 1rem 3rem;
+}
+
+.lesson-text {
+  padding: 1rem 3rem 1rem 3rem;
+  overflow-y: scroll;
+  position: relative;
+}
+
 .text-box {
   border-radius: 15px 0px 0px 15px;
 }
@@ -102,15 +120,39 @@
   border-radius: 0px 15px 15px 0px;
 }
 
+.lesson-tabs {
+  color: var(--green) !important;
+}
+
+.lesson-tab-item-link {
+  color: var(--white) !important;
+  border: solid 1px var(--green) !important;
+}
+
+.active-tab {
+  background-color: var(--green) !important;
+}
+
 @media(max-width:992px) {
   .lesson {
-    height: 60vh;
+    height: 63vh;
   }
   .text-box {
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 0px 0px 15px 15px;
+    height: 100%;
   }
   .image-box {
     border-radius: 0px 0px 15px 15px;
+    height: 100%;
+  }
+}
+
+@media(max-width:767px) {
+  .lesson-header {
+    padding: 1rem 1rem 1rem 1rem;
+  }
+  .lesson-text {
+    padding: 1rem 1rem 1rem 1rem;
   }
 }
 
@@ -118,6 +160,26 @@
   font-family: "Roboto Italic";
 }
 
+
+/* VERIFIABLE CREDENTIAL SCREEN */
+.vc-card {
+  border: solid 2px var(--green);
+  padding: 1rem;
+  text-align: center;
+  border-radius: 5px;
+}
+
+/* WALLET SCREEN */
+.wallet-icons {
+  display: flex;
+  flex-direction: row;
+}
+
+.wallet-icon > * {
+  width: 70px;
+  border-radius: 5px;
+  text-align: center;
+}
 
 /* FOCUS */
 .focus {

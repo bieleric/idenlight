@@ -1,0 +1,61 @@
+<script setup>
+    import { reactive } from 'vue';
+    import { useI18n } from 'vue-i18n';
+    import { useUserNavigationStore } from '../stores/userNavigationStore';
+    import IntroductionScreen from './userDemo/IntroductionScreen.vue';
+    import TrustTriangleAnimation from './animations/TrustTriangleAnimation.vue'
+    import VerifiableCredentialScreen from './userDemo/VerifiableCredentialScreen.vue'
+    import WalletScreen from './userDemo/WalletScreen.vue'
+
+    const { t } = useI18n();
+    const userNavigationStore = useUserNavigationStore();
+
+    let state = reactive({
+        wideScreen: window.innerWidth < 992 ? false : true,
+        showScrollHint: false
+    })
+
+    window.addEventListener("resize", () => {
+        if(window.innerWidth < 992) {
+            state.wideScreen = false;
+        }
+        else {
+            state.wideScreen = true;
+        }
+    });
+
+    const switchBox = (box) => {
+        if(box === "description") {
+            userNavigationStore.toggleDescription(true);
+            document.getElementById("description-tab").classList.add("active-tab");
+            document.getElementById("scheme-tab").classList.remove("active-tab");
+        }
+        else if(box === "scheme"){
+            userNavigationStore.toggleDescription(false);
+            document.getElementById("scheme-tab").classList.add("active-tab");
+            document.getElementById("description-tab").classList.remove("active-tab");
+        }
+    };
+</script>
+
+<template>
+    <div class="lesson col-12 mx-auto d-flex flex-lg-row flex-column">
+        <ul v-if="!state.wideScreen" class="lesson-tabs nav nav-tabs">
+            <li @click="switchBox('description')" class="lesson-tab-item nav-item">
+                <a id="description-tab" class="lesson-tab-item-link nav-link active-tab">{{ t("steps.general.description") }}</a>
+            </li>
+            <li @click="switchBox('scheme')" class="lesson-tab-item nav-item">
+                <a id="scheme-tab" class="lesson-tab-item-link nav-link">{{ t("steps.general.scheme") }}</a>
+            </li>
+        </ul>
+        <div v-if="state.wideScreen || (!state.wideScreen && userNavigationStore.getDescriptionActive)" class="text-box d-flex flex-column col-lg-7 col-12 mx-auto bg-color-secondary text-light">
+            <IntroductionScreen v-if="userNavigationStore.getCurrentStep===0" :showScrollHint="state.showScrollHint" />
+            <VerifiableCredentialScreen v-if="userNavigationStore.getCurrentStep===1" />
+            <WalletScreen v-if="userNavigationStore.getCurrentStep===2" />
+        </div>
+        <div v-if="state.wideScreen || (!state.wideScreen && !userNavigationStore.getDescriptionActive)" class="image-box col-lg-5 col-12 mx-auto bg-color-third text-light h-100 d-flex justify-content-center align-items-center">
+            <TrustTriangleAnimation v-if="userNavigationStore.getCurrentStep===0" />
+            <img v-if="userNavigationStore.getCurrentStep===1" src="/userDemo/verifiable_credential.png" style="width: 60%;"/>
+        </div>
+    </div>
+</template>

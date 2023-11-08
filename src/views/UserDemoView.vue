@@ -1,10 +1,7 @@
 <script setup>
   import DemoHeader from '../components/DemoHeader.vue';
   import NavigationButtons from '../components/NavigationButtons.vue';
-  import IntroductionScreen from '../components/userDemo/IntroductionScreen.vue';
-  import { useUserNavigationStore } from '../stores/userNavigationStore';
-
-  const userNavigationStore = useUserNavigationStore();
+  import DemoLessonTemplate from '../components/DemoLessonTemplate.vue';
 </script>
 
 <template>
@@ -12,7 +9,7 @@
       <DemoHeader></DemoHeader>
 
       <div id="content">
-          <IntroductionScreen v-if="userNavigationStore.getCurrentStep===0"></IntroductionScreen>
+          <DemoLessonTemplate></DemoLessonTemplate>
       </div>
       
       <div id="footer">
@@ -25,4 +22,3 @@
 </template>
 
 <style></style>
-../stores/userNavigationStore
