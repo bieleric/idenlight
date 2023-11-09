@@ -61,6 +61,10 @@
   font-family: "Roboto Light";
 }
 
+.font-extra-large {
+  font-size: 2rem;
+}
+
 .font-large {
   font-size: 1.5rem;
 }
@@ -156,8 +160,56 @@
   }
 }
 
-.lesson-fact {
-  font-family: "Roboto Italic";
+/* TUTORIALS */
+.tutorial-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.tutorial-title {
+  padding: 0 3rem 0 3rem;
+}
+
+.tutorial-navigation {
+  cursor: pointer;
+}
+
+.instruction-text {
+  width: 75%;
+  text-align: center;
+}
+
+/* ROLES */
+.roles {
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.role-text {
+  text-align: center;
+}
+
+.role-image-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+}
+
+.role-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media(max-width:992px) {
+  .roles {
+    height: 63vh;
+  }
 }
 
 

@@ -53,6 +53,16 @@ const messages = {
             }
         }
     },
+    tutorial: {
+        roles: {
+            youarenow: "Sie sind nun...",
+            alumni: "Absolvent"
+        },
+        create_connection: {
+            title: "Tutorial: Kontakt herstellen",
+            instruction: "Die HTW Dresden stellt Ihnen auf ihrer Website einen QR-Code bereit. Scannen Sie diesen mit Ihrer digitalen Wallet, um einen Kontakt herzustellen."
+        }
+    },
     navigation: {
         user: {
             step1: "Einführung",

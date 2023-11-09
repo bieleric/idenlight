@@ -2,6 +2,10 @@
   import DemoHeader from '../components/DemoHeader.vue';
   import NavigationButtons from '../components/NavigationButtons.vue';
   import DemoLessonTemplate from '../components/DemoLessonTemplate.vue';
+  import { useUserNavigationStore } from '../stores/userNavigationStore';
+  import TutorialTemplate from '../components/tutorials/TutorialTemplate.vue';
+
+  const userNavigationStore = useUserNavigationStore();
 </script>
 
 <template>
@@ -9,11 +13,12 @@
       <DemoHeader></DemoHeader>
 
       <div id="content">
-          <DemoLessonTemplate></DemoLessonTemplate>
+          <DemoLessonTemplate v-if="!userNavigationStore.getTutorial"></DemoLessonTemplate>
+          <TutorialTemplate v-else></TutorialTemplate>
       </div>
       
       <div id="footer">
-          <NavigationButtons></NavigationButtons>
+          <NavigationButtons v-if="userNavigationStore.getShowNavigationButtons"></NavigationButtons>
       </div>
   </div>
 

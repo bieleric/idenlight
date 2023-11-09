@@ -19,6 +19,7 @@ const resetTabs = () => {
 const incrementStep = () => {
     if(userNavigationStore.getCurrentStep < userNavigationStore.getStepsLength) {
         userNavigationStore.increase();
+        userNavigationStore.setTutorial(false);
         resetTabs();
     }
 }
@@ -26,6 +27,7 @@ const incrementStep = () => {
 const decrementStep = () => {
     if(userNavigationStore.getCurrentStep > 0) {
         userNavigationStore.reduce();
+        userNavigationStore.setTutorial(false);
         resetTabs();
     }
 }
