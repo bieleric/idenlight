@@ -3,13 +3,16 @@
     import { useI18n } from 'vue-i18n';
     import { useFocusStore } from '../stores/focusStore';
     import { useUserNavigationStore } from '../stores/userNavigationStore';
+    import { useTutorialStore } from '../stores/tutorialStore';
     
     const { t } = useI18n();
     const focusStore = useFocusStore();
     const userNavigationStore = useUserNavigationStore();
+    const tutorialStore = useTutorialStore();
 
     const resetSteps = () => {
         userNavigationStore.resetCurrentStep();
+        tutorialStore.restartTutorial();
     }
 </script>
  
