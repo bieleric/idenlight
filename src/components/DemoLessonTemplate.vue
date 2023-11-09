@@ -6,6 +6,9 @@
     import TrustTriangleAnimation from './animations/TrustTriangleAnimation.vue'
     import VerifiableCredentialScreen from './userDemo/VerifiableCredentialScreen.vue'
     import WalletScreen from './userDemo/WalletScreen.vue'
+    import WalletAnimation from './animations/WalletAnimation.vue';
+    import ConnectionScreen from './userDemo/ConnectionScreen.vue';
+    import ConnectionAnimation from './animations/ConnectionAnimation.vue';
 
     const { t } = useI18n();
     const userNavigationStore = useUserNavigationStore();
@@ -53,10 +56,13 @@
             <IntroductionScreen v-if="userNavigationStore.getCurrentStep===0" />
             <VerifiableCredentialScreen v-if="userNavigationStore.getCurrentStep===1" />
             <WalletScreen v-if="userNavigationStore.getCurrentStep===2" />
+            <ConnectionScreen v-if="userNavigationStore.getCurrentStep===3" />
         </div>
         <div v-if="!userNavigationStore.getTabMode || (userNavigationStore.getTabMode && !userNavigationStore.getDescriptionActive)" class="image-box col-lg-5 col-12 mx-auto bg-color-third text-light h-100 d-flex justify-content-center align-items-center">
             <TrustTriangleAnimation v-if="userNavigationStore.getCurrentStep===0" />
             <img v-if="userNavigationStore.getCurrentStep===1" src="/userDemo/verifiable_credential.png" style="width: 60%;"/>
+            <WalletAnimation v-if="userNavigationStore.getCurrentStep===2" />
+            <ConnectionAnimation v-if="userNavigationStore.getCurrentStep===3" />
         </div>
     </div>
 </template>

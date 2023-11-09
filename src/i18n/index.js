@@ -40,11 +40,17 @@ const messages = {
             },
             wallet: {
                 title: "Digitale Wallet",
-                paragraph1: "Um nun digitale Nachweise speichern zu können, benötigen wir eine digitale Wallet.",
-                paragraph2: "Sie können sich das wie ein normales Portmonnaie vorstellen, in welchem Ihre Nachweise enthalten sind. Der Unterschied ist nur, dass sie diese nun digital auf ihrem Smartphone haben.",
+                paragraph1: "Um das digitale Abschlusszeugnis speichern zu können, benötigen wir eine digitale Wallet.",
+                paragraph2: "Sie können sich diese wie ein normales Portmonnaie vorstellen, in welchem Ihre Nachweise enthalten sind. Der Unterschied ist nur, dass sie diese nun digital auf ihrem Smartphone haben.",
                 paragraph3: "Diese Anwendung unterstützt folgende digitale Wallets:",
-                
+
             },
+            connection: {
+                title: "Kontakt herstellen",
+                paragraph1: "Sie wissen nun, was ein digitaler Nachweis ist und was eine digitale Wallet ist. Somit können wir mit dem Szenario beginnen.",
+                paragraph2: "Wie bereits erwähnt, werden Sie dabei 3 Rollen einnehmen: HTW Dresden, Absolvent und Arbeitgeber.",
+                paragraph3: "Im ersten Schritt werden wir eine sichere Verbindung zwischen der HTW Dresden und dem Absolventen herstellen. Diese dient dazu, um das digitale Abschlusszeugnis sicher zu übertragen.",
+            }
         }
     },
     navigation: {
