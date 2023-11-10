@@ -1,7 +1,10 @@
 <script setup>
     import axios from 'axios'
-    import { onMounted, reactive } from 'vue';
+    import { reactive } from 'vue';
     import QrcodeVue from 'qrcode.vue'
+    import { useTutorialStore } from '../../stores/tutorialStore';
+
+    const tutorialStore = useTutorialStore();
 
     const state = reactive({
         invitation_url: null,
@@ -72,9 +75,14 @@
             </ol>
         </nav>
         <div class="htw-body p-4">
-            <div class="font-large mb-3">Kontakt herstellen</div>
-            <div class="mb-3"><a :href="state.invitation_url">Kontakt herstellen</a></div>
-            <div class="d-flex justify-content-center"><QrcodeVue class="mx-auto" :value="state.invitation_url" :size="state.size" level="H"/></div>
+            <div v-if="tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName">
+                <div class="font-large mb-3">Kontakt herstellen</div>
+                <div class="mb-3"><a :href="state.invitation_url">Kontakt herstellen</a></div>
+                <div class="d-flex justify-content-center"><QrcodeVue class="mx-auto" :value="state.invitation_url" :size="state.size" level="H"/></div>
+            </div>
+            <div v-if="tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName">
+            
+            </div>
         </div>
     </div>
 </template>

@@ -50,16 +50,25 @@ const messages = {
                 paragraph1: "Sie wissen nun, was ein digitaler Nachweis ist und was eine digitale Wallet ist. Somit können wir mit dem Szenario beginnen.",
                 paragraph2: "Wie bereits erwähnt, werden Sie dabei 3 Rollen einnehmen: HTW Dresden, Absolvent und Arbeitgeber.",
                 paragraph3: "Im ersten Schritt werden wir eine sichere Verbindung zwischen der HTW Dresden und dem Absolventen herstellen. Diese dient dazu, um das digitale Abschlusszeugnis sicher zu übertragen.",
+            },
+            issue: {
+                title: "Nachweis ausstellen",
+                paragraph1: "Da wir eine Verbindung zwischen der HTW Dresden und dem Absolventen hergestellt haben, können wir jetzt das digitale Abschlusszeugnis ausstellen."
             }
         }
     },
     tutorial: {
         roles: {
             youarenow: "Sie sind nun...",
-            alumni: "Absolvent"
+            alumni: "Absolvent",
+            htw: "HTW Dresden"
         },
         create_connection: {
             title: "Tutorial: Kontakt herstellen",
+            instruction: "Die HTW Dresden stellt Ihnen auf ihrer Website einen QR-Code bereit. Scannen Sie diesen mit Ihrer digitalen Wallet, um einen Kontakt herzustellen."
+        },
+        issue_credential: {
+            title: "Tutorial: Nachweis ausstellen",
             instruction: "Die HTW Dresden stellt Ihnen auf ihrer Website einen QR-Code bereit. Scannen Sie diesen mit Ihrer digitalen Wallet, um einen Kontakt herzustellen."
         }
     },
