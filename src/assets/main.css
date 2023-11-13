@@ -5,6 +5,7 @@
   --black: #1e1e1e;
   --grey: #484848;
   --white: #efefef;
+  --orange: #ec6608;
 }
 
 
@@ -71,6 +72,10 @@
 
 .font-medium {
   font-size: 1rem;
+}
+
+.font-small {
+  font-size: 0.7rem;
 }
 
 /* REGIONS */
@@ -197,6 +202,17 @@
   overflow-y: scroll;
 }
 
+.spinner-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  border-radius: 5px;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .htw-breadcrumb {
   background-color: #E8EDF1;
   padding: 0.5rem 1rem 0.5rem 1rem;
@@ -204,6 +220,12 @@
 
 .htw-breadcrumb ol{
   margin: 0;
+}
+
+.htw-button {
+  background-color: var(--orange) !important;
+  border-color: var(--orange) !important;
+  color: var(--white) !important;
 }
 
 /* ROLES */
@@ -315,4 +337,8 @@
 /* TEXTS */
 .text-light {
   color: var(--white) !important;
+}
+
+.text-orange {
+  color: var(--orange) !important;
 }

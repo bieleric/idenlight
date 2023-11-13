@@ -9,7 +9,9 @@
 <template>
     <div class="instruction-text mx-auto mt-5">
         <div class="font-large font-light text-light">
-            <span v-if="tutorialStore.getCurrentTutorial==='Connection Tutorial'">{{ t("tutorial.create_connection.instruction") }}</span>
+            <span v-if="tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName && tutorialStore.currentStep===2">{{ t("tutorial.create_connection.instruction") }}</span>
+            <span v-if="tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName && tutorialStore.currentStep===2">{{ t("tutorial.issue_credential.instruction1") }}</span>
+            <span v-if="tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName && tutorialStore.currentStep===5">{{ t("tutorial.issue_credential.instruction2") }}</span>
         </div>
     </div>
 </template>

@@ -9,7 +9,8 @@
     import WalletAnimation from './animations/WalletAnimation.vue';
     import ConnectionScreen from './userDemo/ConnectionScreen.vue';
     import ConnectionAnimation from './animations/ConnectionAnimation.vue';
-import IssueCredentialScreen from './userDemo/IssueCredentialScreen.vue';
+    import IssueCredentialScreen from './userDemo/IssueCredentialScreen.vue';
+    import IssuanceAnimation from './animations/IssuanceAnimation.vue';
 
     const { t } = useI18n();
     const userNavigationStore = useUserNavigationStore();
@@ -65,6 +66,7 @@ import IssueCredentialScreen from './userDemo/IssueCredentialScreen.vue';
             <img v-if="userNavigationStore.getCurrentStep===1" src="/userDemo/verifiable_credential.png" style="width: 60%;"/>
             <WalletAnimation v-if="userNavigationStore.getCurrentStep===2" />
             <ConnectionAnimation v-if="userNavigationStore.getCurrentStep===3" />
+            <IssuanceAnimation v-if="userNavigationStore.getCurrentStep===4" />
         </div>
     </div>
 </template>

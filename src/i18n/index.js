@@ -52,7 +52,7 @@ const messages = {
                 paragraph3: "Im ersten Schritt werden wir eine sichere Verbindung zwischen der HTW Dresden und dem Absolventen herstellen. Diese dient dazu, um das digitale Abschlusszeugnis sicher zu übertragen.",
             },
             issue: {
-                title: "Nachweis ausstellen",
+                title: "Nachweis ausstellen & annehmen",
                 paragraph1: "Da wir eine Verbindung zwischen der HTW Dresden und dem Absolventen hergestellt haben, können wir jetzt das digitale Abschlusszeugnis ausstellen."
             }
         }
@@ -63,13 +63,32 @@ const messages = {
             alumni: "Absolvent",
             htw: "HTW Dresden"
         },
+        htw_website: {
+            home: "Startseite",
+            teach: "Lehre",
+            research: "Forschung",
+            service: "Service",
+            digital_credentials: "Digitale Nachweise",
+            create_connection: "Kontakt herstellen",
+            issue_credential: "Nachweis ausstellen",
+            issue_digital_diploma: "Digitales Abschlusszeugnis ausstellen",
+            name: "Name",
+            birthplace: "Geburtsort",
+            birthdate: "Geburtsdatum",
+            degree: "Abschluss",
+            course: "Informatik",
+            grade: "Gesamtnote",
+            load_data_of_max_mustermann: "Lade Daten von Max Mustermann",
+            calculate_grade: "Berechne Gesamtnote"
+        },
         create_connection: {
             title: "Tutorial: Kontakt herstellen",
             instruction: "Die HTW Dresden stellt Ihnen auf ihrer Website einen QR-Code bereit. Scannen Sie diesen mit Ihrer digitalen Wallet, um einen Kontakt herzustellen."
         },
         issue_credential: {
-            title: "Tutorial: Nachweis ausstellen",
-            instruction: "Die HTW Dresden stellt Ihnen auf ihrer Website einen QR-Code bereit. Scannen Sie diesen mit Ihrer digitalen Wallet, um einen Kontakt herzustellen."
+            title: "Tutorial: Nachweis ausstellen & annehmen",
+            instruction1: "Sie befinden sich nun auf der HTW Dresden Website und können dort als HTW Dresden das digitale Abschlusszeugnis von Max Mustermann ausstellen. Klicken Sie dazu auf 'Digitales Abschlusszeugnis ausstellen'",
+            instruction2: "Sie haben das digitale Abschlusszeugnis ausgestellt. Nehmen Sie es nun in Ihrer Wallet-App an. Damit ist der Ausstellungsvorgang abgeschlossen."
         }
     },
     navigation: {

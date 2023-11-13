@@ -5,6 +5,7 @@
     import TutorialRoleTemplate from './TutorialRoleTemplate.vue';
     import TutorialInstructionTemplate from './TutorialInstructionTemplate.vue';
     import HTWDresdenTemplate from './HTWDresdenTemplate.vue';
+    import PhoneAcceptCredentialScreen from './TutorialScreens/PhoneAcceptCredentialScreen.vue';
 
     const { t } = useI18n();
     const userNavigationStore = useUserNavigationStore();
@@ -51,5 +52,8 @@
         <TutorialRoleTemplate v-if="tutorialStore.getCurrentStep===1" />
         <TutorialInstructionTemplate v-if="tutorialStore.getCurrentStep===2" />
         <HTWDresdenTemplate v-if="tutorialStore.getCurrentStep===3 && (tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName || tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName)" />
+        <TutorialRoleTemplate v-if="tutorialStore.getCurrentStep===4 && (tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName || tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName)" />
+        <TutorialInstructionTemplate v-if="tutorialStore.getCurrentStep===5" />
+        <PhoneAcceptCredentialScreen v-if="tutorialStore.getCurrentStep===6" />
     </div>
 </template>

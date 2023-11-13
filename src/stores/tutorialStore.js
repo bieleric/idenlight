@@ -6,7 +6,7 @@ export const useTutorialStore = defineStore('tutorialStore', {
         issueTutorialName: "Issue Tutorial",
         currentStep: 1,
         connectionTutorialSteps: 3,
-        issueTutorialSteps: 4,
+        issueTutorialSteps: 6,
         currentTutorial: null,
         connectionTutorialFinished: false,
         issueTutorialFinished: false
