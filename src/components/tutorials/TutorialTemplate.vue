@@ -6,6 +6,7 @@
     import TutorialInstructionTemplate from './TutorialInstructionTemplate.vue';
     import HTWDresdenTemplate from './HTWDresdenTemplate.vue';
     import PhoneAcceptCredentialScreen from './TutorialScreens/PhoneAcceptCredentialScreen.vue';
+import EmployerTemplate from './EmployerTemplate.vue';
 
     const { t } = useI18n();
     const userNavigationStore = useUserNavigationStore();
@@ -17,6 +18,9 @@
         }
         else if(tutorialStore.getCurrentTutorial === tutorialStore.getIssueTutorialName) {
             tutorialStore.incrementIssueTutorial();
+        } 
+        else if(tutorialStore.getCurrentTutorial === tutorialStore.getPresentTutorialName) {
+            tutorialStore.incrementPresentTutorial();
         } 
     }
 
@@ -33,7 +37,9 @@
         else if(tutorialStore.getCurrentTutorial === tutorialStore.getIssueTutorialName) {
             tutorialStore.setIssueTutorialFinished();
         }
-        
+        else if(tutorialStore.getCurrentTutorial === tutorialStore.getPresentTutorialName) {
+            tutorialStore.setPresentTutorialFinished();
+        }
     }
     
 </script>
@@ -45,6 +51,7 @@
             <div class="tutorial-title">
                 <span v-if="tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName" class="font-italic">{{ t("tutorial.create_connection.title") }}</span>
                 <span v-if="tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName" class="font-italic">{{ t("tutorial.issue_credential.title") }}</span>
+                <span v-if="tutorialStore.getCurrentTutorial===tutorialStore.getPresentTutorialName" class="font-italic">{{ t("tutorial.present_proof.title") }}</span>
             </div>
             <font-awesome-icon @click="increment" v-if="tutorialStore.getCurrentStep!==tutorialStore.getCurrentTutorialSteps" class="tutorial-navigation font-large" icon="chevron-right" />
             <font-awesome-icon @click="finishTutorial" v-if="tutorialStore.getCurrentStep===tutorialStore.getCurrentTutorialSteps" class="tutorial-navigation font-large" icon="xmark" />
@@ -52,6 +59,7 @@
         <TutorialRoleTemplate v-if="tutorialStore.getCurrentStep===1" />
         <TutorialInstructionTemplate v-if="tutorialStore.getCurrentStep===2" />
         <HTWDresdenTemplate v-if="tutorialStore.getCurrentStep===3 && (tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName || tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName)" />
+        <EmployerTemplate v-if="tutorialStore.getCurrentStep===3 && (tutorialStore.getCurrentTutorial===tutorialStore.getPresentTutorialName || tutorialStore.getCurrentTutorial===tutorialStore.getPresentTutorialName)" />
         <TutorialRoleTemplate v-if="tutorialStore.getCurrentStep===4 && (tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName || tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName)" />
         <TutorialInstructionTemplate v-if="tutorialStore.getCurrentStep===5" />
         <PhoneAcceptCredentialScreen v-if="tutorialStore.getCurrentStep===6" />

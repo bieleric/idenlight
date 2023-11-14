@@ -13,8 +13,8 @@
         size: 280,
     })
 
-    const websiteWidth = document.getElementById("content").offsetWidth
-    state.size = websiteWidth < 500 ? websiteWidth - (websiteWidth * 0.2) : 280
+    const websiteWidth = document.getElementById("content").offsetWidth;
+    state.size = websiteWidth < 500 ? websiteWidth - (websiteWidth * 0.2) : 280;
 
     const createInvitation = () => {
         setTimeout(() => {
@@ -26,6 +26,7 @@
             .then(response => {
                 if(response.status === 200 && response.statusText === "OK") {
                     state.invitation_url = response.data.invitation_url
+                    console.log(response.data)
                     ssiStore.setConnectionID(response.data.connection_id)
                 }
                 else {

@@ -54,6 +54,11 @@ const messages = {
             issue: {
                 title: "Nachweis ausstellen & annehmen",
                 paragraph1: "Da wir eine Verbindung zwischen der HTW Dresden und dem Absolventen hergestellt haben, können wir jetzt das digitale Abschlusszeugnis ausstellen."
+            },
+            present: {
+                title: "Nachweis vorzeigen und überprüfen",
+                paragraph1: "Nachdem wir der Absolvent das digitale Abschlusszeugnis erhalten hat, kann dieses nun bei einem Bewerbungsprozess genutzt werden.",
+                paragraph2: "Hierbei wird keine Verbindung zwischen dem Arbeitgeber und dem Absolventen für die Übermittlung des Nachweises hergestellt. Dies demonstriert, dass digitale Nachweise auf Basis einer Verbindung ausgestellt und vorgezeigt werden können aber nicht zwingend müssen."
             }
         }
     },
@@ -89,6 +94,10 @@ const messages = {
             title: "Tutorial: Nachweis ausstellen & annehmen",
             instruction1: "Sie befinden sich nun auf der HTW Dresden Website und können dort als HTW Dresden das digitale Abschlusszeugnis von Max Mustermann ausstellen. Klicken Sie dazu auf 'Digitales Abschlusszeugnis ausstellen'",
             instruction2: "Sie haben das digitale Abschlusszeugnis ausgestellt. Nehmen Sie es nun in Ihrer Wallet-App an. Damit ist der Ausstellungsvorgang abgeschlossen."
+        },
+        present_proof: {
+            title: "Tutorial: Nachweis vorzeigen & überprüfen",
+            instruction1: "Sie befinden sich jetzt auf dem Bewerberportal des Arbeitgebers. Scannen Sie den bereitgestellten QR-Code (oder klicken Sie auf den Link), um die benötigten Daten zu übermitteln."
         }
     },
     navigation: {
@@ -97,10 +106,9 @@ const messages = {
             step2: "Digitaler Nachweis",
             step3: "Digitale Wallet",
             step4: "Kontakt herstellen",
-            step5: "Nachweis ausstellen",
-            step6: "Nachweis vorzeigen",
-            step7: "Nachweis überprüfen",
-            step8: "Zusammenfassung"
+            step5: "Nachweis ausstellen & annehmen",
+            step6: "Nachweis vorzeigen & überprüfen",
+            step7: "Zusammenfassung",
         }
     }
   },

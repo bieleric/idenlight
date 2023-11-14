@@ -6,6 +6,8 @@
   --grey: #484848;
   --white: #efefef;
   --orange: #ec6608;
+  --brown: #ba8570;
+  --beige: #ebdcd6;
 }
 
 
@@ -196,8 +198,8 @@
   text-align: center;
 }
 
-/* TUTORIALS - HTW DRESDEN */
-.htw-website {
+/* TUTORIALS - HTW DRESDEN / EMPLOYER */
+.htw-website, .employer-website {
   height: 65vh;
   overflow-y: scroll;
 }
@@ -316,6 +318,14 @@
 
 .bg-color-third {
   background-color: var(--white);
+}
+
+.bg-color-brown {
+  background-color: var(--brown);
+}
+
+.bg-color-beige {
+  background-color: var(--beige);
 }
 
 /* BUTTONS */
