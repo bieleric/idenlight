@@ -13,6 +13,7 @@
             <span v-if="tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName && tutorialStore.currentStep===2">{{ t("tutorial.issue_credential.instruction1") }}</span>
             <span v-if="tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName && tutorialStore.currentStep===5">{{ t("tutorial.issue_credential.instruction2") }}</span>
             <span v-if="tutorialStore.getCurrentTutorial===tutorialStore.getPresentTutorialName && tutorialStore.currentStep===2">{{ t("tutorial.present_proof.instruction1") }}</span>
+            <span v-if="tutorialStore.getCurrentTutorial===tutorialStore.getPresentTutorialName && tutorialStore.currentStep===5">{{ t("tutorial.present_proof.instruction2") }}</span>
         </div>
     </div>
 </template>

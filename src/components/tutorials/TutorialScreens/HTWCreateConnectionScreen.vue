@@ -9,7 +9,7 @@
     const ssiStore = useSSIStore();
 
     const state = reactive({
-        invitation_url: null,
+        invitation_url: "",
         size: 280,
     })
 
@@ -26,7 +26,6 @@
             .then(response => {
                 if(response.status === 200 && response.statusText === "OK") {
                     state.invitation_url = response.data.invitation_url
-                    console.log(response.data)
                     ssiStore.setConnectionID(response.data.connection_id)
                 }
                 else {

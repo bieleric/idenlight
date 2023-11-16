@@ -11,7 +11,9 @@
     import ConnectionAnimation from './animations/ConnectionAnimation.vue';
     import IssueCredentialScreen from './userDemo/IssueCredentialScreen.vue';
     import IssuanceAnimation from './animations/IssuanceAnimation.vue';
-import PresentProofScreen from './userDemo/PresentProofScreen.vue';
+    import PresentProofScreen from './userDemo/PresentProofScreen.vue';
+    import PresentProofAnimation from './animations/PresentProofAnimation.vue';
+import SummaryScreen from './userDemo/SummaryScreen.vue';
 
     const { t } = useI18n();
     const userNavigationStore = useUserNavigationStore();
@@ -62,6 +64,7 @@ import PresentProofScreen from './userDemo/PresentProofScreen.vue';
             <ConnectionScreen v-if="userNavigationStore.getCurrentStep===3" />
             <IssueCredentialScreen v-if="userNavigationStore.getCurrentStep===4" />
             <PresentProofScreen v-if="userNavigationStore.getCurrentStep===5" />
+            <SummaryScreen v-if="userNavigationStore.getCurrentStep===6" />
         </div>
         <div v-if="!userNavigationStore.getTabMode || (userNavigationStore.getTabMode && !userNavigationStore.getDescriptionActive)" class="image-box col-lg-5 col-12 mx-auto bg-color-third text-light h-100 d-flex justify-content-center align-items-center">
             <TrustTriangleAnimation v-if="userNavigationStore.getCurrentStep===0" />
@@ -69,6 +72,8 @@ import PresentProofScreen from './userDemo/PresentProofScreen.vue';
             <WalletAnimation v-if="userNavigationStore.getCurrentStep===2" />
             <ConnectionAnimation v-if="userNavigationStore.getCurrentStep===3" />
             <IssuanceAnimation v-if="userNavigationStore.getCurrentStep===4" />
+            <PresentProofAnimation v-if="userNavigationStore.getCurrentStep===5" />
+            <TrustTriangleAnimation v-if="userNavigationStore.getCurrentStep===6" />
         </div>
     </div>
 </template>

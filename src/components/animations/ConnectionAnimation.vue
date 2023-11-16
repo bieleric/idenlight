@@ -1,5 +1,5 @@
 <template>
-    <svg width="450" height="320" viewBox="0 0 450 320" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <svg width="550" height="320" viewBox="0 0 450 320" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g clip-path="url(#clip_0_272)" width="450" height="320" data-name="Frame 1">
         <rect width="450" height="320" fill="#EFEFEF" data-name="Frame 1"/>
         <g transform="translate(188 13)" clip-path="url(#clip_1_142)" class="Holder_Circle_1_628" width="75" height="74.05" data-name="Holder_Circle 1">

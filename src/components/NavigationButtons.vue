@@ -1,4 +1,5 @@
 <script setup>
+import router from "../router";
 import { useUserNavigationStore } from '../stores/userNavigationStore';
 
 const userNavigationStore = useUserNavigationStore();
@@ -17,10 +18,14 @@ const resetTabs = () => {
 }
 
 const incrementStep = () => {
-    if(userNavigationStore.getCurrentStep < userNavigationStore.getStepsLength) {
+    if(userNavigationStore.getCurrentStep < userNavigationStore.getStepsLength-1) {
         userNavigationStore.increase();
         userNavigationStore.setTutorial(false);
         resetTabs();
+    }
+    else if(userNavigationStore.getCurrentStep === userNavigationStore.getStepsLength-1) {
+        resetTabs();
+        router.push({ path: 'home' })
     }
 }
 
@@ -43,7 +48,8 @@ const decrementStep = () => {
         </div>
         <div class="">
             <div @click="incrementStep()" class="navigation-button btn button-primary">
-                <font-awesome-icon icon="chevron-right" />
+                <font-awesome-icon v-if="userNavigationStore.getCurrentStep < userNavigationStore.getStepsLength-1" icon="chevron-right" />
+                <font-awesome-icon v-if="userNavigationStore.getCurrentStep === userNavigationStore.getStepsLength-1" icon="xmark" />
             </div>
         </div>
     </div>

@@ -8,18 +8,18 @@
 
 
     //import { useTutorialStore } from '../../stores/tutorialStore';
-    //import { useI18n } from 'vue-i18n';
+    import { useI18n } from 'vue-i18n';
 
-    //const { t } = useI18n();
+    const { t } = useI18n();
     //const tutorialStore = useTutorialStore();
     const ssiStore = useSSIStore();
 
     const state = reactive({
         proof_request: null,
-        proof_request_url: null,
+        proof_request_url: "",
         shortened_request_url: null,
-        didcomm_proof_request_url: null,
-        hash_of_url: null,
+        didcomm_proof_request_url: "",
+        hash_of_url: "",
         size: 280
     });
 
@@ -77,8 +77,9 @@
                         "serviceEndpoint": "http://185.237.14.115:8000/"
                     }
                     state.proof_request = JSON.stringify(proof_request_tmp);
-                    state.proof_request_url = "http://185.237.14.115:8000/?c_i=" + btoa(state.proof_request);
-                    state.didcomm_proof_request_url = "didcomm://launch?c_i=" + btoa(state.proof_request);
+                    const encoded_proof_request = btoa(state.proof_request);
+                    state.proof_request_url = "http://185.237.14.115:8000/?c_i=" + encoded_proof_request;
+                    state.didcomm_proof_request_url = "didcomm://launch?c_i=" + encoded_proof_request;
                     state.hash_of_url = md5.create().update(state.proof_request_url).hex();
                     state.shortened_request_url = shortenUrl(state.proof_request_url, state.hash_of_url)
                 }
@@ -115,7 +116,7 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    <font-awesome-icon icon="circle-check" />&nbsp;Anschreiben
+                    <font-awesome-icon icon="circle-check" />&nbsp;{{ t("tutorial.employer_website.cover_letter") }}
                 </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample"></div>
@@ -123,7 +124,7 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <font-awesome-icon icon="circle-check" />&nbsp;Lebenslauf
+                    <font-awesome-icon icon="circle-check" />&nbsp;{{ t("tutorial.employer_website.cv") }}
                 </button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample"></div>
@@ -131,13 +132,13 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingThree">
                 <button class="accordion-button" type="button" aria-expanded="true" aria-controls="collapseThree">
-                    Digitales Abschlusszeugnis
+                    {{ t("tutorial.employer_website.digital_diploma") }}
                 </button>
                 </h2>
                 <div id="collapseThree" class="accordion-collapse p-4" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                     <div class="d-flex justify-content-center flex-column">
-                        <div><a :href="state.didcomm_proof_request_url">Digitales Abschlusszeugnis vorzeigen</a></div>
-                        <QrcodeVue class="mx-auto mt-3" :value="state.shortened_request_url" :size="state.size" level="H"/>
+                        <div><a :href=state.didcomm_proof_request_url>{{ t("tutorial.employer_website.present_digital_diploma") }}</a></div>
+                        <QrcodeVue class="mx-auto mt-3" :value=state.shortened_request_url :size=state.size level="H"/>
                     </div>
                 </div>
             </div>

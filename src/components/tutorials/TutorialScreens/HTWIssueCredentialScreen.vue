@@ -19,17 +19,17 @@
     setTimeout(() => {
         state.showLoadingText =false;
         state.showCalculationText =true;
-        state.values[0] = "Max Mustermann"
-        state.values[1] = "Musterstadt"
-        state.values[2] = "01.01.2000"
-        state.values[3] = "Bachelor of Science"
-        state.values[4] = "Informatik"
+        state.values[0] = t("verifiable_credential.max_mustermann");
+        state.values[1] = t("verifiable_credential.musterstadt");
+        state.values[2] = t("verifiable_credential.01012000");
+        state.values[3] = t("verifiable_credential.bachelor");
+        state.values[4] = t("verifiable_credential.computer_science");
     }, 2000)
 
     setTimeout(() => {
         state.showSpinner = false;
         state.showOverlay = false;
-        state.values[5] = "1.7"
+        state.values[5] = t("verifiable_credential.17");
     }, 4000)
 
     const issueCredential = () => {

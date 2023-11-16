@@ -6,11 +6,18 @@ const messages = {
       welcome_to: "Willkommen bei",
       lets_go: "Los geht's"
     },
-    
     focus: {
         title: "Ich bin...",
         user_title: "Anwender",
         developer_title: "Entwickler"
+    },
+    verifiable_credential: {
+        "max_mustermann": "Max Mustermann",
+        "musterstadt": "Musterstadt",
+        "01012000": "01.01.2000",
+        "bachelor": "Bachelor of Science",
+        "computer_science": "Informatik",
+        "17": "1.7"
     },
     steps: {
         general: {
@@ -56,9 +63,16 @@ const messages = {
                 paragraph1: "Da wir eine Verbindung zwischen der HTW Dresden und dem Absolventen hergestellt haben, können wir jetzt das digitale Abschlusszeugnis ausstellen."
             },
             present: {
-                title: "Nachweis vorzeigen und überprüfen",
+                title: "Nachweis vorzeigen & überprüfen",
                 paragraph1: "Nachdem wir der Absolvent das digitale Abschlusszeugnis erhalten hat, kann dieses nun bei einem Bewerbungsprozess genutzt werden.",
-                paragraph2: "Hierbei wird keine Verbindung zwischen dem Arbeitgeber und dem Absolventen für die Übermittlung des Nachweises hergestellt. Dies demonstriert, dass digitale Nachweise auf Basis einer Verbindung ausgestellt und vorgezeigt werden können aber nicht zwingend müssen."
+                paragraph2: "Dazu prüft der Arbeitgeber die digitale Unterschrift der HTW Dresden auf dem Abschlusszeugnis des Absolventen.",
+                paragraph3: "Hinweis: Diesmal wird keine Verbindung zwischen dem Arbeitgeber und dem Absolventen für die Übermittlung des Nachweises hergestellt. Dies demonstriert, dass digitale Nachweise auf Basis einer Verbindung ausgestellt und vorgezeigt werden können aber nicht zwingend müssen."
+            },
+            summary: {
+                title: "Zusammenfassung",
+                paragraph1: "Sie haben nun aus 3 verschiedenen Rollen den Umgang mit digitalen Nachweisen kennengelernt. Dabei haben Sie einen digitalen Nachweis ausgestellt, gespeichert, vorgezeigt und überprüft.",
+                paragraph2: "Wie Sie möglicherweise währenddessen festgestellt haben, hat diese Vorgehensweise auch einen hohes Automatisierungspotenzial und kann auf viele unterschiedliche Szenarien im alltäglichen angewendet werden. Die Rollen bleiben dabei aber stets: Aussteller, Besitzer und Prüfer.",
+                paragraph3: "Welche weiteren Möglichkeiten kennen Sie für die Verwendung von digitalen Nachweisen?"
             }
         }
     },
@@ -66,7 +80,8 @@ const messages = {
         roles: {
             youarenow: "Sie sind nun...",
             alumni: "Absolvent",
-            htw: "HTW Dresden"
+            htw: "HTW Dresden",
+            employer: "Arbeitgeber"
         },
         htw_website: {
             home: "Startseite",
@@ -81,7 +96,7 @@ const messages = {
             birthplace: "Geburtsort",
             birthdate: "Geburtsdatum",
             degree: "Abschluss",
-            course: "Informatik",
+            course: "Studiengang",
             grade: "Gesamtnote",
             load_data_of_max_mustermann: "Lade Daten von Max Mustermann",
             calculate_grade: "Berechne Gesamtnote"
@@ -97,7 +112,24 @@ const messages = {
         },
         present_proof: {
             title: "Tutorial: Nachweis vorzeigen & überprüfen",
-            instruction1: "Sie befinden sich jetzt auf dem Bewerberportal des Arbeitgebers. Scannen Sie den bereitgestellten QR-Code (oder klicken Sie auf den Link), um die benötigten Daten zu übermitteln."
+            instruction1: "Sie befinden sich jetzt auf dem Bewerberportal des Arbeitgebers. Scannen Sie den bereitgestellten QR-Code (oder klicken Sie auf den Link), um die benötigten Daten zu übermitteln. Achten Sie darauf, dass nicht alle Daten des Abschlusszeugnisses übermittelt werden, sondern nur die, die der Arbeitgeber wirklich benötigt. Sie können dem zustimmen oder nicht.",
+            instruction2: "Sie sind nun in der Webanwendung des Arbeitgebers und können die eingereichten digitalen Abschlusszeugnisse der Absolventen einsehen."
+        },
+        employer_website: {
+            cover_letter: "Anschreiben",
+            cv: "Lebenslauf",
+            digital_diploma: "Digitales Abschlusszeugnis",
+            present_digital_diploma: "Digitales Abschlusszeugnis vorzeigen",
+            load_data: "Lade Daten",
+            check_signature: "Prüfe Unterschriften",
+            applicants: "Bewerber:innen",
+            applicant: "Bewerber:in",
+            diploma: "Abschlusszeugnis",
+            course: "Studiengang",
+            degree: "Abschluss",
+            grade: "Note",
+            verified: "Verifiziert",
+            applicant_portal: "Bewerberportal"
         }
     },
     navigation: {

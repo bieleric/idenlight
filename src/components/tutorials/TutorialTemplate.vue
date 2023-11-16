@@ -6,7 +6,7 @@
     import TutorialInstructionTemplate from './TutorialInstructionTemplate.vue';
     import HTWDresdenTemplate from './HTWDresdenTemplate.vue';
     import PhoneAcceptCredentialScreen from './TutorialScreens/PhoneAcceptCredentialScreen.vue';
-import EmployerTemplate from './EmployerTemplate.vue';
+    import EmployerTemplate from './EmployerTemplate.vue';
 
     const { t } = useI18n();
     const userNavigationStore = useUserNavigationStore();
@@ -59,9 +59,9 @@ import EmployerTemplate from './EmployerTemplate.vue';
         <TutorialRoleTemplate v-if="tutorialStore.getCurrentStep===1" />
         <TutorialInstructionTemplate v-if="tutorialStore.getCurrentStep===2" />
         <HTWDresdenTemplate v-if="tutorialStore.getCurrentStep===3 && (tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName || tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName)" />
-        <EmployerTemplate v-if="tutorialStore.getCurrentStep===3 && (tutorialStore.getCurrentTutorial===tutorialStore.getPresentTutorialName || tutorialStore.getCurrentTutorial===tutorialStore.getPresentTutorialName)" />
-        <TutorialRoleTemplate v-if="tutorialStore.getCurrentStep===4 && (tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName || tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName)" />
+        <EmployerTemplate v-if="(tutorialStore.getCurrentStep===3 || tutorialStore.getCurrentStep===6) && tutorialStore.getCurrentTutorial===tutorialStore.getPresentTutorialName" />
+        <TutorialRoleTemplate v-if="tutorialStore.getCurrentStep===4 && (tutorialStore.getCurrentTutorial===tutorialStore.getPresentTutorialName || tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName)" />
         <TutorialInstructionTemplate v-if="tutorialStore.getCurrentStep===5" />
-        <PhoneAcceptCredentialScreen v-if="tutorialStore.getCurrentStep===6" />
+        <PhoneAcceptCredentialScreen v-if="tutorialStore.getCurrentStep===6 && tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName" />
     </div>
 </template>

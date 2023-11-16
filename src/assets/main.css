@@ -194,8 +194,10 @@
 }
 
 .instruction-text {
-  width: 75%;
+  height: 90%;
+  width: 100%;
   text-align: center;
+  overflow-y: scroll;
 }
 
 /* TUTORIALS - HTW DRESDEN / EMPLOYER */
@@ -351,4 +353,12 @@
 
 .text-orange {
   color: var(--orange) !important;
+}
+
+.text-green {
+  color: var(--green) !important;
+}
+
+.text-brown {
+  color: var(--brown) !important;
 }

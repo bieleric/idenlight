@@ -41,6 +41,7 @@
         <ScrollHandAnimation id="scrollHint" v-if="state.showScrollHint"/>
         <p class="font-medium font-light">{{ t("steps.user.present.paragraph1") }}</p>
         <p class="font-medium font-light">{{ t("steps.user.present.paragraph2") }}</p>
+        <p class="font-medium font-light"><i>{{ t("steps.user.present.paragraph3") }}</i></p>
         <div @click="startTutorialPresentProof" class="btn button-outline-primary p-3 mt-4 d-flex justify-content-between">{{ t("tutorial.present_proof.title") }} <font-awesome-icon v-if="tutorialStore.getPresentTutorialFinished" class="font-large" icon="circle-check" /></div>
     </div>
 </template>
