@@ -22,7 +22,7 @@ const messages = {
     steps: {
         general: {
             "description": "Erklärung",
-            "scheme": "Schema"
+            "graphic": "Grafik"
         },
         user: {
             introduction: {

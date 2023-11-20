@@ -8,11 +8,11 @@ const resetTabs = () => {
     if(userNavigationStore.getTabMode) {
         userNavigationStore.toggleDescription(true);
         const desciptionTab = document.getElementById("description-tab");
-        const schemeTab = document.getElementById("scheme-tab");
+        const graphicTab = document.getElementById("graphic-tab");
 
-        if(!desciptionTab.classList.contains("active-tab") || schemeTab.classList.contains("active-tab")) {
+        if(!desciptionTab.classList.contains("active-tab") || graphicTab.classList.contains("active-tab")) {
             desciptionTab.classList.add("active-tab");
-            schemeTab.classList.remove("active-tab");
+            graphicTab.classList.remove("active-tab");
         }
     }
 }
