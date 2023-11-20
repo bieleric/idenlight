@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import i18n from '../i18n';
 
-export const useUserNavigationStore = defineStore('userNavigationStore', {
+export const useUserDemoStore = defineStore('userDemoStore', {
   state: () => ({
         currentStep: 0,
         steps: [i18n.global.t('steps.user.introduction.title'), i18n.global.t('navigation.user.step2'), i18n.global.t('navigation.user.step3'), i18n.global.t('navigation.user.step4'), i18n.global.t('navigation.user.step5'), i18n.global.t('navigation.user.step6'), i18n.global.t('navigation.user.step7')],

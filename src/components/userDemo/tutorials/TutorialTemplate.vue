@@ -1,7 +1,7 @@
 <script setup>
     import { computed } from 'vue';
     import { useI18n } from 'vue-i18n';
-    import { useUserNavigationStore } from '../../../stores/userNavigationStore';
+    import { useUserDemoStore } from '../../../stores/userDemoStore';
     import { useDemoTutorialStore } from '../../../stores/demoTutorialStore';
     import TutorialRoleTemplate from './TutorialRoleTemplate.vue';
     import TutorialInstructionTemplate from './TutorialInstructionTemplate.vue';
@@ -10,7 +10,7 @@
     import EmployerWebsiteTemplate from './EmployerWebsiteTemplate.vue';
 
     const { t } = useI18n();
-    const userNavigationStore = useUserNavigationStore();
+    const userDemoStore = useUserDemoStore();
     const demoTutorialStore = useDemoTutorialStore();
 
     const classObject = computed(() => ({
@@ -36,8 +36,8 @@
     }
 
     const finishTutorial = () => {
-        userNavigationStore.setShowNavigationButtons(true);
-        userNavigationStore.setTutorial(false);
+        userDemoStore.setShowNavigationButtons(true);
+        userDemoStore.setTutorial(false);
         if(demoTutorialStore.getCurrentTutorial === demoTutorialStore.getConnectionTutorialName) {
             demoTutorialStore.setConnectionTutorialFinished(); 
         }

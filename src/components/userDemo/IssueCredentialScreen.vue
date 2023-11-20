@@ -2,12 +2,12 @@
     import ScrollHandAnimation from '../animations/ScrollHandAnimation.vue';
     import { reactive, onMounted } from 'vue';
     import { useI18n } from 'vue-i18n';
-    import { useUserNavigationStore } from '../../stores/userNavigationStore';
+    import { useUserDemoStore } from '../../stores/userDemoStore';
     import { useDemoTutorialStore } from '../../stores/demoTutorialStore';
     import WarningAlert from '../alerts/WarningAlert.vue';
 
     const { t } = useI18n();
-    const userNavigationStore = useUserNavigationStore();
+    const userDemoStore = useUserDemoStore();
     const demoTutorialStore = useDemoTutorialStore();
 
     let state = reactive({
@@ -35,8 +35,8 @@
             e.preventDefault();
         }
         else {
-            userNavigationStore.setTutorial(true);
-            userNavigationStore.setShowNavigationButtons(false);
+            userDemoStore.setTutorial(true);
+            userDemoStore.setShowNavigationButtons(false);
             demoTutorialStore.setCurrentTutorialToIssueTutorial();
             demoTutorialStore.restartTutorial();
         }
@@ -52,4 +52,4 @@
         <WarningAlert v-if="state.showWarning" :text="t('alert_messages.doConnectionTutorial')" />
         <div @click="startTutorialIssueCredential" class="btn button-outline-primary p-3 mt-4 d-flex justify-content-between">{{ t("tutorial.issue_credential.title") }} <font-awesome-icon v-if="demoTutorialStore.getIssueTutorialFinished" class="font-large" icon="circle-check" /></div>
     </div>
-</template>
+</template>../../stores/userDemoStore

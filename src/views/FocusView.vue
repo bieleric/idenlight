@@ -2,16 +2,16 @@
     import FocusButtons from '../components/FocusButtons.vue';
     import { useI18n } from 'vue-i18n';
     import { useFocusStore } from '../stores/focusStore';
-    import { useUserNavigationStore } from '../stores/userNavigationStore';
+    import { useUserDemoStore } from '../stores/userDemoStore';
     import { useDemoTutorialStore } from '../stores/demoTutorialStore';
     
     const { t } = useI18n();
     const focusStore = useFocusStore();
-    const userNavigationStore = useUserNavigationStore();
+    const userDemoStore = useUserDemoStore();
     const demoTutorialStore = useDemoTutorialStore();
 
     const resetSteps = () => {
-        userNavigationStore.resetCurrentStep();
+        userDemoStore.resetCurrentStep();
         demoTutorialStore.restartTutorial();
     }
 </script>
@@ -29,4 +29,4 @@
             </RouterLink>
         </div>
     </div>
-</template>../stores/demoTutorialStore
+</template>../stores/demoTutorialStore../stores/userDemoStore

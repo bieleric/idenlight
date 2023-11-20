@@ -1,7 +1,7 @@
 <script setup>
     import { onMounted } from 'vue';
     import { useI18n } from 'vue-i18n';
-    import { useUserNavigationStore } from '../stores/userNavigationStore';
+    import { useUserDemoStore } from '../stores/userDemoStore';
     import IntroductionScreen from './userDemo/IntroductionScreen.vue';
     import TrustTriangleAnimation from './animations/TrustTriangleAnimation.vue'
     import VerifiableCredentialScreen from './userDemo/VerifiableCredentialScreen.vue'
@@ -16,25 +16,25 @@
 import SummaryScreen from './userDemo/SummaryScreen.vue';
 
     const { t } = useI18n();
-    const userNavigationStore = useUserNavigationStore();
+    const userDemoStore = useUserDemoStore();
 
     window.addEventListener("resize", () => {
         if(window.innerWidth < 992) {
-            userNavigationStore.setTabMode(true)
+            userDemoStore.setTabMode(true)
         }
         else {
-            userNavigationStore.setTabMode(false)
+            userDemoStore.setTabMode(false)
         }
     });
 
     const switchBox = (box) => {
         if(box === "description") {
-            userNavigationStore.toggleDescription(true);
+            userDemoStore.toggleDescription(true);
             document.getElementById("description-tab").classList.add("active-tab");
             document.getElementById("graphic-tab").classList.remove("active-tab");
         }
         else if(box === "graphic"){
-            userNavigationStore.toggleDescription(false);
+            userDemoStore.toggleDescription(false);
             document.getElementById("graphic-tab").classList.add("active-tab");
             document.getElementById("description-tab").classList.remove("active-tab");
         }
@@ -42,14 +42,14 @@ import SummaryScreen from './userDemo/SummaryScreen.vue';
 
     onMounted(() => {
         if(window.innerWidth < 992) {
-            userNavigationStore.setTabMode(true);
+            userDemoStore.setTabMode(true);
         }
     });
 </script>
 
 <template>
     <div class="lesson col-12 mx-auto d-flex flex-lg-row flex-column">
-        <ul v-if="userNavigationStore.getTabMode" class="lesson-tabs nav nav-tabs">
+        <ul v-if="userDemoStore.getTabMode" class="lesson-tabs nav nav-tabs">
             <li @click="switchBox('description')" class="lesson-tab-item nav-item">
                 <a id="description-tab" class="lesson-tab-item-link nav-link active-tab">{{ t("steps.general.description") }}</a>
             </li>
@@ -57,23 +57,23 @@ import SummaryScreen from './userDemo/SummaryScreen.vue';
                 <a id="graphic-tab" class="lesson-tab-item-link nav-link">{{ t("steps.general.graphic") }}</a>
             </li>
         </ul>
-        <div v-if="!userNavigationStore.getTabMode || (userNavigationStore.getTabMode && userNavigationStore.getDescriptionActive)" class="text-box d-flex flex-column col-lg-7 col-12 mx-auto bg-color-secondary text-light">
-            <IntroductionScreen v-if="userNavigationStore.getCurrentStep===0" />
-            <VerifiableCredentialScreen v-if="userNavigationStore.getCurrentStep===1" />
-            <WalletScreen v-if="userNavigationStore.getCurrentStep===2" />
-            <ConnectionScreen v-if="userNavigationStore.getCurrentStep===3" />
-            <IssueCredentialScreen v-if="userNavigationStore.getCurrentStep===4" />
-            <PresentProofScreen v-if="userNavigationStore.getCurrentStep===5" />
-            <SummaryScreen v-if="userNavigationStore.getCurrentStep===6" />
+        <div v-if="!userDemoStore.getTabMode || (userDemoStore.getTabMode && userDemoStore.getDescriptionActive)" class="text-box d-flex flex-column col-lg-7 col-12 mx-auto bg-color-secondary text-light">
+            <IntroductionScreen v-if="userDemoStore.getCurrentStep===0" />
+            <VerifiableCredentialScreen v-if="userDemoStore.getCurrentStep===1" />
+            <WalletScreen v-if="userDemoStore.getCurrentStep===2" />
+            <ConnectionScreen v-if="userDemoStore.getCurrentStep===3" />
+            <IssueCredentialScreen v-if="userDemoStore.getCurrentStep===4" />
+            <PresentProofScreen v-if="userDemoStore.getCurrentStep===5" />
+            <SummaryScreen v-if="userDemoStore.getCurrentStep===6" />
         </div>
-        <div v-if="!userNavigationStore.getTabMode || (userNavigationStore.getTabMode && !userNavigationStore.getDescriptionActive)" class="image-box col-lg-5 col-12 mx-auto bg-color-third text-light h-100 d-flex justify-content-center align-items-center">
-            <TrustTriangleAnimation v-if="userNavigationStore.getCurrentStep===0" />
-            <img v-if="userNavigationStore.getCurrentStep===1" src="/userDemo/verifiable_credential.png" style="width: 60%;"/>
-            <WalletAnimation v-if="userNavigationStore.getCurrentStep===2" />
-            <ConnectionAnimation v-if="userNavigationStore.getCurrentStep===3" />
-            <IssuanceAnimation v-if="userNavigationStore.getCurrentStep===4" />
-            <PresentProofAnimation v-if="userNavigationStore.getCurrentStep===5" />
-            <TrustTriangleAnimation v-if="userNavigationStore.getCurrentStep===6" />
+        <div v-if="!userDemoStore.getTabMode || (userDemoStore.getTabMode && !userDemoStore.getDescriptionActive)" class="image-box col-lg-5 col-12 mx-auto bg-color-third text-light h-100 d-flex justify-content-center align-items-center">
+            <TrustTriangleAnimation v-if="userDemoStore.getCurrentStep===0" />
+            <img v-if="userDemoStore.getCurrentStep===1" src="/userDemo/verifiable_credential.png" style="width: 60%;"/>
+            <WalletAnimation v-if="userDemoStore.getCurrentStep===2" />
+            <ConnectionAnimation v-if="userDemoStore.getCurrentStep===3" />
+            <IssuanceAnimation v-if="userDemoStore.getCurrentStep===4" />
+            <PresentProofAnimation v-if="userDemoStore.getCurrentStep===5" />
+            <TrustTriangleAnimation v-if="userDemoStore.getCurrentStep===6" />
         </div>
     </div>
-</template>
+</template>../stores/userDemoStore

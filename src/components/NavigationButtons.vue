@@ -1,15 +1,15 @@
 <script setup>
 import { computed } from "vue";
 import router from "../router";
-import { useUserNavigationStore } from '../stores/userNavigationStore';
+import { useUserDemoStore } from '../stores/userDemoStore';
 import { useDemoTutorialStore } from "../stores/demoTutorialStore";
 
-const userNavigationStore = useUserNavigationStore();
+const userDemoStore = useUserDemoStore();
 const demoTutorialStore = useDemoTutorialStore();
 
 const resetTabs = () => {
-    if(userNavigationStore.getTabMode) {
-        userNavigationStore.toggleDescription(true);
+    if(userDemoStore.getTabMode) {
+        userDemoStore.toggleDescription(true);
         const desciptionTab = document.getElementById("description-tab");
         const graphicTab = document.getElementById("graphic-tab");
 
@@ -21,26 +21,26 @@ const resetTabs = () => {
 }
 
 const classObject = computed(() => ({
-    tutorialFinished: (demoTutorialStore.getConnectionTutorialFinished && userNavigationStore.getCurrentStep === 3) || (demoTutorialStore.getIssueTutorialFinished && userNavigationStore.getCurrentStep === 4) || (demoTutorialStore.getPresentTutorialFinished && userNavigationStore.getCurrentStep === 5) ? true : false
+    tutorialFinished: (demoTutorialStore.getConnectionTutorialFinished && userDemoStore.getCurrentStep === 3) || (demoTutorialStore.getIssueTutorialFinished && userDemoStore.getCurrentStep === 4) || (demoTutorialStore.getPresentTutorialFinished && userDemoStore.getCurrentStep === 5) ? true : false
 }))
 
 const incrementStep = () => {
-    if(userNavigationStore.getCurrentStep < userNavigationStore.getStepsLength-1) {
-        userNavigationStore.increase();
-        userNavigationStore.setTutorial(false);
+    if(userDemoStore.getCurrentStep < userDemoStore.getStepsLength-1) {
+        userDemoStore.increase();
+        userDemoStore.setTutorial(false);
         resetTabs();
     }
     // last step: go back to home screen
-    else if(userNavigationStore.getCurrentStep === userNavigationStore.getStepsLength-1) {
+    else if(userDemoStore.getCurrentStep === userDemoStore.getStepsLength-1) {
         resetTabs();
         router.push({ path: 'home' })
     }
 }
 
 const decrementStep = () => {
-    if(userNavigationStore.getCurrentStep > 0) {
-        userNavigationStore.reduce();
-        userNavigationStore.setTutorial(false);
+    if(userDemoStore.getCurrentStep > 0) {
+        userDemoStore.reduce();
+        userDemoStore.setTutorial(false);
         resetTabs();
     }
 }
@@ -50,15 +50,15 @@ const decrementStep = () => {
 <template>
     <div id="navigation-buttons" class="d-flex justify-content-end col-12 mx-auto">
         <div class="px-2">
-            <div v-if="userNavigationStore.getCurrentStep > 0" @click="decrementStep()" class="navigation-button btn button-outline-primary">
+            <div v-if="userDemoStore.getCurrentStep > 0" @click="decrementStep()" class="navigation-button btn button-outline-primary">
                 <font-awesome-icon icon="chevron-left" />
             </div>
         </div>
         <div class="">
             <div @click="incrementStep()" :class="{'pulse-animation': classObject.tutorialFinished, 'navigation-button btn button-primary': true}">
-                <font-awesome-icon v-if="userNavigationStore.getCurrentStep < userNavigationStore.getStepsLength-1" icon="chevron-right" />
-                <font-awesome-icon v-if="userNavigationStore.getCurrentStep === userNavigationStore.getStepsLength-1" icon="xmark" />
+                <font-awesome-icon v-if="userDemoStore.getCurrentStep < userDemoStore.getStepsLength-1" icon="chevron-right" />
+                <font-awesome-icon v-if="userDemoStore.getCurrentStep === userDemoStore.getStepsLength-1" icon="xmark" />
             </div>
         </div>
     </div>
-</template>
+</template>../stores/userDemoStore

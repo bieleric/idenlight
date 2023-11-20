@@ -2,11 +2,11 @@
     import ScrollHandAnimation from '../animations/ScrollHandAnimation.vue';
     import { reactive, onMounted } from 'vue';
     import { useI18n } from 'vue-i18n';
-    import { useUserNavigationStore } from '../../stores/userNavigationStore';
+    import { useUserDemoStore } from '../../stores/userDemoStore';
     import { useDemoTutorialStore } from '../../stores/demoTutorialStore';
 
     const { t } = useI18n();
-    const userNavigationStore = useUserNavigationStore();
+    const userDemoStore = useUserDemoStore();
     const demoTutorialStore = useDemoTutorialStore();
 
     let state = reactive({
@@ -28,8 +28,8 @@
     })
 
     const startTutorialConnectionCreation = () => {
-        userNavigationStore.setTutorial(true);
-        userNavigationStore.setShowNavigationButtons(false);
+        userDemoStore.setTutorial(true);
+        userDemoStore.setShowNavigationButtons(false);
         demoTutorialStore.setCurrentTutorialToConnectionTutorial();
         demoTutorialStore.restartTutorial();
     }
@@ -44,4 +44,4 @@
         <p class="font-medium font-light mt-4">{{ t("steps.user.connection.paragraph3") }}</p>
         <div @click="startTutorialConnectionCreation" class="btn button-outline-primary p-3 mt-4 d-flex justify-content-between">{{ t("tutorial.create_connection.title") }} <font-awesome-icon v-if="demoTutorialStore.getConnectionTutorialFinished" class="font-large" icon="circle-check" /></div>
     </div>
-</template>
+</template>../../stores/userDemoStore
