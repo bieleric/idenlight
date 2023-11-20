@@ -3,11 +3,11 @@
     import { reactive, onMounted } from 'vue';
     import { useI18n } from 'vue-i18n';
     import { useUserNavigationStore } from '../../stores/userNavigationStore';
-    import { useTutorialStore } from '../../stores/tutorialStore';
+    import { useDemoTutorialStore } from '../../stores/demoTutorialStore';
 
     const { t } = useI18n();
     const userNavigationStore = useUserNavigationStore();
-    const tutorialStore = useTutorialStore();
+    const demoTutorialStore = useDemoTutorialStore();
 
     let state = reactive({
         showScrollHint: false
@@ -30,8 +30,8 @@
     const startTutorialPresentProof = () => {
         userNavigationStore.setTutorial(true);
         userNavigationStore.setShowNavigationButtons(false);
-        tutorialStore.setCurrentTutorialToPresentTutorial();
-        tutorialStore.restartTutorial();
+        demoTutorialStore.setCurrentTutorialToPresentTutorial();
+        demoTutorialStore.restartTutorial();
     }
 </script>
 
@@ -42,6 +42,6 @@
         <p class="font-medium font-light">{{ t("steps.user.present.paragraph1") }}</p>
         <p class="font-medium font-light">{{ t("steps.user.present.paragraph2") }}</p>
         <p class="font-medium font-light"><i>{{ t("steps.user.present.paragraph3") }}</i></p>
-        <div @click="startTutorialPresentProof" class="btn button-outline-primary p-3 mt-4 d-flex justify-content-between">{{ t("tutorial.present_proof.title") }} <font-awesome-icon v-if="tutorialStore.getPresentTutorialFinished" class="font-large" icon="circle-check" /></div>
+        <div @click="startTutorialPresentProof" class="btn button-outline-primary p-3 mt-4 d-flex justify-content-between">{{ t("tutorial.present_proof.title") }} <font-awesome-icon v-if="demoTutorialStore.getPresentTutorialFinished" class="font-large" icon="circle-check" /></div>
     </div>
-</template>
+</template>../../stores/demoTutorialStore

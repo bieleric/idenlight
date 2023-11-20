@@ -1,11 +1,11 @@
 <script setup>
-    import { useTutorialStore } from '../../../stores/tutorialStore';
+    import { useDemoTutorialStore } from '../../../stores/demoTutorialStore';
     import { useI18n } from 'vue-i18n';
     import HTWIssueCredentialScreen from './TutorialComponents/HTWIssueCredentialScreen.vue';
     import HTWCreateConnectionScreen from './TutorialComponents/HTWCreateConnectionScreen.vue';
 
     const { t } = useI18n();
-    const tutorialStore = useTutorialStore();
+    const demoTutorialStore = useDemoTutorialStore();
 </script>
 
 
@@ -39,13 +39,13 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item" aria-current="page">{{ t("tutorial.htw_website.service") }}</li>
                 <li class="breadcrumb-item" aria-current="page">{{ t("tutorial.htw_website.digital_credentials") }}</li>
-                <li v-if="tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName" class="breadcrumb-item" aria-current="page">{{ t("tutorial.htw_website.create_connection") }}</li>
-                <li v-if="tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName" class="breadcrumb-item" aria-current="page">{{ t("tutorial.htw_website.issue_credential") }}</li>
+                <li v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getConnectionTutorialName" class="breadcrumb-item" aria-current="page">{{ t("tutorial.htw_website.create_connection") }}</li>
+                <li v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" class="breadcrumb-item" aria-current="page">{{ t("tutorial.htw_website.issue_credential") }}</li>
             </ol>
         </nav>
         <div class="htw-body p-4">
-            <HTWCreateConnectionScreen v-if="tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName" />
-            <HTWIssueCredentialScreen v-if="tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName" />
+            <HTWCreateConnectionScreen v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getConnectionTutorialName" />
+            <HTWIssueCredentialScreen v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" />
         </div>
     </div>
-</template>
+</template>../../../stores/demoTutorialStore

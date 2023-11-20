@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useTutorialStore = defineStore('tutorialStore', {
+export const useDemoTutorialStore = defineStore('demoTutorialStore', {
     state: () => ({
         connectionTutorialName: "Connection Tutorial",
         issueTutorialName: "Issue Tutorial",

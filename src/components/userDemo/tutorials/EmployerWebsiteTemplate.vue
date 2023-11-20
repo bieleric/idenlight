@@ -1,11 +1,11 @@
 <script setup>
-    import { useTutorialStore } from '../../../stores/tutorialStore';
+    import { useDemoTutorialStore } from '../../../stores/demoTutorialStore';
     import { useI18n } from 'vue-i18n';
     import EmployerPresentScreen from './TutorialComponents/EmployerPresentScreen.vue';
     import EmployerVerifyScreen from './TutorialComponents/EmployerVerifyScreen.vue';
 
     const { t } = useI18n();
-    const tutorialStore = useTutorialStore();
+    const demoTutorialStore = useDemoTutorialStore();
 </script>
 
 
@@ -17,7 +17,7 @@
         <div class="d-flex justify-content-center bg-color-beige">
             <img src="/employer_banner.png" style="max-height: 75px; max-width: 100%;">
         </div>
-        <EmployerPresentScreen v-if="tutorialStore.currentStep===3" />
-        <EmployerVerifyScreen v-if="tutorialStore.currentStep===6" />
+        <EmployerPresentScreen v-if="demoTutorialStore.currentStep===3" />
+        <EmployerVerifyScreen v-if="demoTutorialStore.currentStep===6" />
     </div>
-</template>
+</template>../../../stores/demoTutorialStore

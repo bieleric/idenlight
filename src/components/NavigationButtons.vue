@@ -23,6 +23,7 @@ const incrementStep = () => {
         userNavigationStore.setTutorial(false);
         resetTabs();
     }
+    // last step: go back to home screen
     else if(userNavigationStore.getCurrentStep === userNavigationStore.getStepsLength-1) {
         resetTabs();
         router.push({ path: 'home' })
