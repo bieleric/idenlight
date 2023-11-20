@@ -20,4 +20,4 @@
         <EmployerPresentScreen v-if="demoTutorialStore.currentStep===3" />
         <EmployerVerifyScreen v-if="demoTutorialStore.currentStep===6" />
     </div>
-</template>../../../stores/demoTutorialStore
+</template>

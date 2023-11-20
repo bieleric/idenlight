@@ -19,6 +19,10 @@ const messages = {
         "computer_science": "Informatik",
         "17": "1.7"
     },
+    alert_messages: {
+        "doConnectionTutorial": "Absolviere zuerst das Tutorial 'Kontakt herstellen'!",
+        "doIssueTutorial": "Absolviere zuerst das Tutorial 'Nachweis ausstellen & annehmen'!"
+    },
     steps: {
         general: {
             "description": "Erklärung",

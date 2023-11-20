@@ -30,12 +30,12 @@
         <ScrollHandAnimation id="scrollHint" v-if="state.showScrollHint"/>
         <p class="font-medium font-light">{{ t("steps.user.verifiable_credential.paragraph1") }}</p>
         <p class="font-medium font-light mt-4">{{ t("steps.user.verifiable_credential.paragraph2") }}</p>
-        <p class="font-medium font-light mt-4">{{ t("steps.user.verifiable_credential.paragraph3") }}</p>
-        <div class="cards my-5">
-            <div class="vc-card my-2">{{ t("steps.user.verifiable_credential.actions.issue") }}</div>
-            <div class="vc-card my-2">{{ t("steps.user.verifiable_credential.actions.store") }}</div>
-            <div class="vc-card my-2">{{ t("steps.user.verifiable_credential.actions.present") }}</div>
-            <div class="vc-card my-2">{{ t("steps.user.verifiable_credential.actions.proof") }}</div>
-        </div>
+        <p class="font-medium font-light mt-4">
+            {{ t("steps.user.verifiable_credential.paragraph3") }}
+            <i> {{ t("steps.user.verifiable_credential.actions.issue") }}, </i>
+            <i> {{ t("steps.user.verifiable_credential.actions.store") }}, </i>
+            <i> {{ t("steps.user.verifiable_credential.actions.present") }}, </i>
+            <i> {{ t("steps.user.verifiable_credential.actions.proof") }}, </i>
+        </p>
     </div>
 </template>

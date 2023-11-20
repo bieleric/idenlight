@@ -4,13 +4,15 @@
     import { useI18n } from 'vue-i18n';
     import { useUserNavigationStore } from '../../stores/userNavigationStore';
     import { useDemoTutorialStore } from '../../stores/demoTutorialStore';
+    import WarningAlert from '../alerts/WarningAlert.vue';
 
     const { t } = useI18n();
     const userNavigationStore = useUserNavigationStore();
     const demoTutorialStore = useDemoTutorialStore();
 
     let state = reactive({
-        showScrollHint: false
+        showScrollHint: false,
+        showWarning: false
     })
 
     onMounted(() => {
@@ -27,11 +29,18 @@
         });
     })
 
-    const startTutorialPresentProof = () => {
-        userNavigationStore.setTutorial(true);
-        userNavigationStore.setShowNavigationButtons(false);
-        demoTutorialStore.setCurrentTutorialToPresentTutorial();
-        demoTutorialStore.restartTutorial();
+    const startTutorialPresentProof = (e) => {
+        if(!demoTutorialStore.getIssueTutorialFinished) {
+            state.showWarning = true;
+            e.preventDefault();
+        }
+        else {
+            userNavigationStore.setTutorial(true);
+            userNavigationStore.setShowNavigationButtons(false);
+            demoTutorialStore.setCurrentTutorialToPresentTutorial();
+            demoTutorialStore.restartTutorial();
+        }
+
     }
 </script>
 
@@ -42,6 +51,7 @@
         <p class="font-medium font-light">{{ t("steps.user.present.paragraph1") }}</p>
         <p class="font-medium font-light">{{ t("steps.user.present.paragraph2") }}</p>
         <p class="font-medium font-light"><i>{{ t("steps.user.present.paragraph3") }}</i></p>
+        <WarningAlert v-if="state.showWarning" :text="t('alert_messages.doIssueTutorial')" />
         <div @click="startTutorialPresentProof" class="btn button-outline-primary p-3 mt-4 d-flex justify-content-between">{{ t("tutorial.present_proof.title") }} <font-awesome-icon v-if="demoTutorialStore.getPresentTutorialFinished" class="font-large" icon="circle-check" /></div>
     </div>
 </template>../../stores/demoTutorialStore

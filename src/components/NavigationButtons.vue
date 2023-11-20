@@ -1,8 +1,11 @@
 <script setup>
+import { computed } from "vue";
 import router from "../router";
 import { useUserNavigationStore } from '../stores/userNavigationStore';
+import { useDemoTutorialStore } from "../stores/demoTutorialStore";
 
 const userNavigationStore = useUserNavigationStore();
+const demoTutorialStore = useDemoTutorialStore();
 
 const resetTabs = () => {
     if(userNavigationStore.getTabMode) {
@@ -16,6 +19,10 @@ const resetTabs = () => {
         }
     }
 }
+
+const classObject = computed(() => ({
+    tutorialFinished: (demoTutorialStore.getConnectionTutorialFinished && userNavigationStore.getCurrentStep === 3) || (demoTutorialStore.getIssueTutorialFinished && userNavigationStore.getCurrentStep === 4) || (demoTutorialStore.getPresentTutorialFinished && userNavigationStore.getCurrentStep === 5) ? true : false
+}))
 
 const incrementStep = () => {
     if(userNavigationStore.getCurrentStep < userNavigationStore.getStepsLength-1) {
@@ -48,7 +55,7 @@ const decrementStep = () => {
             </div>
         </div>
         <div class="">
-            <div @click="incrementStep()" class="navigation-button btn button-primary">
+            <div @click="incrementStep()" :class="{'pulse-animation': classObject.tutorialFinished, 'navigation-button btn button-primary': true}">
                 <font-awesome-icon v-if="userNavigationStore.getCurrentStep < userNavigationStore.getStepsLength-1" icon="chevron-right" />
                 <font-awesome-icon v-if="userNavigationStore.getCurrentStep === userNavigationStore.getStepsLength-1" icon="xmark" />
             </div>

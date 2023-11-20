@@ -193,6 +193,44 @@
   cursor: pointer;
 }
 
+.button-secondary {
+  background-color: var(--white) !important;
+  border-color: var(--black) !important;
+  color: var(--black) !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.button-outline-secondary {
+  border-color: var(--white) !important;
+  color: var(--white) !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.pulse-animation {
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	transform: scale(1);
+	animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}
+
 .instruction-text {
   height: 90%;
   width: 100%;
@@ -200,7 +238,7 @@
   overflow-y: scroll;
 }
 
-/* TUTORIALS - HTW DRESDEN / EMPLOYER */
+/* TUTORIALS - HTW DRESDEN - EMPLOYER */
 .htw-website, .employer-website {
   height: 65vh;
   overflow-y: scroll;

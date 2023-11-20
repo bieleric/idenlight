@@ -44,4 +44,4 @@
         <p class="font-medium font-light mt-4">{{ t("steps.user.connection.paragraph3") }}</p>
         <div @click="startTutorialConnectionCreation" class="btn button-outline-primary p-3 mt-4 d-flex justify-content-between">{{ t("tutorial.create_connection.title") }} <font-awesome-icon v-if="demoTutorialStore.getConnectionTutorialFinished" class="font-large" icon="circle-check" /></div>
     </div>
-</template>../../stores/demoTutorialStore
+</template>

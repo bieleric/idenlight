@@ -1,4 +1,5 @@
 <script setup>
+    import { computed } from 'vue';
     import { useI18n } from 'vue-i18n';
     import { useUserNavigationStore } from '../../../stores/userNavigationStore';
     import { useDemoTutorialStore } from '../../../stores/demoTutorialStore';
@@ -11,6 +12,12 @@
     const { t } = useI18n();
     const userNavigationStore = useUserNavigationStore();
     const demoTutorialStore = useDemoTutorialStore();
+
+    const classObject = computed(() => ({
+        firstStep: demoTutorialStore.getCurrentStep === 1 ? true : false
+    }))
+
+    console.log(demoTutorialStore.getCurrentStep)
 
     const increment = () => {
         if(demoTutorialStore.getCurrentTutorial === demoTutorialStore.getConnectionTutorialName) {
@@ -47,14 +54,20 @@
 <template>
     <div class="tutorial">
         <div class="tutorial-header mb-3 text-light font-italic text-center font-light">
-            <font-awesome-icon @click="decrement" v-if="demoTutorialStore.getCurrentStep!==1" class="tutorial-navigation font-large" icon="chevron-left" />
+            <div @click="decrement" v-if="demoTutorialStore.getCurrentStep!==1" class="btn button-outline-secondary">
+                <font-awesome-icon class="tutorial-navigation font-large" icon="chevron-left" />
+            </div>
             <div class="tutorial-title">
                 <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getConnectionTutorialName" class="font-italic">{{ t("tutorial.create_connection.title") }}</span>
                 <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" class="font-italic">{{ t("tutorial.issue_credential.title") }}</span>
                 <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getPresentTutorialName" class="font-italic">{{ t("tutorial.present_proof.title") }}</span>
             </div>
-            <font-awesome-icon @click="increment" v-if="demoTutorialStore.getCurrentStep!==demoTutorialStore.getCurrentTutorialSteps" class="tutorial-navigation font-large" icon="chevron-right" />
-            <font-awesome-icon @click="finishTutorial" v-if="demoTutorialStore.getCurrentStep===demoTutorialStore.getCurrentTutorialSteps" class="tutorial-navigation font-large" icon="xmark" />
+            <div @click="increment" v-if="demoTutorialStore.getCurrentStep!==demoTutorialStore.getCurrentTutorialSteps" :class="{  'pulse-animation': classObject.firstStep, 'btn button-secondary': true}">
+                <font-awesome-icon class="tutorial-navigation font-large" icon="chevron-right" />
+            </div>
+            <div @click="finishTutorial" v-if="demoTutorialStore.getCurrentStep===demoTutorialStore.getCurrentTutorialSteps" class="btn button-secondary">
+                <font-awesome-icon class="tutorial-navigation font-large" icon="xmark" />
+            </div>
         </div>
         <TutorialRoleTemplate v-if="demoTutorialStore.getCurrentStep===1" />
         <TutorialInstructionTemplate v-if="demoTutorialStore.getCurrentStep===2" />
@@ -64,4 +77,4 @@
         <TutorialInstructionTemplate v-if="demoTutorialStore.getCurrentStep===5" />
         <PhoneAcceptCredentialScreen v-if="demoTutorialStore.getCurrentStep===6 && demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" />
     </div>
-</template>../../../stores/demoTutorialStore
+</template>

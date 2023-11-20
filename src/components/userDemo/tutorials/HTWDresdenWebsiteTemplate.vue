@@ -48,4 +48,4 @@
             <HTWIssueCredentialScreen v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" />
         </div>
     </div>
-</template>../../../stores/demoTutorialStore
+</template>

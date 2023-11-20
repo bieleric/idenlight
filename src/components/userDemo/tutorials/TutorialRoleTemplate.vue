@@ -18,10 +18,10 @@
                 <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getPresentTutorialName && demoTutorialStore.currentStep===4">{{ t("tutorial.roles.employer") }}</span>
             </div>
         </div>
-        <div class="role-image-container">
+        <div class="role-image-container p-lg-5">
             <img v-if="(demoTutorialStore.getCurrentTutorial===demoTutorialStore.getConnectionTutorialName && demoTutorialStore.currentStep===1) || (demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName && demoTutorialStore.currentStep===4) || (demoTutorialStore.getCurrentTutorial===demoTutorialStore.getPresentTutorialName && demoTutorialStore.currentStep===1)" src="/trust_triangle_focus_alumni.png" class="role-image"/>
             <img v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName && demoTutorialStore.currentStep===1" src="/trust_triangle_focus_htw.png" class="role-image"/>
             <img v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getPresentTutorialName && demoTutorialStore.currentStep===4" src="/trust_triangle_focus_employer.png" class="role-image"/>
         </div>
     </div>
-</template>../../../stores/demoTutorialStore
+</template>
