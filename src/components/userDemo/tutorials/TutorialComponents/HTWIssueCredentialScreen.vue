@@ -34,79 +34,74 @@
     }, 4000)
 
     const issueCredential = () => {
-        if(ssiStore.getConnectionID === "") {
-            console.log("Error! Complete Tutorial: Create Connection first")
-        }
-        else {
-            setTimeout(() => {
-                axios.post(`${config.acapy_api}/issue-credential/send`, {
-                    "auto_remove": true,
-                    "comment": "Dein digitales Abschlusszeugnis",
-                    "connection_id": ssiStore.getConnectionID,
-                    "cred_def_id": ssiStore.getCredentialDefinitionID,
-                    "credential_proposal": {
-                        "@type": "issue-credential/1.0/credential-preview",
-                        "attributes": [
-                            {
-                                "mime-type": "image/text",
-                                "name": "Name",
-                                "value": state.values[0]
-                            },
-                            {
-                                "mime-type": "image/text",
-                                "name": "Geburtsort",
-                                "value": state.values[1]
-                            },
-                            {
-                                "mime-type": "image/text",
-                                "name": "Geburtsdatum",
-                                "value": state.values[2]
-                            },
-                            {
-                                "mime-type": "image/text",
-                                "name": "Abschluss",
-                                "value": state.values[3]
-                            },
-                            {
-                                "mime-type": "image/text",
-                                "name": "Studiengang",
-                                "value": state.values[4]
-                            },
-                            {
-                                "mime-type": "image/text",
-                                "name": "Hochschule",
-                                "value": "Hochschule für Technik und Wirtschaft Dresden"
-                            },
-                            {
-                                "mime-type": "image/text",
-                                "name": "Note",
-                                "value": state.values[5]
-                            },
-                        ]
-                    },
-                    "issuer_did": ssiStore.getIssuerDID,
-                    "schema_id": ssiStore.getCredentialSchemaID,
-                    "schema_issuer_did": ssiStore.getSchemaIssuerDID,
-                    "schema_name": ssiStore.getSchemaName,
-                    "schema_version": "1.0",
-                    "trace": true
-                })
-                .then(response => {
-                    if(response.status === 200 && response.statusText === "OK") {
-                        state.creating = false
-                        
-                    }
-                    else {
-                        state.creating = false
-                        
-                    }
-                })
-                .catch(e => {
-                    console.log(e)
+        setTimeout(() => {
+            axios.post(`${config.acapy_api}/issue-credential/send`, {
+                "auto_remove": true,
+                "comment": "Dein digitales Abschlusszeugnis",
+                "connection_id": ssiStore.getConnectionID,
+                "cred_def_id": ssiStore.getCredentialDefinitionID,
+                "credential_proposal": {
+                    "@type": "issue-credential/1.0/credential-preview",
+                    "attributes": [
+                        {
+                            "mime-type": "image/text",
+                            "name": "Name",
+                            "value": state.values[0]
+                        },
+                        {
+                            "mime-type": "image/text",
+                            "name": "Geburtsort",
+                            "value": state.values[1]
+                        },
+                        {
+                            "mime-type": "image/text",
+                            "name": "Geburtsdatum",
+                            "value": state.values[2]
+                        },
+                        {
+                            "mime-type": "image/text",
+                            "name": "Abschluss",
+                            "value": state.values[3]
+                        },
+                        {
+                            "mime-type": "image/text",
+                            "name": "Studiengang",
+                            "value": state.values[4]
+                        },
+                        {
+                            "mime-type": "image/text",
+                            "name": "Hochschule",
+                            "value": "Hochschule für Technik und Wirtschaft Dresden"
+                        },
+                        {
+                            "mime-type": "image/text",
+                            "name": "Note",
+                            "value": state.values[5]
+                        },
+                    ]
+                },
+                "issuer_did": ssiStore.getIssuerDID,
+                "schema_id": ssiStore.getCredentialSchemaID,
+                "schema_issuer_did": ssiStore.getSchemaIssuerDID,
+                "schema_name": ssiStore.getSchemaName,
+                "schema_version": "1.0",
+                "trace": true
+            })
+            .then(response => {
+                if(response.status === 200 && response.statusText === "OK") {
                     state.creating = false
-                })
-            }, 200)
-        }
+                    
+                }
+                else {
+                    state.creating = false
+                    
+                }
+            })
+            .catch(e => {
+                console.log(e)
+                state.creating = false
+            })
+        }, 200)
     }
 </script>
 

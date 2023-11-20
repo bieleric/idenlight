@@ -231,6 +231,29 @@
 	}
 }
 
+.tutorial-button {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding: 1rem !important;
+}
+
+.tutorial-button span {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: calc(100% + 1rem);
+  background: linear-gradient(90deg, transparent, rgba(200, 200, 200, 0.3), transparent);
+  transform: translateX(-100%);
+  animation: shine 1.5s infinite ease-out;
+}
+
+@keyframes shine {
+  to {
+    transform: translateX(100%);
+  }
+}
+
 .instruction-text {
   height: 90%;
   width: 100%;

@@ -50,6 +50,15 @@
         <ScrollHandAnimation id="scrollHint" v-if="state.showScrollHint"/>
         <p class="font-medium font-light">{{ t("steps.user.issue.paragraph1") }}</p>
         <WarningAlert v-if="state.showWarning" :text="t('alert_messages.doConnectionTutorial')" />
-        <div @click="startTutorialIssueCredential" class="btn button-outline-primary p-3 mt-4 d-flex justify-content-between">{{ t("tutorial.issue_credential.title") }} <font-awesome-icon v-if="demoTutorialStore.getIssueTutorialFinished" class="font-large" icon="circle-check" /></div>
+        
+        <div @click="startTutorialIssueCredential" class="tutorial-button btn button-outline-primary mt-4 d-flex justify-content-between">
+            <span></span> 
+            {{ t("tutorial.issue_credential.title") }}
+            <font-awesome-icon v-if="demoTutorialStore.getIssueTutorialFinished" class="font-large" icon="circle-check" />
+        </div>
+
+        
+        
+        <!--<div @click="startTutorialIssueCredential" class="tutorial-button btn button-outline-primary p-3 mt-4 d-flex justify-content-between">{{ t("tutorial.issue_credential.title") }} <font-awesome-icon v-if="demoTutorialStore.getIssueTutorialFinished" class="font-large" icon="circle-check" /></div>-->
     </div>
 </template>../../stores/userDemoStore

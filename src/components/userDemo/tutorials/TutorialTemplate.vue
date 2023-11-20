@@ -17,8 +17,6 @@
         firstStep: demoTutorialStore.getCurrentStep === 1 ? true : false
     }))
 
-    console.log(demoTutorialStore.getCurrentStep)
-
     const increment = () => {
         if(demoTutorialStore.getCurrentTutorial === demoTutorialStore.getConnectionTutorialName) {
             demoTutorialStore.incrementConnectionTutorial();

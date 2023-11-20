@@ -52,6 +52,10 @@
         <p class="font-medium font-light">{{ t("steps.user.present.paragraph2") }}</p>
         <p class="font-medium font-light"><i>{{ t("steps.user.present.paragraph3") }}</i></p>
         <WarningAlert v-if="state.showWarning" :text="t('alert_messages.doIssueTutorial')" />
-        <div @click="startTutorialPresentProof" class="btn button-outline-primary p-3 mt-4 d-flex justify-content-between">{{ t("tutorial.present_proof.title") }} <font-awesome-icon v-if="demoTutorialStore.getPresentTutorialFinished" class="font-large" icon="circle-check" /></div>
+        <div @click="startTutorialPresentProof" class="tutorial-button btn button-outline-primary p-3 mt-4 d-flex justify-content-between">
+            <span></span>
+            {{ t("tutorial.present_proof.title") }} 
+            <font-awesome-icon v-if="demoTutorialStore.getPresentTutorialFinished" class="font-large" icon="circle-check" />
+        </div>
     </div>
 </template>
