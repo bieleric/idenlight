@@ -4,14 +4,11 @@
     import { useSSIStore } from '../../../stores/ssiStore';
     import QrcodeVue from 'qrcode.vue';
     import { md5 } from 'js-md5';
+    import { useI18n } from 'vue-i18n';
     import config from '../../../../config.json'
 
 
-    //import { useTutorialStore } from '../../stores/tutorialStore';
-    import { useI18n } from 'vue-i18n';
-
     const { t } = useI18n();
-    //const tutorialStore = useTutorialStore();
     const ssiStore = useSSIStore();
 
     const state = reactive({
@@ -28,8 +25,7 @@
 
     const createPresentationRequest = () => {
         setTimeout(() => {
-            axios.post("http://185.237.14.115:11000/present-proof/create-request", {
-            //axios.post("http://127.0.0.1:11000/present-proof/create-request", {
+            axios.post(`${config.acapy_api}/present-proof/create-request`, {
                 "auto_verify": true,
                 "comment": "string",
                 "proof_request": {
@@ -71,15 +67,15 @@
                     let proof_request_tmp = response.data.presentation_request_dict;
                     proof_request_tmp["~service"] = {
                         "recipientKeys": [
-                            "3dDQmgYw9bHgtFuAu9AovHukbmPatRxDRn3rWCqUdeW9"
+                            ssiStore.getVerkey
                         ],
                         "routingKeys": null,
-                        "serviceEndpoint": "http://185.237.14.115:8000/"
+                        "serviceEndpoint": config.acapy_service_endpoint
                     }
                     state.proof_request = JSON.stringify(proof_request_tmp);
                     const encoded_proof_request = btoa(state.proof_request);
-                    state.proof_request_url = "http://185.237.14.115:8000/?c_i=" + encoded_proof_request;
-                    state.didcomm_proof_request_url = "didcomm://launch?c_i=" + encoded_proof_request;
+                    state.proof_request_url = `${config.acapy_service_endpoint}/?c_i=${encoded_proof_request}`;
+                    state.didcomm_proof_request_url = `didcomm://launch?c_i=${encoded_proof_request}`;
                     state.hash_of_url = md5.create().update(state.proof_request_url).hex();
                     state.shortened_request_url = shortenUrl(state.proof_request_url, state.hash_of_url)
                 }
@@ -93,7 +89,7 @@
         }, 200)
 
         const shortenUrl = async(url, hash) => {
-            axios.get(`http://185.237.14.115:8080/yourls-api.php?signature=${config.api_token_yourls}&action=shorturl&url=${encodeURIComponent(url)}&format=json&keyword=${hash}`)
+            axios.get(`${config.yourls_api}/yourls-api.php?signature=${config.yourls_api_token}&action=shorturl&url=${encodeURIComponent(url)}&format=json&keyword=${hash}`)
             .then(response => {
                 if(response.status === 200) {
                     state.shortened_request_url = response.data.shorturl

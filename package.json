@@ -24,6 +24,8 @@
     "pinia": "^2.1.7",
     "qrcode.vue": "^3.4.1",
     "sha3": "^2.1.4",
+    "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
     "vue": "^3.3.4",
     "vue-i18n": "^9.6.2",
     "vue-router": "^4.2.5",

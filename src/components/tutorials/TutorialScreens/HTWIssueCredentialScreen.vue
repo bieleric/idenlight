@@ -3,6 +3,7 @@
     import { reactive } from 'vue';
     import { useI18n } from 'vue-i18n';
     import { useSSIStore } from '../../../stores/ssiStore';
+    import config from '../../../../config.json'
 
     const { t } = useI18n();
     const ssiStore = useSSIStore();
@@ -38,8 +39,7 @@
         }
         else {
             setTimeout(() => {
-                axios.post("http://185.237.14.115:11000/issue-credential/send", {
-                //axios.post("http://127.0.0.1:11000/issue-credential/send", {
+                axios.post(`${config.acapy_api}/issue-credential/send`, {
                     "auto_remove": true,
                     "comment": "Dein digitales Abschlusszeugnis",
                     "connection_id": ssiStore.getConnectionID,
@@ -86,7 +86,7 @@
                     },
                     "issuer_did": ssiStore.getIssuerDID,
                     "schema_id": ssiStore.getCredentialSchemaID,
-                    "schema_issuer_did": ssiStore.getIssuerDID,
+                    "schema_issuer_did": ssiStore.getSchemaIssuerDID,
                     "schema_name": ssiStore.getSchemaName,
                     "schema_version": "1.0",
                     "trace": true

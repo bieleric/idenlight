@@ -4,6 +4,7 @@
     import QrcodeVue from 'qrcode.vue'
     import { useSSIStore } from '../../../stores/ssiStore';
     import { useI18n } from 'vue-i18n';
+    import config from '../../../../config.json'
 
     const { t } = useI18n();
     const ssiStore = useSSIStore();
@@ -18,9 +19,9 @@
 
     const createInvitation = () => {
         setTimeout(() => {
-            axios.post("http://185.237.14.115:11000/connections/create-invitation", {
+            axios.post(`${config.acapy_api}/connections/create-invitation`, {
                 "my_label": "HTW Dresden",
-                "service_endpoint": "http://185.237.14.115:8000/"
+                "service_endpoint": config.acapy_service_endpoint
                 //"service_endpoint": "https://0b3e-2-206-28-54.ngrok-free.app/"
             })
             .then(response => {
