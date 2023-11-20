@@ -1,11 +1,11 @@
 <script setup>
     import axios from 'axios'
     import { reactive } from 'vue';
-    import { useSSIStore } from '../../../stores/ssiStore';
+    import { useSSIStore } from '../../../../stores/ssiStore';
     import QrcodeVue from 'qrcode.vue';
     import { md5 } from 'js-md5';
     import { useI18n } from 'vue-i18n';
-    import config from '../../../../config.json'
+    import config from '../../../../../config.json'
 
 
     const { t } = useI18n();

@@ -1,8 +1,8 @@
 <script setup>
-    import { useTutorialStore } from '../../stores/tutorialStore';
+    import { useTutorialStore } from '../../../stores/tutorialStore';
     import { useI18n } from 'vue-i18n';
-    import HTWIssueCredentialScreen from './TutorialScreens/HTWIssueCredentialScreen.vue';
-    import HTWCreateConnectionScreen from './TutorialScreens/HTWCreateConnectionScreen.vue';
+    import HTWIssueCredentialScreen from './TutorialComponents/HTWIssueCredentialScreen.vue';
+    import HTWCreateConnectionScreen from './TutorialComponents/HTWCreateConnectionScreen.vue';
 
     const { t } = useI18n();
     const tutorialStore = useTutorialStore();

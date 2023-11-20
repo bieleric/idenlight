@@ -2,9 +2,9 @@
     import axios from 'axios'
     import { reactive } from 'vue';
     import QrcodeVue from 'qrcode.vue'
-    import { useSSIStore } from '../../../stores/ssiStore';
+    import { useSSIStore } from '../../../../stores/ssiStore';
     import { useI18n } from 'vue-i18n';
-    import config from '../../../../config.json'
+    import config from '../../../../../config.json'
 
     const { t } = useI18n();
     const ssiStore = useSSIStore();

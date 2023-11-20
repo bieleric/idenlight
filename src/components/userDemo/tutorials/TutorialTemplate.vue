@@ -1,12 +1,12 @@
 <script setup>
     import { useI18n } from 'vue-i18n';
-    import { useUserNavigationStore } from '../../stores/userNavigationStore';
-    import { useTutorialStore } from '../../stores/tutorialStore';
+    import { useUserNavigationStore } from '../../../stores/userNavigationStore';
+    import { useTutorialStore } from '../../../stores/tutorialStore';
     import TutorialRoleTemplate from './TutorialRoleTemplate.vue';
     import TutorialInstructionTemplate from './TutorialInstructionTemplate.vue';
-    import HTWDresdenTemplate from './HTWDresdenTemplate.vue';
-    import PhoneAcceptCredentialScreen from './TutorialScreens/PhoneAcceptCredentialScreen.vue';
-    import EmployerTemplate from './EmployerTemplate.vue';
+    import HTWDresdenWebsiteTemplate from './HTWDresdenWebsiteTemplate.vue';
+    import PhoneAcceptCredentialScreen from './TutorialComponents/PhoneAcceptCredentialScreen.vue';
+    import EmployerWebsiteTemplate from './EmployerWebsiteTemplate.vue';
 
     const { t } = useI18n();
     const userNavigationStore = useUserNavigationStore();
@@ -58,8 +58,8 @@
         </div>
         <TutorialRoleTemplate v-if="tutorialStore.getCurrentStep===1" />
         <TutorialInstructionTemplate v-if="tutorialStore.getCurrentStep===2" />
-        <HTWDresdenTemplate v-if="tutorialStore.getCurrentStep===3 && (tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName || tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName)" />
-        <EmployerTemplate v-if="(tutorialStore.getCurrentStep===3 || tutorialStore.getCurrentStep===6) && tutorialStore.getCurrentTutorial===tutorialStore.getPresentTutorialName" />
+        <HTWDresdenWebsiteTemplate v-if="tutorialStore.getCurrentStep===3 && (tutorialStore.getCurrentTutorial===tutorialStore.getConnectionTutorialName || tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName)" />
+        <EmployerWebsiteTemplate v-if="(tutorialStore.getCurrentStep===3 || tutorialStore.getCurrentStep===6) && tutorialStore.getCurrentTutorial===tutorialStore.getPresentTutorialName" />
         <TutorialRoleTemplate v-if="tutorialStore.getCurrentStep===4 && (tutorialStore.getCurrentTutorial===tutorialStore.getPresentTutorialName || tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName)" />
         <TutorialInstructionTemplate v-if="tutorialStore.getCurrentStep===5" />
         <PhoneAcceptCredentialScreen v-if="tutorialStore.getCurrentStep===6 && tutorialStore.getCurrentTutorial===tutorialStore.getIssueTutorialName" />

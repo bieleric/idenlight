@@ -3,7 +3,7 @@
   import NavigationButtons from '../components/NavigationButtons.vue';
   import DemoLessonTemplate from '../components/DemoLessonTemplate.vue';
   import { useUserNavigationStore } from '../stores/userNavigationStore';
-  import TutorialTemplate from '../components/tutorials/TutorialTemplate.vue';
+  import TutorialTemplate from '../components/userDemo/tutorials/TutorialTemplate.vue';
 
   const userNavigationStore = useUserNavigationStore();
 </script>

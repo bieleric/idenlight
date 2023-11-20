@@ -2,8 +2,8 @@
     import axios from 'axios';
     import { reactive } from 'vue';
     import { useI18n } from 'vue-i18n';
-    import { useSSIStore } from '../../../stores/ssiStore';
-    import config from '../../../../config.json'
+    import { useSSIStore } from '../../../../stores/ssiStore';
+    import config from '../../../../../config.json'
 
     const { t } = useI18n();
     const ssiStore = useSSIStore();

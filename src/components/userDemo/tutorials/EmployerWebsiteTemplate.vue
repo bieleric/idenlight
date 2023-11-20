@@ -1,8 +1,8 @@
 <script setup>
-    import { useTutorialStore } from '../../stores/tutorialStore';
+    import { useTutorialStore } from '../../../stores/tutorialStore';
     import { useI18n } from 'vue-i18n';
-    import EmployerPresentScreen from './TutorialScreens/EmployerPresentScreen.vue';
-    import EmployerVerifyScreen from './TutorialScreens/EmployerVerifyScreen.vue';
+    import EmployerPresentScreen from './TutorialComponents/EmployerPresentScreen.vue';
+    import EmployerVerifyScreen from './TutorialComponents/EmployerVerifyScreen.vue';
 
     const { t } = useI18n();
     const tutorialStore = useTutorialStore();

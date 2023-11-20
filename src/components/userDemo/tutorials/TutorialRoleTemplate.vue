@@ -1,6 +1,6 @@
 <script setup>
     import { useI18n } from 'vue-i18n';
-    import { useTutorialStore } from '../../stores/tutorialStore';
+    import { useTutorialStore } from '../../../stores/tutorialStore';
 
     const { t } = useI18n();
     const tutorialStore = useTutorialStore();  
