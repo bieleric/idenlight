@@ -41,7 +41,6 @@ export const useUserDemoStore = defineStore('userDemoStore', {
     resetCurrentStep() {
         this.currentStep = 0; 
         this.descriptionActive = true;
-        this.showRole = false;
         this.tutorial = false;
         this.showNavigationButtons = true;
     }

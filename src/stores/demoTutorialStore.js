@@ -40,22 +40,22 @@ export const useDemoTutorialStore = defineStore('demoTutorialStore', {
     },
     actions: {
         incrementConnectionTutorial() {
-            if(this.currentStep <= this.connectionTutorialSteps) {
+            if(this.currentStep < this.connectionTutorialSteps) {
               this.currentStep++;
             }
         },
         incrementIssueTutorial() {
-          if(this.currentStep <= this.issueTutorialSteps) {
+          if(this.currentStep < this.issueTutorialSteps) {
             this.currentStep++;
           }
         },
         incrementPresentTutorial() {
-          if(this.currentStep <= this.presentTutorialSteps) {
+          if(this.currentStep < this.presentTutorialSteps) {
             this.currentStep++;
           }
         },
         decrement() {
-            if(this.currentStep >= 1) {
+            if(this.currentStep > 1) {
               this.currentStep--;
             }  
         },

@@ -13,7 +13,7 @@
     import IssuanceAnimation from './animations/IssuanceAnimation.vue';
     import PresentProofScreen from './userDemo/PresentProofScreen.vue';
     import PresentProofAnimation from './animations/PresentProofAnimation.vue';
-import SummaryScreen from './userDemo/SummaryScreen.vue';
+    import SummaryScreen from './userDemo/SummaryScreen.vue';
 
     const { t } = useI18n();
     const userDemoStore = useUserDemoStore();
@@ -30,13 +30,9 @@ import SummaryScreen from './userDemo/SummaryScreen.vue';
     const switchBox = (box) => {
         if(box === "description") {
             userDemoStore.toggleDescription(true);
-            document.getElementById("description-tab").classList.add("active-tab");
-            document.getElementById("graphic-tab").classList.remove("active-tab");
         }
         else if(box === "graphic"){
             userDemoStore.toggleDescription(false);
-            document.getElementById("graphic-tab").classList.add("active-tab");
-            document.getElementById("description-tab").classList.remove("active-tab");
         }
     };
 
@@ -51,10 +47,10 @@ import SummaryScreen from './userDemo/SummaryScreen.vue';
     <div class="lesson col-12 mx-auto d-flex flex-lg-row flex-column">
         <ul v-if="userDemoStore.getTabMode" class="lesson-tabs nav nav-tabs">
             <li @click="switchBox('description')" class="lesson-tab-item nav-item">
-                <a id="description-tab" class="lesson-tab-item-link nav-link active-tab">{{ t("steps.general.description") }}</a>
+                <a id="description-tab" :class="{'lesson-tab-item-link nav-link': true, 'active-tab': userDemoStore.getDescriptionActive}">{{ t("steps.general.description") }}</a>
             </li>
             <li @click="switchBox('graphic')" class="lesson-tab-item nav-item">
-                <a id="graphic-tab" class="lesson-tab-item-link nav-link">{{ t("steps.general.graphic") }}</a>
+                <a id="graphic-tab" :class="{'lesson-tab-item-link nav-link': true, 'active-tab': !userDemoStore.getDescriptionActive}">{{ t("steps.general.graphic") }}</a>
             </li>
         </ul>
         <div v-if="!userDemoStore.getTabMode || (userDemoStore.getTabMode && userDemoStore.getDescriptionActive)" class="text-box d-flex flex-column col-lg-7 col-12 mx-auto bg-color-secondary text-light">
@@ -76,4 +72,4 @@ import SummaryScreen from './userDemo/SummaryScreen.vue';
             <TrustTriangleAnimation v-if="userDemoStore.getCurrentStep===6" />
         </div>
     </div>
-</template>../stores/userDemoStore
+</template>

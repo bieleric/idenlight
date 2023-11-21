@@ -24,7 +24,7 @@
             <RouterLink v-if="focusStore.getUserActive" to="/demoUser">
                 <div @click="resetSteps" class="navigation-button btn button-primary"><font-awesome-icon icon="chevron-right" /></div>
             </RouterLink>
-            <RouterLink v-else to="/demoDeveloper">
+            <RouterLink v-else to="/">
                 <div class="navigation-button btn button-primary"><font-awesome-icon icon="chevron-right" /></div>
             </RouterLink>
         </div>
