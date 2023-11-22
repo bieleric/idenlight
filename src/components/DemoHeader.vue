@@ -13,4 +13,4 @@
         </div>
         <StepProgress class="col-12 col-md-9" :steps="userDemoStore.getSteps" :current-step="userDemoStore.getCurrentStep" icon-class="fa fa-check"></StepProgress>  
     </div>
-</template>../stores/userDemoStore
+</template>

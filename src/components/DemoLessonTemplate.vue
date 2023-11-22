@@ -18,15 +18,6 @@
     const { t } = useI18n();
     const userDemoStore = useUserDemoStore();
 
-    window.addEventListener("resize", () => {
-        if(window.innerWidth < 992) {
-            userDemoStore.setTabMode(true)
-        }
-        else {
-            userDemoStore.setTabMode(false)
-        }
-    });
-
     const switchBox = (box) => {
         if(box === "description") {
             userDemoStore.toggleDescription(true);
@@ -40,11 +31,20 @@
         if(window.innerWidth < 992) {
             userDemoStore.setTabMode(true);
         }
+
+        window.addEventListener("resize", () => {
+            if(window.innerWidth < 992) {
+                userDemoStore.setTabMode(true)
+            }
+            else {
+                userDemoStore.setTabMode(false)
+            }
+        });
     });
 </script>
 
 <template>
-    <div class="lesson col-12 mx-auto d-flex flex-lg-row flex-column">
+    <div class="lesson col-12 mx-auto d-flex flex-lg-row flex-column" data-type="lessonContainer">
         <ul v-if="userDemoStore.getTabMode" class="lesson-tabs nav nav-tabs">
             <li @click="switchBox('description')" class="lesson-tab-item nav-item">
                 <a id="description-tab" :class="{'lesson-tab-item-link nav-link': true, 'active-tab': userDemoStore.getDescriptionActive}">{{ t("steps.general.description") }}</a>

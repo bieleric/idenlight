@@ -28,7 +28,7 @@ describe("FocusButtons.vue", () => {
         })
     })
     
-    test("Mount FocusButtons Component", () => {
+    test("Mount Focus Buttons Component", () => {
         expect(wrapper.props().user_title).toBe("Anwender")
         expect(wrapper.props().developer_title).toBe("Entwickler"); 
         expect(wrapper.find("#focus-user").exists()).toBe(true); 
