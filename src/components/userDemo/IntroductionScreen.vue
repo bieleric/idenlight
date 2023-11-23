@@ -11,12 +11,7 @@
     })
 
     onMounted(() => {
-        if(lessonTextContainer.value.scrollHeight > lessonTextContainer.value.clientHeight) {
-            state.showScrollHint = true;
-        }
-        else {
-            state.showScrollHint = false;
-        }
+        state.showScrollHint = lessonTextContainer.value.scrollHeight > lessonTextContainer.value.clientHeight ? true : false;
 
         lessonTextContainer.value.addEventListener("scroll", () => {
             state.showScrollHint = false;
