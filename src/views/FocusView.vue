@@ -10,6 +10,8 @@
     const userDemoStore = useUserDemoStore();
     const demoTutorialStore = useDemoTutorialStore();
 
+    focusStore.toggleUserActive(true);
+
     const resetSteps = () => {
         userDemoStore.resetCurrentStep();
         demoTutorialStore.restartTutorial();
@@ -29,4 +31,4 @@
             </RouterLink>
         </div>
     </div>
-</template>../stores/demoTutorialStore../stores/userDemoStore
+</template>
