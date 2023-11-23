@@ -50,20 +50,20 @@
 </script>
 
 <template>
-    <div class="tutorial">
+    <div class="tutorial" data-type="tutorialContainer">
         <div class="tutorial-header mb-3 text-light font-italic text-center font-light">
-            <div @click="decrement" v-if="demoTutorialStore.getCurrentStep!==1" class="btn button-outline-secondary">
+            <div @click="decrement" v-if="demoTutorialStore.getCurrentStep!==1" class="btn button-outline-secondary" data-type="decrementButton">
                 <font-awesome-icon class="tutorial-navigation font-large" icon="chevron-left" />
             </div>
-            <div class="tutorial-title">
+            <div class="tutorial-title" data-type="tutorialTitle">
                 <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getConnectionTutorialName" class="font-italic">{{ t("tutorial.create_connection.title") }}</span>
                 <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" class="font-italic">{{ t("tutorial.issue_credential.title") }}</span>
                 <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getPresentTutorialName" class="font-italic">{{ t("tutorial.present_proof.title") }}</span>
             </div>
-            <div @click="increment" v-if="demoTutorialStore.getCurrentStep!==demoTutorialStore.getCurrentTutorialSteps" :class="{  'pulse-animation': classObject.firstStep, 'btn button-secondary': true}">
+            <div @click="increment" v-if="demoTutorialStore.getCurrentStep!==demoTutorialStore.getCurrentTutorialSteps" :class="{  'pulse-animation': classObject.firstStep, 'btn button-secondary': true}" data-type="incrementButton">
                 <font-awesome-icon class="tutorial-navigation font-large" icon="chevron-right" />
             </div>
-            <div @click="finishTutorial" v-if="demoTutorialStore.getCurrentStep===demoTutorialStore.getCurrentTutorialSteps" class="btn button-secondary">
+            <div @click="finishTutorial" v-if="demoTutorialStore.getCurrentStep===demoTutorialStore.getCurrentTutorialSteps" class="btn button-secondary" data-type="closeButton">
                 <font-awesome-icon class="tutorial-navigation font-large" icon="xmark" />
             </div>
         </div>

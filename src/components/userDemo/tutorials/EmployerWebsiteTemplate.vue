@@ -10,14 +10,14 @@
 
 
 <template>
-    <div class="employer-website bg-light">
+    <div class="employer-website bg-light" data-type="employerWebsite">
         <div class="p-2 bg-color-brown text-light text-uppercase font-large d-flex justify-content-center">
             {{ t("tutorial.employer_website.applicant_portal") }}
         </div>
         <div class="d-flex justify-content-center bg-color-beige">
             <img src="/employer_banner.png" style="max-height: 75px; max-width: 100%;">
         </div>
-        <EmployerPresentScreen v-if="demoTutorialStore.currentStep===3" />
-        <EmployerVerifyScreen v-if="demoTutorialStore.currentStep===6" />
+        <EmployerPresentScreen v-if="demoTutorialStore.currentStep===3" data-type="presentScreen"/>
+        <EmployerVerifyScreen v-if="demoTutorialStore.currentStep===6" data-type="verifyScreen"/>
     </div>
 </template>

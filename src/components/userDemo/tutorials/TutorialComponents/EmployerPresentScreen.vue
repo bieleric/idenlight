@@ -1,6 +1,6 @@
 <script setup>
     import axios from 'axios'
-    import { reactive } from 'vue';
+    import { ref, onMounted, reactive } from 'vue';
     import { useSSIStore } from '../../../../stores/ssiStore';
     import QrcodeVue from 'qrcode.vue';
     import { md5 } from 'js-md5';
@@ -10,6 +10,7 @@
 
     const { t } = useI18n();
     const ssiStore = useSSIStore();
+    const employerWebsite = ref(null);
 
     const state = reactive({
         proof_request: null,
@@ -19,9 +20,6 @@
         hash_of_url: "",
         size: 280
     });
-
-    const websiteWidth = document.getElementById("content").offsetWidth;
-    state.size = websiteWidth < 500 ? websiteWidth - (websiteWidth * 0.4) : 280;
 
     const createPresentationRequest = () => {
         setTimeout(() => {
@@ -101,13 +99,18 @@
         }
     }
 
-    createPresentationRequest();
+    onMounted(() => {
+        const websiteWidth = employerWebsite.value.offsetWidth;
+        state.size = websiteWidth < 500 ? websiteWidth - (websiteWidth * 0.4) : 280;
+
+        createPresentationRequest();
+    })
 
 </script>
 
 
 <template>
-    <div class="employer-website-body p-4">
+    <div ref="employerWebsite" class="employer-website-body p-4" data-type="employerWebsiteContainer">
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
@@ -134,7 +137,7 @@
                 <div id="collapseThree" class="accordion-collapse p-4" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                     <div class="d-flex justify-content-center flex-column">
                         <div><a :href=state.didcomm_proof_request_url>{{ t("tutorial.employer_website.present_digital_diploma") }}</a></div>
-                        <QrcodeVue class="mx-auto mt-3" :value=state.shortened_request_url :size=state.size level="H"/>
+                        <QrcodeVue class="mx-auto mt-3" :value=state.shortened_request_url :size=state.size level="H" data-type="presentQRCode" />
                     </div>
                 </div>
             </div>

@@ -30,7 +30,7 @@
 
 
 <template>
-    <div class="employer-website-body p-4">
+    <div class="employer-website-body p-4" data-type="employerWebsiteContainer">
         <div v-if="state.showSpinner" class="spinner-container d-flex flex-column justify-items-center align-items-center">
             <div class="spinner-border text-brown" role="status"></div>
             <div>
@@ -40,7 +40,7 @@
         </div>
         <div class="title font-large mb-4">{{ t("tutorial.employer_website.applicants") }}</div>
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" data-type="verifyCard">
                 <h5 class="card-title">{{ t("tutorial.employer_website.applicant") }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{ t("tutorial.employer_website.diploma") }}</h6>
                 <p class="card-text">

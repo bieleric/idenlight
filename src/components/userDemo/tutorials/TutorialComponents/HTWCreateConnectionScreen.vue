@@ -1,6 +1,6 @@
 <script setup>
     import axios from 'axios'
-    import { reactive } from 'vue';
+    import { ref, reactive, onMounted } from 'vue';
     import QrcodeVue from 'qrcode.vue'
     import { useSSIStore } from '../../../../stores/ssiStore';
     import { useI18n } from 'vue-i18n';
@@ -8,14 +8,12 @@
 
     const { t } = useI18n();
     const ssiStore = useSSIStore();
+    const connectionContainer = ref(null);
 
     const state = reactive({
         invitation_url: "",
         size: 280,
     })
-
-    const websiteWidth = document.getElementById("content").offsetWidth;
-    state.size = websiteWidth < 500 ? websiteWidth - (websiteWidth * 0.2) : 280;
 
     const createInvitation = () => {
         setTimeout(() => {
@@ -39,15 +37,19 @@
         }, 200)
     }
 
-    createInvitation();
-    
+    onMounted(() => {
+        const websiteWidth = connectionContainer.value.offsetWidth;
+        state.size = websiteWidth < 500 ? websiteWidth - (websiteWidth * 0.2) : 280;
+
+        createInvitation();
+    })
 </script>
 
 
 <template>
-    <div>
+    <div ref="connectionContainer" class="w-100" data-type="HTWCreateConnectionContainer">
         <div class="font-large mb-3">{{ t("tutorial.htw_website.create_connection") }}</div>
         <div class="mb-3"><a :href="state.invitation_url">{{ t("tutorial.htw_website.create_connection") }}</a></div>
-        <div class="d-flex justify-content-center"><QrcodeVue class="mx-auto" :value="state.invitation_url" :size="state.size" level="H"/></div>
+        <div class="d-flex justify-content-center"><QrcodeVue class="mx-auto" :value="state.invitation_url" :size="state.size" level="H" data-type="ConnectionQRCode" /></div>
     </div>
 </template>

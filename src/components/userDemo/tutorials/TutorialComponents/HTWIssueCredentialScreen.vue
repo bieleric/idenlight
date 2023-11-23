@@ -106,7 +106,7 @@
 </script>
 
 <template>
-    <div>
+    <div data-type="issueCredentialContainer">
         <div v-if="state.showSpinner" class="spinner-container d-flex flex-column justify-items-center align-items-center">
             <div class="spinner-border text-orange" role="status"></div>
             <div>
@@ -115,7 +115,7 @@
             </div>
         </div>
         <div class="font-large mb-3">{{ t("tutorial.htw_website.issue_credential") }}</div>
-        <div class="row ">
+        <div class="row" data-type="issueCredentialForm">
             <div class="form-group col-md-10">
                 <label for="inputName">{{ t("tutorial.htw_website.name") }}</label>
                 <input type="text" class="form-control" id="inputName" :value="state.values[0]" disabled>
@@ -141,6 +141,6 @@
                 <input type="text" class="form-control" id="inputGrade" :value="state.values[5]" disabled>
             </div>
         </div>
-        <button @click="issueCredential" class="btn htw-button mt-3">{{ t("tutorial.htw_website.issue_digital_diploma") }}</button>
+        <button @click="issueCredential" class="btn htw-button mt-3" data-type="issueCredentialButton">{{ t("tutorial.htw_website.issue_digital_diploma") }}</button>
     </div>
 </template>

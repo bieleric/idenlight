@@ -10,7 +10,7 @@
 
 
 <template>
-    <div class="htw-website bg-light">
+    <div class="htw-website bg-light" data-type="HTWWebsite">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">
                 <img src="/htw-dresden-logo.png" style="height:30px" class="d-inline-block align-top" alt="">
@@ -44,8 +44,8 @@
             </ol>
         </nav>
         <div class="htw-body p-4">
-            <HTWCreateConnectionScreen v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getConnectionTutorialName" />
-            <HTWIssueCredentialScreen v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" />
+            <HTWCreateConnectionScreen v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getConnectionTutorialName" data-type="HTWCreateConnectionScreen"/>
+            <HTWIssueCredentialScreen v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" data-type="HTWIssueCredentialScreen"/>
         </div>
     </div>
 </template>
