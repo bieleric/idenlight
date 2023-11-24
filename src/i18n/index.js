@@ -70,7 +70,7 @@ const messages = {
                 title: "Nachweis vorzeigen & überprüfen",
                 paragraph1: "Nachdem wir der Absolvent das digitale Abschlusszeugnis erhalten hat, kann dieses nun bei einem Bewerbungsprozess genutzt werden.",
                 paragraph2: "Dazu prüft der Arbeitgeber die digitale Unterschrift der HTW Dresden auf dem Abschlusszeugnis des Absolventen.",
-                paragraph3: "Hinweis: Diesmal wird keine Verbindung zwischen dem Arbeitgeber und dem Absolventen für die Übermittlung des Nachweises hergestellt. Dies demonstriert, dass digitale Nachweise auf Basis einer Verbindung ausgestellt und vorgezeigt werden können aber nicht zwingend müssen."
+                paragraph3: "Hinweis: Es wird vorerst wieder eine Verbindung zwischen dem Absolvent und dem Arbeitgeber hergestellt."
             },
             summary: {
                 title: "Zusammenfassung",
@@ -116,7 +116,7 @@ const messages = {
         },
         present_proof: {
             title: "Tutorial: Nachweis vorzeigen & überprüfen",
-            instruction1: "Sie befinden sich jetzt auf dem Bewerberportal des Arbeitgebers. Scannen Sie den bereitgestellten QR-Code (oder klicken Sie auf den Link), um die benötigten Daten zu übermitteln. Achten Sie darauf, dass nicht alle Daten des Abschlusszeugnisses übermittelt werden, sondern nur die, die der Arbeitgeber wirklich benötigt. Sie können dem zustimmen oder nicht.",
+            instruction1: "Sie befinden sich jetzt auf dem Bewerberportal des Arbeitgebers. Scannen Sie den bereitgestellten QR-Code (oder klicken Sie auf den Link), um wiederum den Kontakt zum Arbeitgeber herzustellen. Klicken Sie daraufhin auf den Button 'Digitales Abschlusszeugnis vorzeigen'. Achten Sie darauf, dass nicht alle Daten des Abschlusszeugnisses übermittelt werden, sondern nur die, die der Arbeitgeber wirklich benötigt. Sie können dem zustimmen oder nicht.",
             instruction2: "Sie sind nun in der Webanwendung des Arbeitgebers und können die eingereichten digitalen Abschlusszeugnisse der Absolventen einsehen."
         },
         employer_website: {
@@ -124,6 +124,7 @@ const messages = {
             cv: "Lebenslauf",
             digital_diploma: "Digitales Abschlusszeugnis",
             present_digital_diploma: "Digitales Abschlusszeugnis vorzeigen",
+            create_connection: "Kontakt herstellen",
             load_data: "Lade Daten",
             check_signature: "Prüfe Unterschriften",
             applicants: "Bewerber:innen",

@@ -267,6 +267,12 @@
   overflow-y: scroll;
 }
 
+.employer-button {
+  background-color: var(--brown) !important;
+  border-color: var(--brown) !important;
+  color: var(--white) !important;
+}
+
 .spinner-container {
   position: fixed;
   top: 50%;
@@ -422,4 +428,8 @@
 
 .text-brown {
   color: var(--brown) !important;
+}
+
+.text-white {
+  color: var(--white) !important;
 }

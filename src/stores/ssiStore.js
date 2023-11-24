@@ -3,7 +3,8 @@ import { defineStore } from 'pinia'
 export const useSSIStore = defineStore('ssiStore', {
     state: () => ({
         connectionID: "",
-        credentialDefinitionID: "CzrQJjwXxFNitzCuiWAWT2:3:CL:102506:Abschlusszeugnis",
+        connectionIDForEmployer: "",
+        credentialDefinitionID: "CzrQJjwXxFNitzCuiWAWT2:3:CL:102506:Hochschulzeugnis",
         credentialSchemaID: "PLEVLDPJQMJvPLyX3LgB6S:2:Abschlusszeugnis:1.0",
         schemaIssuerDID: "PLEVLDPJQMJvPLyX3LgB6S",
         issuerDID: "CzrQJjwXxFNitzCuiWAWT2",
@@ -12,6 +13,7 @@ export const useSSIStore = defineStore('ssiStore', {
     }),
     getters: {
         getConnectionID: (state) => state.connectionID,
+        getConnectionIDForEmployer: (state) => state.connectionIDForEmployer,
         getCredentialDefinitionID: (state) => state.credentialDefinitionID,
         getCredentialSchemaID: (state) => state.credentialSchemaID,
         getSchemaIssuerDID: (state) => state.schemaIssuerDID,
@@ -22,6 +24,9 @@ export const useSSIStore = defineStore('ssiStore', {
     actions: {
         setConnectionID(connectionID) {
             this.connectionID = connectionID
+        },
+        setConnectionIDForEmployer(connectionID) {
+            this.connectionIDForEmployer = connectionID
         }
     }
 })

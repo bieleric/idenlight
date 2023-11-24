@@ -14,7 +14,7 @@
         showLoadingText: true,
         showCalculationText: false,
         values: ["","","","","",""],
-        creating: true
+        showLoadingOnButton: false
     });
 
     setTimeout(() => {
@@ -34,6 +34,7 @@
     }, 4000)
 
     const issueCredential = () => {
+        state.showLoadingOnButton = true;
         setTimeout(() => {
             axios.post(`${config.acapy_api}/issue-credential/send`, {
                 "auto_remove": true,
@@ -89,17 +90,16 @@
             })
             .then(response => {
                 if(response.status === 200 && response.statusText === "OK") {
-                    state.creating = false
-                    
+                    state.showLoadingOnButton = false
                 }
                 else {
-                    state.creating = false
+                    state.showLoadingOnButton = false
                     
                 }
             })
             .catch(e => {
                 console.log(e)
-                state.creating = false
+                state.showLoadingOnButton = false
             })
         }, 200)
     }
@@ -141,6 +141,9 @@
                 <input type="text" class="form-control" id="inputGrade" :value="state.values[5]" disabled>
             </div>
         </div>
-        <button @click="issueCredential" class="btn htw-button mt-3" data-type="issueCredentialButton">{{ t("tutorial.htw_website.issue_digital_diploma") }}</button>
+        <button @click="issueCredential" class="btn htw-button mt-3" data-type="issueCredentialButton">
+            <span v-if="!state.showLoadingOnButton">{{ t("tutorial.htw_website.issue_digital_diploma") }}</span>
+            <span v-if="state.showLoadingOnButton" class="spinner-border text-white" role="status"></span>
+        </button>
     </div>
 </template>
