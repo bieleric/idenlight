@@ -4,6 +4,9 @@
   import DemoLessonTemplate from '../components/DemoLessonTemplate.vue';
   import { useUserDemoStore } from '../stores/userDemoStore';
   import TutorialTemplate from '../components/userDemo/tutorials/TutorialTemplate.vue';
+  import { socket } from '../services/socketService'
+
+  socket.connect();
 
   const userDemoStore = useUserDemoStore();
 </script>

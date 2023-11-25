@@ -1,8 +1,10 @@
 <script setup>
     import { reactive } from 'vue';
     import { useI18n } from 'vue-i18n';
+    import { useWebhookStore } from '../../../../stores/webhookStore';
 
     const { t } = useI18n();
+    const webhookStore = useWebhookStore();
 
     const state = reactive({
         showOverlay: true,
@@ -45,12 +47,15 @@
                 <h6 class="card-subtitle mb-2 text-muted">{{ t("tutorial.employer_website.diploma") }}</h6>
                 <p class="card-text">
                     <ul>
-                        <li>{{ t("tutorial.employer_website.course") }}: <i v-if="!state.showLoadingText">{{ state.values[0] }}</i></li>
-                        <li>{{ t("tutorial.employer_website.degree") }}: <i v-if="!state.showLoadingText">{{ state.values[1] }}</i></li>
-                        <li>{{ t("tutorial.employer_website.grade") }}: <i v-if="!state.showLoadingText">{{ state.values[2] }}</i></li>
+                        <li>{{ t("tutorial.employer_website.course") }}: <i v-if="!state.showLoadingText && webhookStore.getPresentationStatusVerified">{{ state.values[0] }}</i></li>
+                        <li>{{ t("tutorial.employer_website.degree") }}: <i v-if="!state.showLoadingText && webhookStore.getPresentationStatusVerified">{{ state.values[1] }}</i></li>
+                        <li>{{ t("tutorial.employer_website.grade") }}: <i v-if="!state.showLoadingText && webhookStore.getPresentationStatusVerified">{{ state.values[2] }}</i></li>
                     </ul>
                 </p>
-                <p>{{ t("tutorial.employer_website.verified") }}: <font-awesome-icon v-if="!state.showVerifyText" class="text-green" icon="check" /></p>
+                <p>{{ t("tutorial.employer_website.verified") }}: 
+                    <font-awesome-icon v-if="!state.showVerifyText && webhookStore.getPresentationStatusVerified" class="text-green" icon="check" />
+                    <font-awesome-icon v-else class="text-red" icon="xmark" />
+                </p>
                 <a href="#" class="card-link">{{ t("tutorial.employer_website.cover_letter") }}</a>
                 <a href="#" class="card-link">{{ t("tutorial.employer_website.cv") }}</a>
             </div>

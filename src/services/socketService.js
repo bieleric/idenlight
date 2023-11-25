@@ -1,48 +1,48 @@
-import { reactive } from "vue"
 import { io } from 'socket.io-client'
 import config from '../../config.json'
+import { useWebhookStore } from "../stores/webhookStore"
+import { createPresentationRequest } from './acapyRequests'
 
-
-export const state = reactive({
-    connected: false,
-    invitationStatus: [],
-})
 
 export const socket = io(config.webhook_service)
+const webhookStore = useWebhookStore();
 
 socket.on("connect", function() {
-    /* console.log("connected")
-    const sessionID = this.id
-    console.log(sessionID) */
+
 })
 
-/* socket.on("reconnect", function() {
-    console.log("reconnected")
-    const sessionID = this.id
-    console.log(sessionID)
+socket.on("reconnect", function() {
+
 })
   
 socket.on("disconnect", () => {
-    console.log("disconnected")
+
 })
 
-socket.on("invitationStatus", (message) => {
-    if(message === "active") {
-        console.log("active")
+socket.on("connection_status", (message) => {
+    if(message.state === "active" && webhookStore.getConnectionIDForHTW === message.connection_id) {
+        webhookStore.setConnectionStatusWithHTWActive();
     }
-})
-
-socket.on("issuanceStatus", (message) => {
-    if(message === "offer_sent") {
-        console.log("offered")
-    }
-    else if(message === "credential_issued") {
-        console.log("issued")
+    else if(message.state === "active" && webhookStore.getConnectionIDForEmployer === message.connection_id) {
+        webhookStore.setConnectionStatusWithEmployerActive();
+        createPresentationRequest();
     }
 })
 
-socket.on("presentationStatus", (message) => {
-    if(message === "verified") {
-        console.log("verified")
+socket.on("issuance_status", (message) => {
+    if(message.state === "offer_sent" && webhookStore.getConnectionIDForHTW === message.connection_id) {
+        webhookStore.setIssuanceStatusOffered();
     }
-}) */
+    else if(message.state === "credential_issued" && webhookStore.getConnectionIDForHTW === message.connection_id) {
+        webhookStore.setIssuanceStatusIssued();
+        webhookStore.setRevocation(message);
+    }
+})
+
+socket.on("presentation_status", (message) => {
+    if(message.state === "verified" && webhookStore.getConnectionIDForEmployer === message.connection_id) {
+        if(message.verified) {
+            webhookStore.setPresentationStatusVerified();
+        }
+    }
+})

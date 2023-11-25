@@ -107,7 +107,7 @@ const messages = {
         },
         create_connection: {
             title: "Tutorial: Kontakt herstellen",
-            instruction: "Die HTW Dresden stellt Ihnen auf ihrer Website einen QR-Code bereit. Scannen Sie diesen mit Ihrer digitalen Wallet, um einen Kontakt herzustellen."
+            instruction: "Die HTW Dresden stellt Ihnen auf ihrer Website einen QR-Code bereit. Scannen Sie diesen mit Ihrer digitalen Wallet, um einen Kontakt herzustellen. (Falls sich Ihre Wallet-App auf dem gleichen Gerät befindet, klicken Sie auf den Link)"
         },
         issue_credential: {
             title: "Tutorial: Nachweis ausstellen & annehmen",
@@ -116,8 +116,8 @@ const messages = {
         },
         present_proof: {
             title: "Tutorial: Nachweis vorzeigen & überprüfen",
-            instruction1: "Sie befinden sich jetzt auf dem Bewerberportal des Arbeitgebers. Scannen Sie den bereitgestellten QR-Code (oder klicken Sie auf den Link), um wiederum den Kontakt zum Arbeitgeber herzustellen. Klicken Sie daraufhin auf den Button 'Digitales Abschlusszeugnis vorzeigen'. Achten Sie darauf, dass nicht alle Daten des Abschlusszeugnisses übermittelt werden, sondern nur die, die der Arbeitgeber wirklich benötigt. Sie können dem zustimmen oder nicht.",
-            instruction2: "Sie sind nun in der Webanwendung des Arbeitgebers und können die eingereichten digitalen Abschlusszeugnisse der Absolventen einsehen."
+            instruction1: "Sie befinden sich jetzt auf dem Bewerberportal des Arbeitgebers. Scannen Sie den bereitgestellten QR-Code (oder klicken Sie auf den Link), um wiederum den Kontakt zum Arbeitgeber herzustellen. Danach wird automatisch eine Anfrage an Ihre Wallet-App geschickt. Nehmen Sie diese an. Sie können dabei einsehen, welche Daten an den Arbeitgeber übermittelt werden.",
+            instruction2: "Sie sind nun in der Webanwendung des Arbeitgebers und können die eingereichten digitalen Abschlusszeugnisse der Absolventen einsehen und schauen, ob sie verifiziert sind."
         },
         employer_website: {
             cover_letter: "Anschreiben",

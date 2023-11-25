@@ -1,20 +1,18 @@
 <script setup>
-    import axios from 'axios';
     import { reactive } from 'vue';
     import { useI18n } from 'vue-i18n';
-    import { useSSIStore } from '../../../../stores/ssiStore';
-    import config from '../../../../../config.json'
+    import { issueCredential } from '../../../../services/acapyRequests';
+    import { useWebhookStore } from '../../../../stores/webhookStore';
 
     const { t } = useI18n();
-    const ssiStore = useSSIStore();
+    const webhookStore = useWebhookStore();
 
     const state = reactive({
         showOverlay: true,
         showSpinner: true,
         showLoadingText: true,
         showCalculationText: false,
-        values: ["","","","","",""],
-        showLoadingOnButton: false
+        values: ["","","","","",""]
     });
 
     setTimeout(() => {
@@ -33,76 +31,6 @@
         state.values[5] = t("verifiable_credential.17");
     }, 4000)
 
-    const issueCredential = () => {
-        state.showLoadingOnButton = true;
-        setTimeout(() => {
-            axios.post(`${config.acapy_api}/issue-credential/send`, {
-                "auto_remove": true,
-                "comment": "Dein digitales Abschlusszeugnis",
-                "connection_id": ssiStore.getConnectionID,
-                "cred_def_id": ssiStore.getCredentialDefinitionID,
-                "credential_proposal": {
-                    "@type": "issue-credential/1.0/credential-preview",
-                    "attributes": [
-                        {
-                            "mime-type": "image/text",
-                            "name": "Name",
-                            "value": state.values[0]
-                        },
-                        {
-                            "mime-type": "image/text",
-                            "name": "Geburtsort",
-                            "value": state.values[1]
-                        },
-                        {
-                            "mime-type": "image/text",
-                            "name": "Geburtsdatum",
-                            "value": state.values[2]
-                        },
-                        {
-                            "mime-type": "image/text",
-                            "name": "Abschluss",
-                            "value": state.values[3]
-                        },
-                        {
-                            "mime-type": "image/text",
-                            "name": "Studiengang",
-                            "value": state.values[4]
-                        },
-                        {
-                            "mime-type": "image/text",
-                            "name": "Hochschule",
-                            "value": "Hochschule für Technik und Wirtschaft Dresden"
-                        },
-                        {
-                            "mime-type": "image/text",
-                            "name": "Note",
-                            "value": state.values[5]
-                        },
-                    ]
-                },
-                "issuer_did": ssiStore.getIssuerDID,
-                "schema_id": ssiStore.getCredentialSchemaID,
-                "schema_issuer_did": ssiStore.getSchemaIssuerDID,
-                "schema_name": ssiStore.getSchemaName,
-                "schema_version": "1.0",
-                "trace": true
-            })
-            .then(response => {
-                if(response.status === 200 && response.statusText === "OK") {
-                    state.showLoadingOnButton = false
-                }
-                else {
-                    state.showLoadingOnButton = false
-                    
-                }
-            })
-            .catch(e => {
-                console.log(e)
-                state.showLoadingOnButton = false
-            })
-        }, 200)
-    }
 </script>
 
 <template>
@@ -141,9 +69,10 @@
                 <input type="text" class="form-control" id="inputGrade" :value="state.values[5]" disabled>
             </div>
         </div>
-        <button @click="issueCredential" class="btn htw-button mt-3" data-type="issueCredentialButton">
-            <span v-if="!state.showLoadingOnButton">{{ t("tutorial.htw_website.issue_digital_diploma") }}</span>
-            <span v-if="state.showLoadingOnButton" class="spinner-border text-white" role="status"></span>
+        <button @click="issueCredential(state.values)" class="btn htw-button mt-3 col-12 col-md-3" data-type="issueCredentialButton">
+            <span>{{ t("tutorial.htw_website.issue_digital_diploma") }}
+                &nbsp;<font-awesome-icon v-if="webhookStore.getIssuanceStatusOffered" class="text-white" icon="check" />
+            </span>
         </button>
     </div>
 </template>

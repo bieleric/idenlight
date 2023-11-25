@@ -8,6 +8,7 @@
   --orange: #ec6608;
   --brown: #ba8570;
   --beige: #ebdcd6;
+  --red: #ff0000;
 }
 
 
@@ -432,4 +433,8 @@
 
 .text-white {
   color: var(--white) !important;
+}
+
+.text-red {
+  color: var(--red) !important;
 }

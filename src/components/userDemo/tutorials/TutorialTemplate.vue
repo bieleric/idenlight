@@ -3,6 +3,7 @@
     import { useI18n } from 'vue-i18n';
     import { useUserDemoStore } from '../../../stores/userDemoStore';
     import { useDemoTutorialStore } from '../../../stores/demoTutorialStore';
+    import { useWebhookStore } from '../../../stores/webhookStore';
     import TutorialRoleTemplate from './TutorialRoleTemplate.vue';
     import TutorialInstructionTemplate from './TutorialInstructionTemplate.vue';
     import HTWDresdenWebsiteTemplate from './HTWDresdenWebsiteTemplate.vue';
@@ -12,9 +13,14 @@
     const { t } = useI18n();
     const userDemoStore = useUserDemoStore();
     const demoTutorialStore = useDemoTutorialStore();
+    const webhookStore = useWebhookStore();
 
     const classObject = computed(() => ({
-        firstStep: demoTutorialStore.getCurrentStep === 1 ? true : false
+        pulse_animation: (demoTutorialStore.getCurrentStep === 1 || 
+            (webhookStore.getConnectionWithHTWActive && demoTutorialStore.getCurrentTutorial === demoTutorialStore.getConnectionTutorialName && demoTutorialStore.getCurrentStep === 3) ||
+            (webhookStore.getIssuanceStatusOffered && demoTutorialStore.getCurrentTutorial === demoTutorialStore.getIssueTutorialName && demoTutorialStore.getCurrentStep === 3) ||
+            (webhookStore.getIssuanceStatusIssued && demoTutorialStore.getCurrentTutorial === demoTutorialStore.getIssueTutorialName && demoTutorialStore.getCurrentStep === 6) ||
+            (webhookStore.getPresentationStatusVerified && demoTutorialStore.getCurrentTutorial === demoTutorialStore.getPresentTutorialName && demoTutorialStore.getCurrentStep === 3)) ? true : false 
     }))
 
     const increment = () => {
@@ -60,10 +66,10 @@
                 <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" class="font-italic">{{ t("tutorial.issue_credential.title") }}</span>
                 <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getPresentTutorialName" class="font-italic">{{ t("tutorial.present_proof.title") }}</span>
             </div>
-            <div @click="increment" v-if="demoTutorialStore.getCurrentStep!==demoTutorialStore.getCurrentTutorialSteps" :class="{  'pulse-animation': classObject.firstStep, 'btn button-secondary': true}" data-type="incrementButton">
+            <div @click="increment" v-if="demoTutorialStore.getCurrentStep!==demoTutorialStore.getCurrentTutorialSteps" :class="{  'pulse-animation': classObject.pulse_animation, 'btn button-secondary': true}" data-type="incrementButton">
                 <font-awesome-icon class="tutorial-navigation font-large" icon="chevron-right" />
             </div>
-            <div @click="finishTutorial" v-if="demoTutorialStore.getCurrentStep===demoTutorialStore.getCurrentTutorialSteps" class="btn button-secondary" data-type="closeButton">
+            <div @click="finishTutorial" v-if="demoTutorialStore.getCurrentStep===demoTutorialStore.getCurrentTutorialSteps" :class="{  'pulse-animation': classObject.pulse_animation, 'btn button-secondary': true}" data-type="closeButton">
                 <font-awesome-icon class="tutorial-navigation font-large" icon="xmark" />
             </div>
         </div>
