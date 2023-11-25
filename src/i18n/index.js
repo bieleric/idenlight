@@ -95,6 +95,8 @@ const messages = {
             digital_credentials: "Digitale Nachweise",
             create_connection: "Kontakt herstellen",
             issue_credential: "Nachweis ausstellen",
+            revoke_credential: "Nachweis wiederrufen",
+            revoke_diploma_credential: "Digitales Abschlusszeugnis widerrufen",
             issue_digital_diploma: "Digitales Abschlusszeugnis ausstellen",
             name: "Name",
             birthplace: "Geburtsort",
@@ -117,6 +119,7 @@ const messages = {
         present_proof: {
             title: "Tutorial: Nachweis vorzeigen & überprüfen",
             instruction1: "Sie befinden sich jetzt auf dem Bewerberportal des Arbeitgebers. Scannen Sie den bereitgestellten QR-Code (oder klicken Sie auf den Link), um wiederum den Kontakt zum Arbeitgeber herzustellen. Danach wird automatisch eine Anfrage an Ihre Wallet-App geschickt. Nehmen Sie diese an. Sie können dabei einsehen, welche Daten an den Arbeitgeber übermittelt werden.",
+            instruction1_2: "Sie befinden sich jetzt erneut auf dem Bewerberportal des Arbeitgebers. Klicken Sie auf 'Digitales Abschlusszeugnis erneut vorzeigen' und bestätigen Sie die Anfrage in Ihrer Wallet.",
             instruction2: "Sie sind nun in der Webanwendung des Arbeitgebers und können die eingereichten digitalen Abschlusszeugnisse der Absolventen einsehen und schauen, ob sie verifiziert sind."
         },
         employer_website: {
@@ -124,6 +127,7 @@ const messages = {
             cv: "Lebenslauf",
             digital_diploma: "Digitales Abschlusszeugnis",
             present_digital_diploma: "Digitales Abschlusszeugnis vorzeigen",
+            present_digital_diploma_again: "Digitales Abschlusszeugnis erneut vorzeigen",
             create_connection: "Kontakt herstellen",
             load_data: "Lade Daten",
             check_signature: "Prüfe Unterschriften",
@@ -134,7 +138,12 @@ const messages = {
             degree: "Abschluss",
             grade: "Note",
             verified: "Verifiziert",
-            applicant_portal: "Bewerberportal"
+            applicant_portal: "Bewerberportal",
+        },
+        revoke_credential: {
+            title: "Nachweis widerrufen",
+            instruction1: "Sie haben einen Fehler bei der Ausstellung des Nachweises gemacht. Sie können daher das digitale Abschlusszeugnis widerrufen. Klicken Sie dazu auf 'Digitales Abschlusszeugnis widerrufen'.",
+            instruction2: "Beenden Sie das Tutorial und gehen Sie anschließend zurück zu Schritt 6 'Nachweis vorzeigen & überprüfen'. Absolvieren Sie erneut das Tutorial. Diesmal sollte das Abschlusszeugnis nicht verifiziert werden können."
         }
     },
     navigation: {

@@ -3,6 +3,7 @@
     import { useI18n } from 'vue-i18n';
     import HTWIssueCredentialScreen from './TutorialComponents/HTWIssueCredentialScreen.vue';
     import HTWCreateConnectionScreen from './TutorialComponents/HTWCreateConnectionScreen.vue';
+    import HTWRevokeCredentialScreen from './TutorialComponents/HTWRevokeCredentialScreen.vue';
 
     const { t } = useI18n();
     const demoTutorialStore = useDemoTutorialStore();
@@ -41,11 +42,13 @@
                 <li class="breadcrumb-item" aria-current="page">{{ t("tutorial.htw_website.digital_credentials") }}</li>
                 <li v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getConnectionTutorialName" class="breadcrumb-item" aria-current="page">{{ t("tutorial.htw_website.create_connection") }}</li>
                 <li v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" class="breadcrumb-item" aria-current="page">{{ t("tutorial.htw_website.issue_credential") }}</li>
+                <li v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getRevokeTutorialName" class="breadcrumb-item" aria-current="page">{{ t("tutorial.htw_website.revoke_credential") }}</li>
             </ol>
         </nav>
         <div class="htw-body p-4">
             <HTWCreateConnectionScreen v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getConnectionTutorialName" data-type="HTWCreateConnectionScreen"/>
             <HTWIssueCredentialScreen v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" data-type="HTWIssueCredentialScreen"/>
+            <HTWRevokeCredentialScreen v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getRevokeTutorialName" data-type="HTWRevokeCredentialScreen"/>
         </div>
     </div>
 </template>

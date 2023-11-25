@@ -15,7 +15,8 @@ export const useWebhookStore = defineStore('webhookStore', {
         connectionStatusWithEmployerActive: false,
         issuanceStatusOffered: false,
         issuanceStatusIssued: false,
-        presentationStatusVerified: false
+        presentationStatusVerified: false,
+        revocationStatusRevoked: false
     }),
     getters: {
         getInvitationURL: (state) => state.invitationURL, 
@@ -26,6 +27,8 @@ export const useWebhookStore = defineStore('webhookStore', {
         getIssuanceStatusOffered: (state) => state.issuanceStatusOffered,
         getIssuanceStatusIssued: (state) => state.issuanceStatusIssued,
         getPresentationStatusVerified: (state) => state.presentationStatusVerified,
+        getRevocation: (state) => state.revocation,
+        getRevocationStatusRevoked: (state) => state.revocationStatusRevoked
     },
     actions: {
         setInvitationURL(invitationURL) {
@@ -57,6 +60,12 @@ export const useWebhookStore = defineStore('webhookStore', {
         },
         setPresentationStatusVerified() {
             this.presentationStatusVerified = true;
+        },
+        setPresentationStatusNotVerified() {
+            this.presentationStatusVerified = false;
+        },
+        setRevocationStatusRevoked() {
+            this.revocationStatusRevoked = true;
         }
     }
 })

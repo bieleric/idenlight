@@ -25,7 +25,7 @@
 <template>
     <div ref="connectionContainer" class="w-100" data-type="HTWCreateConnectionContainer">
         <div class="font-large mb-3">{{ t("tutorial.htw_website.create_connection") }}</div>
-        <div class="mb-3"><a :href="state.invitation_url">{{ t("tutorial.htw_website.create_connection") }}</a></div>
+        <div class="mb-3"><a :href="webhookStore.getInvitationURL">{{ t("tutorial.htw_website.create_connection") }}</a></div>
         <div class="d-flex justify-content-center"><QrcodeVue class="mx-auto" :value="webhookStore.getInvitationURL" :size="state.size" level="H" data-type="ConnectionQRCode" /></div>
     </div>
 </template>

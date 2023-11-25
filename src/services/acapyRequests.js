@@ -100,6 +100,10 @@ export const createPresentationRequest = () => {
         "comment": "string",
         "connection_id": webhookStore.getConnectionIDForEmployer,
         "proof_request": {
+            "non_revoked": {
+                "from": Math.floor(Date.now() / 1000) - (24 * 60 * 60 * 60),
+                "to": Math.floor(Date.now() / 1000)
+            },
             "name": "Hochschulzeugnis",
             "nonce": "1",
             "requested_attributes": {
@@ -150,6 +154,26 @@ export const createPresentationRequest = () => {
             state.didcomm_proof_request_url = `didcomm://launch?c_i=${encoded_proof_request}`;
             state.hash_of_url = md5.create().update(state.proof_request_url).hex();
             state.shortened_request_url = shortenUrl(state.proof_request_url, state.hash_of_url)*/
+        }
+    })
+    .catch(e => {
+        console.log(e)
+    })
+}
+
+export const revokeCredential = () => {
+    axios.post(`${config.acapy_api}/revocation/revoke`, {
+        "comment": "Revoke Credential",
+        "connection_id": webhookStore.getConnectionIDForHTW,
+        "cred_ex_id": webhookStore.getRevocation.credentialExchangeID,
+        "notify": true,
+        "notify_version": "v1_0",
+        "publish": true,
+        "thread_id": webhookStore.getRevocation.threadID
+    })
+    .then(response => {
+        if(response.status === 200 && response.statusText === "OK") {
+            webhookStore.setRevocationStatusRevoked();
         }
     })
     .catch(e => {

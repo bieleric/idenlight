@@ -5,19 +5,23 @@ export const useDemoTutorialStore = defineStore('demoTutorialStore', {
         connectionTutorialName: "Connection Tutorial",
         issueTutorialName: "Issue Tutorial",
         presentTutorialName: "Present Tutorial",
+        revokeTutorialName: "Revoke Tutorial",
         currentStep: 1,
         connectionTutorialSteps: 3,
         issueTutorialSteps: 6,
         presentTutorialSteps: 6,
+        revokeTutorialSteps: 4,
         currentTutorial: null,
         connectionTutorialFinished: false,
         issueTutorialFinished: false,
         presentTutorialFinished: false,
+        revokeTutorialFinished: false,
     }),
     getters: {
         getConnectionTutorialName: (state) => state.connectionTutorialName,
         getIssueTutorialName: (state) => state.issueTutorialName,
         getPresentTutorialName: (state) => state.presentTutorialName,
+        getRevokeTutorialName: (state) => state.revokeTutorialName,
         getCurrentStep: (state) => state.currentStep,
         getCurrentTutorial: (state) => state.currentTutorial,
         getCurrentTutorialSteps: (state) => {
@@ -30,13 +34,18 @@ export const useDemoTutorialStore = defineStore('demoTutorialStore', {
           else if(state.currentTutorial === state.presentTutorialName) {
             return state.presentTutorialSteps;
           }
+          else if(state.currentTutorial === state.revokeTutorialName) {
+            return state.revokeTutorialSteps;
+          }
         },
         getConnectionTutorialSteps: (state) => state.connectionTutorialSteps,
         getIssueTutorialSteps: (state) => state.issueTutorialSteps,
         getPresentTutorialSteps: (state) => state.presentTutorialSteps,
+        getRevokeTutorialSteps: (state) => state.revokeTutorialSteps,
         getConnectionTutorialFinished: (state) => state.connectionTutorialFinished,
         getIssueTutorialFinished: (state) => state.issueTutorialFinished,
-        getPresentTutorialFinished: (state) => state.presentTutorialFinished
+        getPresentTutorialFinished: (state) => state.presentTutorialFinished,
+        getRevokeTutorialFinished: (state) => state.revokeTutorialFinished
     },
     actions: {
         incrementConnectionTutorial() {
@@ -68,6 +77,9 @@ export const useDemoTutorialStore = defineStore('demoTutorialStore', {
         setCurrentTutorialToPresentTutorial() {
           this.currentTutorial = this.presentTutorialName;
         },
+        setCurrentTutorialToRevokeTutorial() {
+          this.currentTutorial = this.revokeTutorialName;
+        },
         setConnectionTutorialFinished() { 
             this.connectionTutorialFinished = true;
         },
@@ -76,6 +88,9 @@ export const useDemoTutorialStore = defineStore('demoTutorialStore', {
         },
         setPresentTutorialFinished() { 
           this.presentTutorialFinished = true;
+        },
+        setRevokeTutorialFinished() { 
+          this.revokeTutorialFinished = true;
         },
         restartTutorial() {
             this.currentStep = 1;

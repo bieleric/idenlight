@@ -4,6 +4,7 @@
     import QrcodeVue from 'qrcode.vue';
     import { useI18n } from 'vue-i18n';
     import { createInvitation } from '../../../../services/acapyRequests';
+    import { createPresentationRequest } from '../../../../services/acapyRequests';
 
 
     const { t } = useI18n();
@@ -18,7 +19,9 @@
         const websiteWidth = employerWebsite.value.offsetWidth;
         state.size = websiteWidth < 500 ? websiteWidth - (websiteWidth * 0.4) : 280;
 
-        createInvitation("Arbeitgeber")
+        if(!webhookStore.getRevocationStatusRevoked) {
+            createInvitation("Arbeitgeber")
+        }
     })
 
 </script>
@@ -50,9 +53,12 @@
                 </button>
                 </h2>
                 <div id="collapseThree" class="accordion-collapse p-4" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                    <div class="d-flex justify-content-center flex-column">
+                    <div v-if="!webhookStore.getRevocationStatusRevoked" class="d-flex justify-content-center flex-column">
                         <div><a :href=state.invitation_url>{{ t("tutorial.employer_website.create_connection") }}</a></div>
                         <QrcodeVue class="mx-auto mt-3" :value=webhookStore.getInvitationURL :size=state.size level="H" data-type="presentQRCode" />
+                    </div>
+                    <div v-else class="d-flex justify-content-center flex-column">
+                        <div @click="createPresentationRequest()" class="btn employer-button">{{ t("tutorial.employer_website.present_digital_diploma_again") }}</div>
                     </div>
                 </div>
             </div>

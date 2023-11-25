@@ -2,8 +2,12 @@
     import ScrollHandAnimation from '../animations/ScrollHandAnimation.vue';
     import { ref, reactive, onMounted } from 'vue';
     import { useI18n } from 'vue-i18n';
+    import { useUserDemoStore } from '../../stores/userDemoStore';
+    import { useDemoTutorialStore } from '../../stores/demoTutorialStore'
 
     const { t } = useI18n();
+    const userDemoStore = useUserDemoStore();
+    const demoTutorialStore = useDemoTutorialStore();
     const lessonTextContainer = ref(null);
 
     let state = reactive({
@@ -17,6 +21,13 @@
             state.showScrollHint = false;
         });
     })
+
+    const startTutorialRevokeCredential = () => {
+        userDemoStore.setTutorial(true);
+        userDemoStore.setShowNavigationButtons(false);
+        demoTutorialStore.setCurrentTutorialToRevokeTutorial();
+        demoTutorialStore.restartTutorial();
+    }
 </script>
 
 <template>
@@ -26,5 +37,10 @@
         <p class="font-medium font-light">{{ t("steps.user.summary.paragraph1") }}</p>
         <p class="font-medium font-light">{{ t("steps.user.summary.paragraph2") }}</p>
         <p class="font-medium font-light"><i>{{ t("steps.user.summary.paragraph3") }}</i></p>
+        <div @click="startTutorialRevokeCredential" class="tutorial-button btn button-outline-primary p-3 mt-4 d-flex justify-content-between" data-type="startRevocationTutorialButton">
+            <span></span>
+            Bonus: {{ t("tutorial.revoke_credential.title") }} 
+            &nbsp;<font-awesome-icon v-if="demoTutorialStore.getRevokeTutorialFinished" class="font-large" icon="circle-check" />
+        </div>
     </div>
 </template>

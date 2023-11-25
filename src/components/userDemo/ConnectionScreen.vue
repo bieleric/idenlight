@@ -40,7 +40,7 @@
         <div @click="startTutorialConnectionCreation" class="tutorial-button btn button-outline-primary p-3 mt-4 d-flex justify-content-between" data-type="startConnectionTutorialButton">
             <span></span>
             {{ t("tutorial.create_connection.title") }} 
-            <font-awesome-icon v-if="demoTutorialStore.getConnectionTutorialFinished" class="font-large" icon="circle-check" />
+            &nbsp;<font-awesome-icon v-if="demoTutorialStore.getConnectionTutorialFinished" class="font-large" icon="circle-check" />
         </div>
     </div>
 </template>

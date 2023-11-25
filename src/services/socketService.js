@@ -41,8 +41,11 @@ socket.on("issuance_status", (message) => {
 
 socket.on("presentation_status", (message) => {
     if(message.state === "verified" && webhookStore.getConnectionIDForEmployer === message.connection_id) {
-        if(message.verified) {
+        if(message.verified === "true") {
             webhookStore.setPresentationStatusVerified();
+        }
+        else if(message.verified === "false") {
+            webhookStore.setPresentationStatusNotVerified();
         }
     }
 })

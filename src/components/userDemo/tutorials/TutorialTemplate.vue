@@ -20,7 +20,9 @@
             (webhookStore.getConnectionWithHTWActive && demoTutorialStore.getCurrentTutorial === demoTutorialStore.getConnectionTutorialName && demoTutorialStore.getCurrentStep === 3) ||
             (webhookStore.getIssuanceStatusOffered && demoTutorialStore.getCurrentTutorial === demoTutorialStore.getIssueTutorialName && demoTutorialStore.getCurrentStep === 3) ||
             (webhookStore.getIssuanceStatusIssued && demoTutorialStore.getCurrentTutorial === demoTutorialStore.getIssueTutorialName && demoTutorialStore.getCurrentStep === 6) ||
-            (webhookStore.getPresentationStatusVerified && demoTutorialStore.getCurrentTutorial === demoTutorialStore.getPresentTutorialName && demoTutorialStore.getCurrentStep === 3)) ? true : false 
+            (!webhookStore.getRevocationStatusRevoked && webhookStore.getPresentationStatusVerified && demoTutorialStore.getCurrentTutorial === demoTutorialStore.getPresentTutorialName && demoTutorialStore.getCurrentStep === 3) ||
+            (webhookStore.getRevocationStatusRevoked && !webhookStore.getPresentationStatusVerified && demoTutorialStore.getCurrentTutorial === demoTutorialStore.getPresentTutorialName && demoTutorialStore.getCurrentStep === 3) ||
+            (webhookStore.getRevocationStatusRevoked && demoTutorialStore.getCurrentTutorial === demoTutorialStore.getRevokeTutorialName && demoTutorialStore.getCurrentStep === 3)) ? true : false 
     }))
 
     const increment = () => {
@@ -33,6 +35,9 @@
         else if(demoTutorialStore.getCurrentTutorial === demoTutorialStore.getPresentTutorialName) {
             demoTutorialStore.incrementPresentTutorial();
         } 
+        else if(demoTutorialStore.getCurrentTutorial === demoTutorialStore.getRevokeTutorialName) {
+            demoTutorialStore.incrementPresentTutorial();
+        }
     }
 
     const decrement = () => {
@@ -51,6 +56,9 @@
         else if(demoTutorialStore.getCurrentTutorial === demoTutorialStore.getPresentTutorialName) {
             demoTutorialStore.setPresentTutorialFinished();
         }
+        else if(demoTutorialStore.getCurrentTutorial === demoTutorialStore.getRevokeTutorialName) {
+            demoTutorialStore.setRevokeTutorialFinished();
+        }
     }
     
 </script>
@@ -65,6 +73,7 @@
                 <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getConnectionTutorialName" class="font-italic">{{ t("tutorial.create_connection.title") }}</span>
                 <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" class="font-italic">{{ t("tutorial.issue_credential.title") }}</span>
                 <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getPresentTutorialName" class="font-italic">{{ t("tutorial.present_proof.title") }}</span>
+                <span v-if="demoTutorialStore.getCurrentTutorial===demoTutorialStore.getRevokeTutorialName" class="font-italic">{{ t("tutorial.revoke_credential.title") }}</span>
             </div>
             <div @click="increment" v-if="demoTutorialStore.getCurrentStep!==demoTutorialStore.getCurrentTutorialSteps" :class="{  'pulse-animation': classObject.pulse_animation, 'btn button-secondary': true}" data-type="incrementButton">
                 <font-awesome-icon class="tutorial-navigation font-large" icon="chevron-right" />
@@ -73,12 +82,10 @@
                 <font-awesome-icon class="tutorial-navigation font-large" icon="xmark" />
             </div>
         </div>
-        <TutorialRoleTemplate v-if="demoTutorialStore.getCurrentStep===1" />
-        <TutorialInstructionTemplate v-if="demoTutorialStore.getCurrentStep===2" />
-        <HTWDresdenWebsiteTemplate v-if="demoTutorialStore.getCurrentStep===3 && (demoTutorialStore.getCurrentTutorial===demoTutorialStore.getConnectionTutorialName || demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName)" />
+        <TutorialRoleTemplate v-if="demoTutorialStore.getCurrentStep===1 || (demoTutorialStore.getCurrentStep===4 && (demoTutorialStore.getCurrentTutorial===demoTutorialStore.getPresentTutorialName || demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName))" />
+        <TutorialInstructionTemplate v-if="demoTutorialStore.getCurrentStep===2 || demoTutorialStore.getCurrentStep===5 || (demoTutorialStore.getCurrentStep === 4 && demoTutorialStore.getCurrentTutorial===demoTutorialStore.getRevokeTutorialName)" />
+        <HTWDresdenWebsiteTemplate v-if="demoTutorialStore.getCurrentStep===3 && (demoTutorialStore.getCurrentTutorial===demoTutorialStore.getConnectionTutorialName || demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName || demoTutorialStore.getCurrentTutorial===demoTutorialStore.getRevokeTutorialName)" />
         <EmployerWebsiteTemplate v-if="(demoTutorialStore.getCurrentStep===3 || demoTutorialStore.getCurrentStep===6) && demoTutorialStore.getCurrentTutorial===demoTutorialStore.getPresentTutorialName" />
-        <TutorialRoleTemplate v-if="demoTutorialStore.getCurrentStep===4 && (demoTutorialStore.getCurrentTutorial===demoTutorialStore.getPresentTutorialName || demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName)" />
-        <TutorialInstructionTemplate v-if="demoTutorialStore.getCurrentStep===5" />
         <PhoneAcceptCredentialScreen v-if="demoTutorialStore.getCurrentStep===6 && demoTutorialStore.getCurrentTutorial===demoTutorialStore.getIssueTutorialName" />
     </div>
 </template>
