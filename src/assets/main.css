@@ -11,7 +11,6 @@
   --red: #ff0000;
 }
 
-
 @font-face {
   font-family: 'Roboto';
   font-weight: 400;
@@ -49,7 +48,6 @@
 
 #navigation-buttons {
   position: relative;
-
 }
 
 .content {
@@ -58,11 +56,11 @@
 
 /* FONTS */
 .font-italic {
-  font-family: "Roboto Italic";
+  font-family: 'Roboto Italic';
 }
 
 .font-light {
-  font-family: "Roboto Light";
+  font-family: 'Roboto Light';
 }
 
 .font-extra-large {
@@ -86,7 +84,7 @@
   height: 20vh;
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
   #header {
     height: 15vh;
   }
@@ -96,7 +94,7 @@
   height: 70vh;
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
   #content {
     height: 75vh;
   }
@@ -105,9 +103,6 @@
 #footer {
   height: 10vh;
 }
-
-
-
 
 /* LESSONS */
 .lesson {
@@ -145,7 +140,7 @@
   background-color: var(--green) !important;
 }
 
-@media(max-width:992px) {
+@media (max-width: 992px) {
   .lesson {
     height: 63vh;
   }
@@ -159,7 +154,7 @@
   }
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
   .lesson-header {
     padding: 1rem 1rem 1rem 1rem;
   }
@@ -173,7 +168,7 @@
   height: 65vh;
 }
 
-@media(max-width:992px) {
+@media (max-width: 992px) {
   .tutorial {
     height: 63vh;
   }
@@ -211,25 +206,25 @@
 
 .pulse-animation {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
-	transform: scale(1);
-	animation: pulse 1s infinite;
+  transform: scale(1);
+  animation: pulse 1s infinite;
 }
 
 @keyframes pulse {
-	0% {
-		transform: scale(0.95);
-		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-	}
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
 
-	70% {
-		transform: scale(1);
-		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-	}
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
 
-	100% {
-		transform: scale(0.95);
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-	}
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
 }
 
 .tutorial-button {
@@ -263,7 +258,8 @@
 }
 
 /* TUTORIALS - HTW DRESDEN - EMPLOYER */
-.htw-website, .employer-website {
+.htw-website,
+.employer-website {
   height: 65vh;
   overflow-y: scroll;
 }
@@ -286,11 +282,11 @@
 }
 
 .htw-breadcrumb {
-  background-color: #E8EDF1;
+  background-color: #e8edf1;
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
-.htw-breadcrumb ol{
+.htw-breadcrumb ol {
   margin: 0;
 }
 
@@ -324,7 +320,6 @@
   max-width: 100%;
   max-height: 100%;
 }
-
 
 /* VERIFIABLE CREDENTIAL SCREEN */
 .vc-card {
@@ -379,7 +374,6 @@
 .h-90 {
   height: 90%;
 }
-
 
 /* COLORS */
 .bg-color-secondary {

@@ -10,7 +10,13 @@ import router from './router'
 import i18n from './i18n'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCheck, faChevronRight, faChevronLeft, faXmark, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCheck,
+  faChevronRight,
+  faChevronLeft,
+  faXmark,
+  faCircleCheck
+} from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
 library.add(faCheck)

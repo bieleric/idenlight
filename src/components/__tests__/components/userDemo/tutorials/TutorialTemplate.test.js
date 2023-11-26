@@ -1,120 +1,119 @@
-import { mount } from '@vue/test-utils';
-import TutorialTemplate from '../../../../userDemo/tutorials/TutorialTemplate.vue';
-import { beforeEach, describe, expect, test } from "vitest";
-import i18n from '../../../../../i18n';
-import { createTestingPinia } from '@pinia/testing';
-import { vitest } from 'vitest';
-import { useDemoTutorialStore } from '../../../../../stores/demoTutorialStore';
+import { mount } from '@vue/test-utils'
+import TutorialTemplate from '../../../../userDemo/tutorials/TutorialTemplate.vue'
+import { beforeEach, describe, expect, test } from 'vitest'
+import i18n from '../../../../../i18n'
+import { createTestingPinia } from '@pinia/testing'
+import { vitest } from 'vitest'
+import { useDemoTutorialStore } from '../../../../../stores/demoTutorialStore'
 
+describe('TutorialTemplate.vue', () => {
+  let wrapper = null
 
-describe("TutorialTemplate.vue", () => {
-    let wrapper = null;
-
-    beforeEach(() => {
-        wrapper = mount(TutorialTemplate, {
-            global: {
-                plugins: [
-                    i18n,
-                    createTestingPinia({
-                        stubActions: false,
-                        createSpy: vitest.fn,
-                        initialState: {
-                            'demoTutorialStore': {
-                                currentStep: 1,
-                                connectionTutorialFinished: false,
-                                issueTutorialFinished: false,
-                                presentTutorialFinished: false,
-                            }
-                        }
-                    })
-                ]
+  beforeEach(() => {
+    wrapper = mount(TutorialTemplate, {
+      global: {
+        plugins: [
+          i18n,
+          createTestingPinia({
+            stubActions: false,
+            createSpy: vitest.fn,
+            initialState: {
+              demoTutorialStore: {
+                currentStep: 1,
+                connectionTutorialFinished: false,
+                issueTutorialFinished: false,
+                presentTutorialFinished: false
+              }
             }
-        })
+          })
+        ]
+      }
     })
-    
-    test("Mount Tutorial Template Component", () => { 
-        expect(wrapper.find("[data-type=tutorialContainer]").exists()).toBe(true);
-        expect(wrapper.find("[data-type=tutorialTitle]").exists()).toBe(true);
-        expect(wrapper.find("[data-type=decrementButton]").exists()).toBe(false);
-        expect(wrapper.find("[data-type=incrementButton]").exists()).toBe(true);
-        expect(wrapper.find("[data-type=closeButton]").exists()).toBe(false);
-    })
+  })
 
-    test("Check Navigation Of Connection Tutorial", async() => { 
-        const demoTutorialStore = useDemoTutorialStore();
+  test('Mount Tutorial Template Component', () => {
+    expect(wrapper.find('[data-type=tutorialContainer]').exists()).toBe(true)
+    expect(wrapper.find('[data-type=tutorialTitle]').exists()).toBe(true)
+    expect(wrapper.find('[data-type=decrementButton]').exists()).toBe(false)
+    expect(wrapper.find('[data-type=incrementButton]').exists()).toBe(true)
+    expect(wrapper.find('[data-type=closeButton]').exists()).toBe(false)
+  })
 
-        demoTutorialStore.setCurrentTutorialToConnectionTutorial();
-        await wrapper.find("[data-type=incrementButton]").trigger("click");
+  test('Check Navigation Of Connection Tutorial', async () => {
+    const demoTutorialStore = useDemoTutorialStore()
 
-        expect(wrapper.find("[data-type=decrementButton]").exists()).toBe(true);
-        expect(wrapper.find("[data-type=incrementButton]").exists()).toBe(true);
-        expect(wrapper.find("[data-type=closeButton]").exists()).toBe(false);
-        expect(demoTutorialStore.getCurrentStep).toBe(2);
+    demoTutorialStore.setCurrentTutorialToConnectionTutorial()
+    await wrapper.find('[data-type=incrementButton]').trigger('click')
 
-        await wrapper.find("[data-type=incrementButton]").trigger("click");
+    expect(wrapper.find('[data-type=decrementButton]').exists()).toBe(true)
+    expect(wrapper.find('[data-type=incrementButton]').exists()).toBe(true)
+    expect(wrapper.find('[data-type=closeButton]').exists()).toBe(false)
+    expect(demoTutorialStore.getCurrentStep).toBe(2)
 
-        expect(wrapper.find("[data-type=decrementButton]").exists()).toBe(true);
-        expect(wrapper.find("[data-type=incrementButton]").exists()).toBe(false);
-        expect(wrapper.find("[data-type=closeButton]").exists()).toBe(true);
-        expect(demoTutorialStore.getCurrentStep).toBe(3);
+    await wrapper.find('[data-type=incrementButton]').trigger('click')
 
-        await wrapper.find("[data-type=closeButton]").trigger("click");
+    expect(wrapper.find('[data-type=decrementButton]').exists()).toBe(true)
+    expect(wrapper.find('[data-type=incrementButton]').exists()).toBe(false)
+    expect(wrapper.find('[data-type=closeButton]').exists()).toBe(true)
+    expect(demoTutorialStore.getCurrentStep).toBe(3)
 
-        expect(demoTutorialStore.getCurrentStep).toBe(3);
-        expect(demoTutorialStore.getConnectionTutorialFinished).toBe(true);
-    })
+    await wrapper.find('[data-type=closeButton]').trigger('click')
 
-    test("Check Navigation Of Issue Tutorial", async() => { 
-        const demoTutorialStore = useDemoTutorialStore();
+    expect(demoTutorialStore.getCurrentStep).toBe(3)
+    expect(demoTutorialStore.getConnectionTutorialFinished).toBe(true)
+  })
 
-        demoTutorialStore.setCurrentTutorialToIssueTutorial();
+  test('Check Navigation Of Issue Tutorial', async () => {
+    const demoTutorialStore = useDemoTutorialStore()
 
-        for(let i = 1; i < demoTutorialStore.getIssueTutorialSteps-1; i++) {
-            await wrapper.find("[data-type=incrementButton]").trigger("click");
+    demoTutorialStore.setCurrentTutorialToIssueTutorial()
 
-            expect(wrapper.find("[data-type=decrementButton]").exists()).toBe(true);
-            expect(wrapper.find("[data-type=incrementButton]").exists()).toBe(true);
-            expect(wrapper.find("[data-type=closeButton]").exists()).toBe(false);
-            expect(demoTutorialStore.getCurrentStep).toBe(i+1);
-        }
+    for (let i = 1; i < demoTutorialStore.getIssueTutorialSteps - 1; i++) {
+      await wrapper.find('[data-type=incrementButton]').trigger('click')
 
-        await wrapper.find("[data-type=incrementButton]").trigger("click");
+      expect(wrapper.find('[data-type=decrementButton]').exists()).toBe(true)
+      expect(wrapper.find('[data-type=incrementButton]').exists()).toBe(true)
+      expect(wrapper.find('[data-type=closeButton]').exists()).toBe(false)
+      expect(demoTutorialStore.getCurrentStep).toBe(i + 1)
+    }
 
-        expect(wrapper.find("[data-type=decrementButton]").exists()).toBe(true);
-        expect(wrapper.find("[data-type=incrementButton]").exists()).toBe(false);
-        expect(wrapper.find("[data-type=closeButton]").exists()).toBe(true);
-        expect(demoTutorialStore.getCurrentStep).toBe(6);
+    await wrapper.find('[data-type=incrementButton]').trigger('click')
 
-        await wrapper.find("[data-type=closeButton]").trigger("click");
+    expect(wrapper.find('[data-type=decrementButton]').exists()).toBe(true)
+    expect(wrapper.find('[data-type=incrementButton]').exists()).toBe(false)
+    expect(wrapper.find('[data-type=closeButton]').exists()).toBe(true)
+    expect(demoTutorialStore.getCurrentStep).toBe(6)
 
-        expect(demoTutorialStore.getCurrentStep).toBe(6);
-        expect(demoTutorialStore.getIssueTutorialFinished).toBe(true);
-    })
+    await wrapper.find('[data-type=closeButton]').trigger('click')
 
-    test("Check Navigation Of Present Tutorial", async() => { 
-        const demoTutorialStore = useDemoTutorialStore();
+    expect(demoTutorialStore.getCurrentStep).toBe(6)
+    expect(demoTutorialStore.getIssueTutorialFinished).toBe(true)
+  })
 
-        demoTutorialStore.setCurrentTutorialToPresentTutorial();
+  test('Check Navigation Of Present Tutorial', async () => {
+    const demoTutorialStore = useDemoTutorialStore()
 
-        for(let i = 1; i < demoTutorialStore.getPresentTutorialSteps-1; i++) {
-            await wrapper.find("[data-type=incrementButton]").trigger("click");
+    demoTutorialStore.setCurrentTutorialToPresentTutorial()
 
-            expect(wrapper.find("[data-type=decrementButton]").exists()).toBe(true);
-            expect(wrapper.find("[data-type=incrementButton]").exists()).toBe(true);
-            expect(wrapper.find("[data-type=closeButton]").exists()).toBe(false);
-            expect(demoTutorialStore.getCurrentStep).toBe(i+1);
-        }
+    for (let i = 1; i < demoTutorialStore.getPresentTutorialSteps - 1; i++) {
+      await wrapper.find('[data-type=incrementButton]').trigger('click')
 
-        await wrapper.find("[data-type=incrementButton]").trigger("click");
+      expect(wrapper.find('[data-type=decrementButton]').exists()).toBe(true)
+      expect(wrapper.find('[data-type=incrementButton]').exists()).toBe(true)
+      expect(wrapper.find('[data-type=closeButton]').exists()).toBe(false)
+      expect(demoTutorialStore.getCurrentStep).toBe(i + 1)
+    }
 
-        expect(wrapper.find("[data-type=decrementButton]").exists()).toBe(true);
-        expect(wrapper.find("[data-type=incrementButton]").exists()).toBe(false);
-        expect(wrapper.find("[data-type=closeButton]").exists()).toBe(true);
-        expect(demoTutorialStore.getCurrentStep).toBe(6);
+    await wrapper.find('[data-type=incrementButton]').trigger('click')
 
-        await wrapper.find("[data-type=closeButton]").trigger("click");
+    expect(wrapper.find('[data-type=decrementButton]').exists()).toBe(true)
+    expect(wrapper.find('[data-type=incrementButton]').exists()).toBe(false)
+    expect(wrapper.find('[data-type=closeButton]').exists()).toBe(true)
+    expect(demoTutorialStore.getCurrentStep).toBe(6)
 
-        expect(demoTutorialStore.getCurrentStep).toBe(6);
-        expect(demoTutorialStore.getPresentTutorialFinished).toBe(true);
-    })
-});
+    await wrapper.find('[data-type=closeButton]').trigger('click')
+
+    expect(demoTutorialStore.getCurrentStep).toBe(6)
+    expect(demoTutorialStore.getPresentTutorialFinished).toBe(true)
+  })
+})
