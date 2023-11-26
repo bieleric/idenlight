@@ -28,7 +28,7 @@ const setRevocationRequested = () => {
     </div>
     <button
       @click="
-        revokeCredential()
+        revokeCredential();
         setRevocationRequested()
       "
       class="btn htw-button mt-3 col-12 col-md-3"
