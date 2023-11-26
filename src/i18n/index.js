@@ -21,7 +21,8 @@ const messages = {
     },
     alert_messages: {
         "doConnectionTutorial": "Absolviere zuerst das Tutorial 'Kontakt herstellen'!",
-        "doIssueTutorial": "Absolviere zuerst das Tutorial 'Nachweis ausstellen & annehmen'!"
+        "doIssueTutorial": "Absolviere zuerst das Tutorial 'Nachweis ausstellen & annehmen'!",
+        "doOtherTutorials": "Absolviere zuerst die vorherigen Tutorials!"
     },
     steps: {
         general: {

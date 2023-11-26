@@ -1,5 +1,6 @@
 <script setup>
     import ScrollHandAnimation from '../animations/ScrollHandAnimation.vue';
+    import WarningAlert from '../alerts/WarningAlert.vue';
     import { ref, reactive, onMounted } from 'vue';
     import { useI18n } from 'vue-i18n';
     import { useUserDemoStore } from '../../stores/userDemoStore';
@@ -11,7 +12,8 @@
     const lessonTextContainer = ref(null);
 
     let state = reactive({
-        showScrollHint: false
+        showScrollHint: false,
+        showWarning: false
     })
 
     onMounted(() => {
@@ -22,11 +24,17 @@
         });
     })
 
-    const startTutorialRevokeCredential = () => {
-        userDemoStore.setTutorial(true);
-        userDemoStore.setShowNavigationButtons(false);
-        demoTutorialStore.setCurrentTutorialToRevokeTutorial();
-        demoTutorialStore.restartTutorial();
+    const startTutorialRevokeCredential = (e) => {
+        if(!demoTutorialStore.getConnectionTutorialFinished && !demoTutorialStore.getIssueTutorialFinished && !demoTutorialStore.getPresentTutorialFinished) {
+            state.showWarning = true;
+            e.preventDefault();
+        }
+        else {
+            userDemoStore.setTutorial(true);
+            userDemoStore.setShowNavigationButtons(false);
+            demoTutorialStore.setCurrentTutorialToRevokeTutorial();
+            demoTutorialStore.restartTutorial();
+        }
     }
 </script>
 
@@ -37,6 +45,7 @@
         <p class="font-medium font-light">{{ t("steps.user.summary.paragraph1") }}</p>
         <p class="font-medium font-light">{{ t("steps.user.summary.paragraph2") }}</p>
         <p class="font-medium font-light"><i>{{ t("steps.user.summary.paragraph3") }}</i></p>
+        <WarningAlert v-if="state.showWarning" :text="t('alert_messages.doOtherTutorials')" data-type="warningAlert" />
         <div @click="startTutorialRevokeCredential" class="tutorial-button btn button-outline-primary p-3 mt-4 d-flex justify-content-between" data-type="startRevocationTutorialButton">
             <span></span>
             Bonus: {{ t("tutorial.revoke_credential.title") }} 
