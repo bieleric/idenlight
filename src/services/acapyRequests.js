@@ -2,9 +2,8 @@ import config from '../../config.json'
 import axios from 'axios'
 import { useWebhookStore } from '../stores/webhookStore'
 
-const webhookStore = useWebhookStore();
-
 export const createInvitation = (label) => {
+    const webhookStore = useWebhookStore();
     axios.post(`${config.acapy_api}/connections/create-invitation`, {
         "my_label": label,
         "service_endpoint": config.acapy_service_endpoint
@@ -32,6 +31,7 @@ export const createInvitation = (label) => {
 }
 
 export const issueCredential = (values) => {
+    const webhookStore = useWebhookStore();
     axios.post(`${config.acapy_api}/issue-credential/send`, {
         "auto_remove": true,
         "comment": "Dein digitales Abschlusszeugnis",
@@ -95,6 +95,7 @@ export const issueCredential = (values) => {
 }
 
 export const createPresentationRequest = () => {
+    const webhookStore = useWebhookStore();
     axios.post(`${config.acapy_api}/present-proof/send-request`, {
         "auto_verify": true,
         "comment": "string",
@@ -162,6 +163,7 @@ export const createPresentationRequest = () => {
 }
 
 export const revokeCredential = () => {
+    const webhookStore = useWebhookStore();
     axios.post(`${config.acapy_api}/revocation/revoke`, {
         "comment": "Revoke Credential",
         "connection_id": webhookStore.getConnectionIDForHTW,

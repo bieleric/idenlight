@@ -9,7 +9,7 @@ export const useWebhookStore = defineStore('webhookStore', {
             threadID: "",
             revocationRegistryID: "",
             credentialRevocationID: "",
-            credentialExchangeID: "",
+            credentialExchangeID: ""
         },
         connectionStatusWithHTWActive: false,
         connectionStatusWithEmployerActive: false,

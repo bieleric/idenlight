@@ -33,7 +33,7 @@ describe("EmployerWebsiteTemplate.vue", () => {
         })
     })
     
-    test("Mount Employer Website Template Component", () => { 
+    test("Mount Employer Website Template Component", () => {
         expect(wrapper.find("[data-type=employerWebsite]").exists()).toBe(true);
         expect(wrapper.find("[data-type=presentScreen]").exists()).toBe(false);
         expect(wrapper.find("[data-type=verifyScreen]").exists()).toBe(false);
