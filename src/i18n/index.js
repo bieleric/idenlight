@@ -97,6 +97,12 @@ const messages = {
           paragraph3:
             'Welche weiteren Möglichkeiten kennen Sie für die Verwendung von digitalen Nachweisen?'
         }
+      },
+      developer: {
+        introduction: {
+            title: 'Einführung',
+            paragraph1: 'Das ist die Einführung'
+        }
       }
     },
     tutorial: {

@@ -27,4 +27,3 @@ const userDemoStore = useUserDemoStore()
 </template>
 
 <style></style>
-../stores/userDemoStore

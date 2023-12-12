@@ -33,7 +33,7 @@ const resetSteps = () => {
           <font-awesome-icon icon="chevron-right" />
         </div>
       </RouterLink>
-      <RouterLink v-else to="/">
+      <RouterLink v-else to="/demoDeveloper">
         <div class="navigation-button btn button-primary">
           <font-awesome-icon icon="chevron-right" />
         </div>

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { useFocusStore } from '../stores/focusStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,12 +20,20 @@ const router = createRouter({
     {
       path: '/demoUser',
       name: 'demo user',
-      component: () => import('../views/UserDemoView.vue')
+      component: () => import('../views/DemoView.vue'),
+      beforeEnter: () => {
+        const focusStore = useFocusStore()
+        focusStore.toggleUserActive(true)
+      }
     },
     {
       path: '/demoDeveloper',
       name: 'demo developer',
-      component: () => import('../views/UserDemoView.vue')
+      component: () => import('../views/DemoView.vue'),
+      beforeEnter: () => {
+        const focusStore = useFocusStore()
+        focusStore.toggleUserActive(false)
+      }
     }
   ]
 })
