@@ -42,7 +42,7 @@ onMounted(() => {
       <i> {{ t('steps.user.verifiable_credential.actions.issue') }}, </i>
       <i> {{ t('steps.user.verifiable_credential.actions.store') }}, </i>
       <i> {{ t('steps.user.verifiable_credential.actions.present') }}, </i>
-      <i> {{ t('steps.user.verifiable_credential.actions.proof') }}, </i>
+      <i> {{ t('steps.user.verifiable_credential.actions.proof') }} </i>
     </p>
   </div>
 </template>
