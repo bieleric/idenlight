@@ -100,7 +100,7 @@ docker build -t idenlight/frontend
 docker run --detach --name=idenlight_frontend -p <host_name>:8080:8080 idenlight/frontend
 ```
 
-_After deployment there could be an error due to the storage that is not used as mentioned above. Therefore you probably need to create a new credentials definition (and save it in a database) and add it to the config.json_
+_After deployment there could be an error due to the storage that is not used as mentioned above. Therefore you probably need to create a new credentials definition (and optionally save it in a database if you want to reuse it after a restart of ACA-Py) and add it to the config.json_
 
 ## Development
 For development you should also deploy ACA-Py and the Indy Tails Server as described above and edit the config.json properly. 
