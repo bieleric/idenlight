@@ -79,7 +79,7 @@ setTimeout(() => {
             class="text-green"
             icon="check"
           />
-          <font-awesome-icon v-else class="text-red" icon="xmark" />
+          <font-awesome-icon v-else class="text-red" icon="xmark" data-type="verificationFailedButton" />
         </p>
         <a href="#" class="card-link">{{ t('tutorial.employer_website.cover_letter') }}</a>
         <a href="#" class="card-link">{{ t('tutorial.employer_website.cv') }}</a>

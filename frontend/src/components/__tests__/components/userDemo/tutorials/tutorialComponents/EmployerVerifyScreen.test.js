@@ -28,5 +28,6 @@ describe('EmployerVerifyScreen.vue', () => {
   test('Mount Employer Verify Screen Component', () => {
     expect(wrapper.find('[data-type=employerWebsiteContainer]').exists()).toBe(true)
     expect(wrapper.find('[data-type=verifyCard]').exists()).toBe(true)
+    expect(wrapper.find('[data-type=verificationFailedButton]').exists()).toBe(true)
   })
 })
