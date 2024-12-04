@@ -12,4 +12,4 @@ if __name__ == '__main__':
     logger.info(f"Running on http://{ net_host }:{ port }")
 
     # uses gevent as production server gevent https://flask-socketio.readthedocs.io/en/latest/deployment.html
-    socketio.run(app, host=net_host, port=port, allow_unsafe_werkzeug=True)
+    socketio.run(app, host=net_host, port=port)

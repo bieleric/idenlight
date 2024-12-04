@@ -104,7 +104,6 @@ export const createPresentationRequest = () => {
       connection_id: webhookStore.getConnectionIDForEmployer,
       proof_request: {
         non_revoked: {
-          from: Math.floor(Date.now() / 1000) - 24 * 60 * 60 * 60,
           to: Math.floor(Date.now() / 1000)
         },
         name: 'Hochschulzeugnis',
